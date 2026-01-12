@@ -131,7 +131,7 @@ export default function Hero() {
                 onMouseOver={(e) => e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)'}
                 onMouseOut={(e) => e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.05)'}
               >
-                Hire Me
+                Me contrate
               </a>
             </div>
 

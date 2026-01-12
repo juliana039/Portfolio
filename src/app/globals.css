@@ -14,7 +14,10 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-/* Classes utilitárias manuais para garantir que funcionem */
+/* ========================================
+   CLASSES UTILITÁRIAS
+   ======================================== */
+
 .glass-card {
   background: rgba(26, 26, 26, 0.4);
   backdrop-filter: blur(12px);
@@ -22,41 +25,82 @@ body {
   border-radius: 1rem;
 }
 
-/* Project Page Styles */
-.project-back-link:hover {
+/* ========================================
+   PÁGINA DE PROJETO
+   ======================================== */
+
+/* Links e Botões */
+.project-back-link:hover,
+.back-link:hover {
   color: #ffffff !important;
 }
 
-.project-tag {
+.project-tag,
+.case-study-btn,
+.project-nav-btn,
+.nav-btn {
   transition: transform 0.3s ease;
 }
 
-.project-tag:hover {
+.project-tag:hover,
+.case-study-btn:hover,
+.project-nav-btn:hover,
+.nav-btn:hover {
   transform: scale(1.05);
 }
 
-.project-nav-btn {
-  transition: transform 0.3s ease;
+/* ========================================
+   CARROSSEL DE MÍDIA
+   ======================================== */
+
+/* Mobile */
+@media (max-width: 640px) {
+  .media-carousel-container {
+    min-height: 300px !important;
+    max-height: 450px !important;
+  }
+  
+  .media-carousel-container img {
+    max-height: 400px !important;
+  }
 }
 
-.project-nav-btn:hover {
-  transform: scale(1.05);
+/* Tablet */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .media-carousel-container {
+    min-height: 350px !important;
+    max-height: 500px !important;
+  }
+  
+  .media-carousel-container img {
+    max-height: 450px !important;
+  }
 }
 
-/* Responsive styles */
+/* ========================================
+   RESPONSIVIDADE
+   ======================================== */
+
+/* Mobile */
+@media (max-width: 767px) {
+  .project-hero,
+  .project-page > section:first-of-type {
+    padding-top: 100px !important;
+  }
+  
+  .project-title {
+    font-size: 2.5rem !important; /* 40px */
+  }
+}
+
+/* Desktop */
 @media (min-width: 768px) {
   .project-title {
     font-size: 3.75rem !important; /* 60px */
   }
-  
+
   .project-nav {
     flex-direction: row !important;
     justify-content: space-between !important;
-  }
-}
-
-@media (max-width: 767px) {
-  .project-hero {
-    padding-top: 100px !important;
   }
 }
