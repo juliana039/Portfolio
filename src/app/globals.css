@@ -21,3 +21,42 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 1rem;
 }
+
+/* Project Page Styles */
+.project-back-link:hover {
+  color: #ffffff !important;
+}
+
+.project-tag {
+  transition: transform 0.3s ease;
+}
+
+.project-tag:hover {
+  transform: scale(1.05);
+}
+
+.project-nav-btn {
+  transition: transform 0.3s ease;
+}
+
+.project-nav-btn:hover {
+  transform: scale(1.05);
+}
+
+/* Responsive styles */
+@media (min-width: 768px) {
+  .project-title {
+    font-size: 3.75rem !important; /* 60px */
+  }
+  
+  .project-nav {
+    flex-direction: row !important;
+    justify-content: space-between !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .project-hero {
+    padding-top: 100px !important;
+  }
+}

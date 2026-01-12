@@ -1,8 +1,15 @@
 'use client';
 
+import { spacing, colors, typography, borderRadius, shadows, container } from '@/design-system';
+
 export default function About() {
   return (
-    <section id="sobre" style={{ position: 'relative', padding: '8rem 0', background: '#0A0A0A', overflow: 'hidden' }}>
+    <section id="sobre" style={{ 
+      position: 'relative', 
+      padding: `${spacing['lg']} ${container.padding.mobile}`, 
+      background: colors.neutral.bg, 
+      overflow: 'hidden' 
+    }}>
       {/* Background decorativo */}
       <div style={{ 
         position: 'absolute', 
@@ -10,20 +17,32 @@ export default function About() {
         right: '-10%', 
         width: '400px', 
         height: '400px', 
-        background: 'radial-gradient(circle, rgba(255,240,105,0.1) 0%, transparent 70%)'
+        background: 'radial-gradient(circle, rgba(255,240,105,0.1) 0%, transparent 70%)',
+        pointerEvents: 'none'
       }}></div>
 
-      <div style={{ width: '100%', maxWidth: '1100px', margin: '0 auto', padding: '0 2.5rem' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.2fr', gap: '5rem', alignItems: 'center' }}>
+      <div style={{ 
+        width: '100%', 
+        maxWidth: container.maxWidth, 
+        margin: '0 auto'
+      }}>
+        <div style={{ 
+          display: 'grid', 
+          gridTemplateColumns: '1fr',
+          gap: spacing['3xl'], 
+          alignItems: 'center' 
+        }}
+        className="about-grid">
           
           {/* LADO ESQUERDO - Foto */}
-          <div style={{ position: 'relative' }}>
+          <div style={{ position: 'relative' }} className="about-photo">
             {/* Blob decorativo atrás */}
             <div style={{ 
               position: 'absolute', 
               top: '-20px', 
               left: '-20px', 
-              width: '420px', 
+              width: '100%',
+              maxWidth: '420px',
               height: '500px', 
               background: 'linear-gradient(135deg, #FFF069 0%, #3C44FF 100%)',
               borderRadius: '60% 40% 30% 70% / 60% 30% 70% 40%',
@@ -34,13 +53,15 @@ export default function About() {
             {/* Foto */}
             <div style={{ 
               position: 'relative', 
-              width: '400px', 
+              width: '100%',
+              maxWidth: '400px',
               height: '480px', 
-              borderRadius: '20px',
+              borderRadius: borderRadius.xl,
               overflow: 'hidden',
-              border: '4px solid rgba(255, 255, 255, 0.1)',
-              boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)',
-              zIndex: 1
+              border: `4px solid ${colors.neutral.border}`,
+              boxShadow: shadows.xl,
+              zIndex: 1,
+              margin: '0 auto'
             }}>
               <img 
                 src="/foto-juliana.jpeg" 
@@ -52,111 +73,180 @@ export default function About() {
             {/* Badge flutuante */}
             <div style={{ 
               position: 'absolute', 
-              bottom: '30px', 
-              right: '-30px', 
-              padding: '16px 28px', 
+              bottom: spacing.lg, 
+              right: spacing.md, 
+              padding: `${spacing.sm} ${spacing.lg}`, 
               background: 'linear-gradient(135deg, #3C44FF 0%, #D575FF 100%)',
-              borderRadius: '50px',
-              color: 'white',
-              fontWeight: 'bold',
-              fontSize: '16px',
-              boxShadow: '0 10px 30px rgba(60, 68, 255, 0.4)',
-              zIndex: 2
-            }}>
+              borderRadius: borderRadius.full,
+              color: colors.neutral.text.primary,
+              fontWeight: typography.fontWeight.bold,
+              fontSize: typography.fontSize.base,
+              boxShadow: shadows.glow(colors.primary.blue),
+              zIndex: 2,
+              whiteSpace: 'nowrap'
+            }}
+            className="about-badge">
               🚀 5 Apps na App Store
             </div>
           </div>
 
           {/* LADO DIREITO - Conteúdo */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: spacing.lg }}>
             {/* Header */}
             <div>
-              <div style={{ display: 'inline-block', padding: '8px 20px', backgroundColor: 'rgba(255, 240, 105, 0.1)', borderRadius: '50px', marginBottom: '16px' }}>
-                <span style={{ fontSize: '14px', color: '#FFF069', fontWeight: '600' }}>👋 Quem sou eu</span>
+              <div style={{ 
+                display: 'inline-block', 
+                padding: `${spacing.xs} ${spacing.md}`, 
+                backgroundColor: 'rgba(255, 240, 105, 0.1)', 
+                borderRadius: borderRadius.full, 
+                marginBottom: spacing.sm 
+              }}>
+                <span style={{ 
+                  fontSize: typography.fontSize.sm, 
+                  color: colors.primary.yellow, 
+                  fontWeight: typography.fontWeight.semibold 
+                }}>
+                  👋 Quem sou eu
+                </span>
               </div>
-              <h2 style={{ fontSize: '48px', fontWeight: 'bold', lineHeight: '1.2', marginBottom: '16px' }}>
-                Sobre <span style={{ color: '#FFF069' }}>mim</span>
+              <h2 style={{ 
+                fontSize: typography.fontSize['5xl'], 
+                fontWeight: typography.fontWeight.bold, 
+                lineHeight: typography.lineHeight.tight, 
+                marginBottom: spacing.sm 
+              }}
+              className="about-title">
+                Sobre <span style={{ color: colors.primary.yellow }}>mim</span>
               </h2>
             </div>
 
             {/* Descrição */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-              <p style={{ fontSize: '18px', color: '#d1d5db', lineHeight: '1.7' }}>
-                Desenvolvedora iOS com <strong style={{ color: 'white' }}>experiência completa no ciclo de desenvolvimento</strong>, 
+            <div style={{ display: 'flex', flexDirection: 'column', gap: spacing.md }}>
+              <p style={{ 
+                fontSize: typography.fontSize.lg, 
+                color: colors.neutral.text.secondary, 
+                lineHeight: typography.lineHeight.relaxed 
+              }}>
+                Desenvolvedora iOS com <strong style={{ color: colors.neutral.text.primary }}>experiência no ciclo de desenvolvimento</strong>, 
                 combinando qualidade técnica com foco em UX/UI e acessibilidade.
               </p>
               
-              <p style={{ fontSize: '18px', color: '#d1d5db', lineHeight: '1.7' }}>
-                Formada em <strong style={{ color: 'white' }}>Ciência da Computação pela UFAM</strong> e com passagem pela 
-                Apple Developer Academy, onde desenvolvi 5 apps publicados na App Store.
+              <p style={{ 
+                fontSize: typography.fontSize.lg, 
+                color: colors.neutral.text.secondary, 
+                lineHeight: typography.lineHeight.relaxed 
+              }}>
+                Formada em <strong style={{ color: colors.neutral.text.primary }}>Ciência da Computação pela UFAM</strong> e alumni da 
+                Apple Developer Academy, onde desenvolvi apps iOS publicados na App Store.
               </p>
               
-              <p style={{ fontSize: '18px', color: '#d1d5db', lineHeight: '1.7' }}>
-                Gosto de criar experiências que <strong style={{ color: '#FFF069' }}>fazem diferença</strong>, 
+              <p style={{ 
+                fontSize: typography.fontSize.lg, 
+                color: colors.neutral.text.secondary, 
+                lineHeight: typography.lineHeight.relaxed 
+              }}>
+                Gosto de criar experiências que <strong style={{ color: colors.primary.yellow }}>fazem diferença</strong>, 
                 com atenção aos detalhes e sempre pensando no usuário final.
               </p>
             </div>
 
             {/* Highlights */}
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem', marginTop: '1rem' }}>
+            <div style={{ 
+              display: 'grid', 
+              gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', 
+              gap: spacing.md, 
+              marginTop: spacing.sm 
+            }}>
               <div style={{ 
-                padding: '20px', 
+                padding: spacing.md, 
                 background: 'rgba(60, 68, 255, 0.1)', 
-                borderRadius: '16px',
+                borderRadius: borderRadius.lg,
                 border: '1px solid rgba(60, 68, 255, 0.2)'
               }}>
-                <div style={{ fontSize: '14px', color: '#9ca3af', marginBottom: '8px' }}>Especialidade</div>
-                <div style={{ fontSize: '18px', fontWeight: 'bold', color: '#3C44FF' }}>SwiftUI & UIKit</div>
+                <div style={{ 
+                  fontSize: typography.fontSize.sm, 
+                  color: colors.neutral.text.tertiary, 
+                  marginBottom: spacing.xs 
+                }}>Especialidade</div>
+                <div style={{ 
+                  fontSize: typography.fontSize.lg, 
+                  fontWeight: typography.fontWeight.bold, 
+                  color: colors.primary.blue 
+                }}>SwiftUI & UIKit</div>
               </div>
               
               <div style={{ 
-                padding: '20px', 
+                padding: spacing.md, 
                 background: 'rgba(213, 117, 255, 0.1)', 
-                borderRadius: '16px',
+                borderRadius: borderRadius.lg,
                 border: '1px solid rgba(213, 117, 255, 0.2)'
               }}>
-                <div style={{ fontSize: '14px', color: '#9ca3af', marginBottom: '8px' }}>Foco</div>
-                <div style={{ fontSize: '18px', fontWeight: 'bold', color: '#D575FF' }}>Acessibilidade</div>
+                <div style={{ 
+                  fontSize: typography.fontSize.sm, 
+                  color: colors.neutral.text.tertiary, 
+                  marginBottom: spacing.xs 
+                }}>Foco</div>
+                <div style={{ 
+                  fontSize: typography.fontSize.lg, 
+                  fontWeight: typography.fontWeight.bold, 
+                  color: colors.primary.purple 
+                }}>Acessibilidade</div>
               </div>
               
               <div style={{ 
-                padding: '20px', 
+                padding: spacing.md, 
                 background: 'rgba(255, 240, 105, 0.1)', 
-                borderRadius: '16px',
+                borderRadius: borderRadius.lg,
                 border: '1px solid rgba(255, 240, 105, 0.2)'
               }}>
-                <div style={{ fontSize: '14px', color: '#9ca3af', marginBottom: '8px' }}>Conquista</div>
-                <div style={{ fontSize: '18px', fontWeight: 'bold', color: '#FFF069' }}>SBGames 2025</div>
+                <div style={{ 
+                  fontSize: typography.fontSize.sm, 
+                  color: colors.neutral.text.tertiary, 
+                  marginBottom: spacing.xs 
+                }}>Conquista</div>
+                <div style={{ 
+                  fontSize: typography.fontSize.lg, 
+                  fontWeight: typography.fontWeight.bold, 
+                  color: colors.primary.yellow 
+                }}>SBGames 2025</div>
               </div>
               
               <div style={{ 
-                padding: '20px', 
+                padding: spacing.md, 
                 background: 'rgba(0, 128, 142, 0.1)', 
-                borderRadius: '16px',
+                borderRadius: borderRadius.lg,
                 border: '1px solid rgba(0, 128, 142, 0.2)'
               }}>
-                <div style={{ fontSize: '14px', color: '#9ca3af', marginBottom: '8px' }}>Arquitetura</div>
-                <div style={{ fontSize: '18px', fontWeight: 'bold', color: '#00808E' }}>MVVM</div>
+                <div style={{ 
+                  fontSize: typography.fontSize.sm, 
+                  color: colors.neutral.text.tertiary, 
+                  marginBottom: spacing.xs 
+                }}>Arquitetura</div>
+                <div style={{ 
+                  fontSize: typography.fontSize.lg, 
+                  fontWeight: typography.fontWeight.bold, 
+                  color: colors.primary.teal 
+                }}>MVVM</div>
               </div>
             </div>
 
             {/* CTA */}
-            <div style={{ marginTop: '1rem' }}>
+            <div style={{ marginTop: spacing.sm }}>
               <a 
                 href="/juliana_magalhaes_devIOS.pdf" 
                 download
                 style={{
                   display: 'inline-flex',
                   alignItems: 'center',
-                  gap: '12px',
-                  padding: '16px 32px',
+                  gap: spacing.xs,
+                  padding: `${spacing.sm} ${spacing.lg}`,
                   background: 'linear-gradient(135deg, #3C44FF 0%, #D575FF 100%)',
-                  color: 'white',
-                  borderRadius: '50px',
-                  fontWeight: 'bold',
+                  color: colors.neutral.text.primary,
+                  borderRadius: borderRadius.full,
+                  fontWeight: typography.fontWeight.bold,
                   textDecoration: 'none',
-                  fontSize: '16px',
-                  boxShadow: '0 10px 30px rgba(60, 68, 255, 0.3)',
+                  fontSize: typography.fontSize.base,
+                  boxShadow: shadows.glow(colors.primary.blue),
                   transition: 'transform 0.2s'
                 }}
                 onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
@@ -172,6 +262,37 @@ export default function About() {
 
         </div>
       </div>
+
+      <style jsx>{`
+        @media (min-width: 768px) {
+          .about-grid {
+            grid-template-columns: 1fr 1.2fr !important;
+          }
+        }
+
+        @media (max-width: 767px) {
+          .about-photo {
+            order: -1;
+            display: flex;
+            justify-content: center;
+          }
+
+          .about-badge {
+            right: 50% !important;
+            transform: translateX(50%);
+            bottom: ${spacing.md} !important;
+          }
+
+          .about-title {
+            font-size: ${typography.fontSize['4xl']} !important;
+            text-align: center;
+          }
+
+          .about-grid > div:last-child > div:first-child {
+            text-align: center;
+          }
+        }
+      `}</style>
     </section>
   );
 }

@@ -69,6 +69,34 @@ export const projects: Project[] = [
     ]
   },
   {
+    id: 'through-the-flames',
+    title: 'Through the Flames',
+    description: 'Jogo de aventura e superação',
+    category: 'Apple Developer Academy',
+    tags: ['SwiftUI', 'SpriteKit', 'Game Design'],
+    published: true,
+    year: '2024',
+    highlights: [
+      'Mecânicas de gameplay inovadoras',
+      'Narrativa envolvente',
+      'Visual artístico único'
+    ]
+  },
+  {
+    id: 'cultural-storm',
+    title: 'Cultural Storm',
+    description: 'Exploração cultural e aprendizado',
+    category: 'Apple Developer Academy',
+    tags: ['SwiftUI', 'Educação', 'Cultura', 'Internacionalização'],
+    published: true,
+    year: '2024',
+    highlights: [
+      'Conteúdo cultural diversificado',
+      'Interface intuitiva',
+      'Sistema de aprendizado interativo'
+    ]
+  },
+  {
     id: 'quem-matou-meus-cachos',
     title: 'Quem Matou Meus Cachos',
     description: 'App para cuidados capilares',

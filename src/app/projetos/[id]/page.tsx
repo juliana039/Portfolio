@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation';
 import { projects } from '@/types/projects';
 import Link from 'next/link';
+import { spacing, colors, typography, borderRadius, container } from '@/design-system';
 
 export async function generateStaticParams() {
   return projects.map((project) => ({
@@ -23,41 +24,94 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
   };
 
   return (
-    <main className="min-h-screen">
+    <main className="project-page" style={{ minHeight: '100vh' }}>
       {/* Hero */}
-      <section className="py-32">
-        <div className="max-w-4xl mx-auto">
+      <section className="project-hero" style={{ 
+        paddingTop: '120px',
+        paddingBottom: spacing['2xl'],
+        paddingLeft: container.padding.mobile,
+        paddingRight: container.padding.mobile
+      }}>
+        <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
           {/* Back Button */}
           <Link 
             href="/#projetos"
-            className="inline-flex items-center gap-2 text-gray-400 hover:text-white transition-colors mb-12"
+            className="project-back-link"
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: spacing.xs,
+              color: colors.neutral.text.tertiary,
+              marginBottom: spacing.xl,
+              transition: 'color 0.3s',
+              fontSize: typography.fontSize.base,
+              textDecoration: 'none'
+            }}
           >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg style={{ width: '20px', height: '20px' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
             </svg>
             Voltar para projetos
           </Link>
 
           {/* Title & Category */}
-          <div className="mb-12">
-            <h1 className="text-5xl md:text-6xl font-bold mb-8">
+          <div style={{ marginBottom: spacing.xl }}>
+            <h1 className="project-title" style={{ 
+              fontSize: typography.fontSize['5xl'],
+              fontWeight: typography.fontWeight.bold,
+              marginBottom: spacing.lg,
+              lineHeight: 1.1
+            }}>
               {project.title}
             </h1>
-            <div className="flex flex-wrap items-center gap-4 mb-8">
-              <span className={`inline-block text-sm px-4 py-2 rounded-full bg-gradient-to-r ${categoryColors[project.category]} text-white font-semibold`}>
+            
+            <div style={{ 
+              display: 'flex', 
+              flexWrap: 'wrap', 
+              alignItems: 'center', 
+              gap: spacing.sm,
+              marginBottom: spacing.lg
+            }}>
+              <span 
+                className={`inline-block bg-gradient-to-r ${categoryColors[project.category]} text-white`}
+                style={{
+                  fontSize: typography.fontSize.sm,
+                  padding: `${spacing.xs} ${spacing.md}`,
+                  borderRadius: borderRadius.full,
+                  fontWeight: typography.fontWeight.semibold
+                }}
+              >
                 {project.category}
               </span>
+              
               {project.published && (
-                <span className="glass-card px-4 py-2 text-sm text-primary-yellow font-semibold">
-                  App Store
+                <span className="glass-card" style={{
+                  padding: `${spacing.xs} ${spacing.md}`,
+                  fontSize: typography.fontSize.sm,
+                  color: colors.primary.yellow,
+                  fontWeight: typography.fontWeight.semibold,
+                  borderRadius: borderRadius.md
+                }}>
+                  📱 App Store
                 </span>
               )}
-              <span className="text-gray-400">{project.year}</span>
+              
+              <span style={{ 
+                color: colors.neutral.text.tertiary,
+                fontSize: typography.fontSize.base
+              }}>
+                {project.year}
+              </span>
             </div>
           </div>
 
           {/* Description */}
-          <p className="text-xl text-gray-300 leading-relaxed mb-12">
+          <p style={{ 
+            fontSize: typography.fontSize.xl,
+            color: colors.neutral.text.secondary,
+            lineHeight: 1.7,
+            marginBottom: spacing['2xl']
+          }}>
             {project.description}
           </p>
 
@@ -66,9 +120,16 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
             <a 
               href={project.appStoreLink || '#'}
               target="_blank"
-              className="btn-primary inline-flex items-center gap-2"
+              rel="noopener noreferrer"
+              className="btn-primary"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: spacing.sm,
+                textDecoration: 'none'
+              }}
             >
-              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <svg style={{ width: '20px', height: '20px' }} fill="currentColor" viewBox="0 0 24 24">
                 <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
               </svg>
               Ver na App Store
@@ -77,30 +138,90 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
         </div>
       </section>
 
-      {/* Image Placeholder */}
-      <section className="py-20 bg-surface/20">
-        <div className="max-w-6xl mx-auto">
-          <div className="glass-card aspect-video flex items-center justify-center">
-            <div className="text-center">
-              <div className="text-6xl mb-4">📱</div>
-              <p className="text-gray-400">Imagem do projeto em breve</p>
-            </div>
+      {/* Image/Logo Section */}
+      <section style={{ 
+        padding: `${spacing['2xl']} ${container.padding.mobile}`,
+        background: 'rgba(26, 26, 26, 0.3)'
+      }}>
+        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+          <div 
+            className="glass-card"
+            style={{
+              aspectRatio: '16/9',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              borderRadius: borderRadius.xl,
+              overflow: 'hidden',
+              background: project.image 
+                ? `url(${project.image}) center/cover` 
+                : `linear-gradient(135deg, ${colors.primary.blue}15, ${colors.primary.purple}15)`
+            }}
+          >
+            {!project.image && (
+              <div style={{ textAlign: 'center' }}>
+                <div style={{
+                  width: '120px',
+                  height: '120px',
+                  margin: '0 auto',
+                  borderRadius: borderRadius.xl,
+                  background: `linear-gradient(135deg, ${colors.primary.blue}, ${colors.primary.purple})`,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontSize: '60px',
+                  marginBottom: spacing.md,
+                  boxShadow: '0 20px 40px rgba(60, 68, 255, 0.4)'
+                }}>
+                  📱
+                </div>
+                <p style={{ 
+                  color: colors.neutral.text.tertiary,
+                  fontSize: typography.fontSize.base
+                }}>
+                  Logo/Imagem em breve
+                </p>
+              </div>
+            )}
           </div>
         </div>
       </section>
 
       {/* Details */}
-      <section className="py-32">
-        <div className="max-w-4xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-16">
+      <section style={{ 
+        padding: `${spacing['4xl']} ${container.padding.mobile}` 
+      }}>
+        <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
+          <div style={{ 
+            display: 'grid', 
+            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+            gap: spacing['2xl']
+          }}>
             {/* Technologies */}
             <div>
-              <h2 className="text-3xl font-bold mb-8">Tecnologias</h2>
-              <div className="flex flex-wrap gap-3">
+              <h2 style={{ 
+                fontSize: typography.fontSize['3xl'],
+                fontWeight: typography.fontWeight.bold,
+                marginBottom: spacing.lg
+              }}>
+                Tecnologias
+              </h2>
+              <div style={{ 
+                display: 'flex', 
+                flexWrap: 'wrap', 
+                gap: spacing.sm
+              }}>
                 {project.tags.map((tag) => (
                   <span 
                     key={tag}
-                    className="glass-card px-4 py-2.5 text-sm font-medium hover:scale-105 transition-transform"
+                    className="glass-card project-tag"
+                    style={{
+                      padding: `${spacing.sm} ${spacing.md}`,
+                      fontSize: typography.fontSize.sm,
+                      fontWeight: typography.fontWeight.medium,
+                      cursor: 'default',
+                      borderRadius: borderRadius.md
+                    }}
                   >
                     {tag}
                   </span>
@@ -111,12 +232,42 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
             {/* Highlights */}
             {project.highlights && project.highlights.length > 0 && (
               <div>
-                <h2 className="text-3xl font-bold mb-8">Destaques</h2>
-                <ul className="space-y-4">
+                <h2 style={{ 
+                  fontSize: typography.fontSize['3xl'],
+                  fontWeight: typography.fontWeight.bold,
+                  marginBottom: spacing.lg
+                }}>
+                  Destaques
+                </h2>
+                <ul style={{ 
+                  listStyle: 'none', 
+                  padding: 0,
+                  margin: 0,
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: spacing.md
+                }}>
                   {project.highlights.map((highlight, index) => (
-                    <li key={index} className="flex items-start gap-3">
-                      <span className="text-primary-blue mt-1 text-xl">✓</span>
-                      <span className="text-gray-300 leading-relaxed">{highlight}</span>
+                    <li key={index} style={{ 
+                      display: 'flex', 
+                      alignItems: 'flex-start', 
+                      gap: spacing.sm
+                    }}>
+                      <span style={{ 
+                        color: colors.primary.blue,
+                        fontSize: typography.fontSize.xl,
+                        marginTop: '2px',
+                        flexShrink: 0
+                      }}>
+                        ✓
+                      </span>
+                      <span style={{ 
+                        color: colors.neutral.text.secondary,
+                        lineHeight: 1.6,
+                        fontSize: typography.fontSize.base
+                      }}>
+                        {highlight}
+                      </span>
                     </li>
                   ))}
                 </ul>
@@ -127,18 +278,34 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
       </section>
 
       {/* Navigation */}
-      <section className="py-16 border-t border-white/10">
-        <div className="max-w-4xl mx-auto">
-          <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
+      <section style={{ 
+        padding: `${spacing['2xl']} ${container.padding.mobile}`,
+        borderTop: `1px solid ${colors.neutral.border}`
+      }}>
+        <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
+          <div className="project-nav" style={{ 
+            display: 'flex', 
+            flexDirection: 'column',
+            alignItems: 'center',
+            gap: spacing.md
+          }}>
             <Link 
               href="/#projetos"
-              className="glass-card px-6 py-3 rounded-full font-semibold hover:scale-105 transition-transform"
+              className="glass-card project-nav-btn"
+              style={{
+                padding: `${spacing.sm} ${spacing.xl}`,
+                borderRadius: borderRadius.full,
+                fontWeight: typography.fontWeight.semibold,
+                textDecoration: 'none',
+                fontSize: typography.fontSize.base
+              }}
             >
               ← Todos os projetos
             </Link>
             <Link 
               href="/#contato"
               className="btn-primary"
+              style={{ textDecoration: 'none' }}
             >
               Entre em contato
             </Link>
