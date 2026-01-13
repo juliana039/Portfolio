@@ -1,0 +1,72 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background gradient -->
+  <defs>
+    <linearGradient id="lamp-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0EA5E9;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#8B5CF6;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="bulb-grad" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFF;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FDE047;stop-opacity:1" />
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#FDE047;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#FDE047;stop-opacity:0" />
+    </radialGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1024" height="1024" rx="200" fill="url(#lamp-bg)"/>
+  
+  <!-- Glow effect -->
+  <circle cx="512" cy="340" r="300" fill="url(#glow)"/>
+  
+  <!-- Lightbulb -->
+  <g transform="translate(512, 340)">
+    <!-- Bulb glass -->
+    <ellipse cx="0" cy="0" rx="140" ry="180" fill="url(#bulb-grad)" opacity="0.95"/>
+    <ellipse cx="0" cy="0" rx="120" ry="160" fill="rgba(255,255,255,0.3)"/>
+    
+    <!-- Filament -->
+    <path d="M -40,-20 Q -20,-60 0,-80 Q 20,-60 40,-20" 
+          stroke="#FCA5A5" stroke-width="8" fill="none" stroke-linecap="round"/>
+    <path d="M -30,0 Q -15,-40 0,-50 Q 15,-40 30,0" 
+          stroke="#FCA5A5" stroke-width="8" fill="none" stroke-linecap="round"/>
+    
+    <!-- Bulb base (rosca) -->
+    <rect x="-80" y="150" width="160" height="40" rx="10" fill="#D4D4D8"/>
+    <rect x="-80" y="190" width="160" height="20" fill="#A3A3A3"/>
+    <rect x="-80" y="210" width="160" height="20" fill="#D4D4D8"/>
+    <rect x="-80" y="230" width="160" height="20" fill="#A3A3A3"/>
+  </g>
+  
+  <!-- Light rays -->
+  <g opacity="0.6" stroke="#FDE047" stroke-width="6" stroke-linecap="round">
+    <line x1="512" y1="120" x2="512" y2="60"/>
+    <line x1="362" y1="170" x2="320" y2="130"/>
+    <line x1="662" y1="170" x2="704" y2="130"/>
+    <line x1="280" y1="340" x2="200" y2="340"/>
+    <line x1="744" y1="340" x2="824" y2="340"/>
+  </g>
+  
+  <!-- Android robot silhouette (subtle) -->
+  <g transform="translate(512, 720)" opacity="0.3" fill="white">
+    <rect x="-60" y="0" width="120" height="140" rx="20"/>
+    <circle cx="-80" cy="60" r="25"/>
+    <circle cx="80" cy="60" r="25"/>
+    <rect x="-90" y="140" width="40" height="80" rx="20"/>
+    <rect x="50" y="140" width="40" height="80" rx="20"/>
+    <circle cx="0" cy="-30" r="80"/>
+    <circle cx="-30" cy="-40" r="12" fill="#0EA5E9"/>
+    <circle cx="30" cy="-40" r="12" fill="#0EA5E9"/>
+    <line x1="-100" y1="-30" x2="-140" y2="-80" stroke="white" stroke-width="15" stroke-linecap="round"/>
+    <line x1="100" y1="-30" x2="140" y2="-80" stroke="white" stroke-width="15" stroke-linecap="round"/>
+  </g>
+  
+  <!-- Sensor icon -->
+  <g transform="translate(512, 600)">
+    <circle cx="0" cy="0" r="60" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="6"/>
+    <circle cx="0" cy="0" r="30" fill="#FDE047"/>
+    <circle cx="0" cy="0" r="20" fill="rgba(0,0,0,0.2)"/>
+  </g>
+</svg>

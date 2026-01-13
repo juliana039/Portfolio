@@ -1,0 +1,95 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background gradient -->
+  <defs>
+    <linearGradient id="game-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8B5CF6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#EC4899;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="cube-grad-1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#60A5FA;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#3B82F6;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="cube-grad-2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#34D399;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#10B981;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="cube-grad-3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#A78BFA;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#8B5CF6;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1024" height="1024" rx="200" fill="url(#game-bg)"/>
+  
+  <!-- 3D Grid floor (perspective) -->
+  <g opacity="0.3" stroke="white" stroke-width="3">
+    <line x1="150" y1="700" x2="512" y2="850"/>
+    <line x1="874" y1="700" x2="512" y2="850"/>
+    <line x1="200" y1="600" x2="512" y2="750"/>
+    <line x1="824" y1="600" x2="512" y2="750"/>
+    <line x1="300" y1="500" x2="512" y2="650"/>
+    <line x1="724" y1="500" x2="512" y2="650"/>
+    
+    <line x1="150" y1="700" x2="200" y2="600"/>
+    <line x1="874" y1="700" x2="824" y2="600"/>
+    <line x1="200" y1="600" x2="300" y2="500"/>
+    <line x1="824" y1="600" x2="724" y2="500"/>
+    
+    <line x1="512" y1="850" x2="512" y2="650"/>
+  </g>
+  
+  <!-- Main 3D Cube (isometric) -->
+  <g transform="translate(512, 350)">
+    <!-- Top face -->
+    <path d="M 0,-100 L 120,0 L 0,100 L -120,0 Z" fill="url(#cube-grad-1)"/>
+    <!-- Left face -->
+    <path d="M -120,0 L 0,100 L 0,300 L -120,200 Z" fill="url(#cube-grad-2)"/>
+    <!-- Right face -->
+    <path d="M 120,0 L 0,100 L 0,300 L 120,200 Z" fill="url(#cube-grad-3)"/>
+    
+    <!-- Highlight on top -->
+    <path d="M -20,-70 L 60,-10 L -20,50 L -100,-10 Z" fill="rgba(255,255,255,0.3)"/>
+  </g>
+  
+  <!-- Smaller floating cubes -->
+  <g transform="translate(300, 250)">
+    <path d="M 0,-30 L 40,0 L 0,30 L -40,0 Z" fill="#60A5FA" opacity="0.8"/>
+    <path d="M -40,0 L 0,30 L 0,90 L -40,60 Z" fill="#3B82F6" opacity="0.8"/>
+    <path d="M 40,0 L 0,30 L 0,90 L 40,60 Z" fill="#2563EB" opacity="0.8"/>
+  </g>
+  
+  <g transform="translate(724, 280)">
+    <path d="M 0,-25 L 35,0 L 0,25 L -35,0 Z" fill="#34D399" opacity="0.8"/>
+    <path d="M -35,0 L 0,25 L 0,75 L -35,50 Z" fill="#10B981" opacity="0.8"/>
+    <path d="M 35,0 L 0,25 L 0,75 L 35,50 Z" fill="#059669" opacity="0.8"/>
+  </g>
+  
+  <!-- Unity logo style circle -->
+  <g transform="translate(200, 650)">
+    <circle cx="0" cy="0" r="50" fill="rgba(255,255,255,0.2)"/>
+    <path d="M -20,0 L 0,-30 L 20,0 L 0,30 Z" fill="white"/>
+    <circle cx="0" cy="0" r="8" fill="white"/>
+  </g>
+  
+  <!-- Gamepad icon -->
+  <g transform="translate(824, 650)">
+    <rect x="-60" y="-30" width="120" height="60" rx="30" fill="rgba(255,255,255,0.2)"/>
+    <!-- D-pad -->
+    <rect x="-40" y="-10" width="25" height="8" rx="3" fill="white"/>
+    <rect x="-28" y="-22" width="8" height="25" rx="3" fill="white"/>
+    <!-- Buttons -->
+    <circle cx="25" cy="-12" r="8" fill="white"/>
+    <circle cx="45" cy="-12" r="8" fill="white"/>
+    <circle cx="35" cy="2" r="8" fill="white"/>
+  </g>
+  
+  <!-- Educational elements (book icon) -->
+  <g transform="translate(512, 700)">
+    <rect x="-80" y="-40" width="160" height="100" rx="8" fill="rgba(255,255,255,0.25)"/>
+    <rect x="-70" y="-30" width="140" height="80" rx="5" fill="rgba(255,255,255,0.15)"/>
+    <line x1="0" y1="-30" x2="0" y2="50" stroke="white" stroke-width="3" opacity="0.5"/>
+    <circle cx="-35" cy="0" r="15" fill="rgba(255,255,255,0.3)"/>
+    <circle cx="35" cy="20" r="12" fill="rgba(255,255,255,0.3)"/>
+  </g>
+</svg>
