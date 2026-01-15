@@ -23,13 +23,13 @@ function ProjectCard({ project }: { project: Project }) {
 
   const nextMedia = () => {
     if (project.media) {
-      setCurrentMediaIndex((prev) => (prev + 1) % project.media.length);
+      setCurrentMediaIndex((prev) => (prev + 1) % project.media!.length);
     }
   };
 
   const prevMedia = () => {
     if (project.media) {
-      setCurrentMediaIndex((prev) => (prev - 1 + project.media.length) % project.media.length);
+      setCurrentMediaIndex((prev) => (prev - 1 + project.media!.length) % project.media!.length);
     }
   };
 
@@ -188,10 +188,10 @@ function ProjectCard({ project }: { project: Project }) {
               flexShrink: 0
             }}
             className="media-carousel">
-              {project.media[currentMediaIndex].type === 'image' ? (
+              {project.media![currentMediaIndex].type === 'image' ? (
                 <img 
-                  src={project.media[currentMediaIndex].url}
-                  alt={project.media[currentMediaIndex].caption || ''}
+                  src={project.media![currentMediaIndex].url}
+                  alt={project.media![currentMediaIndex].caption || ''}
                   style={{
                     width: '100%',
                     height: '100%',
@@ -200,7 +200,7 @@ function ProjectCard({ project }: { project: Project }) {
                 />
               ) : (
                 <video
-                  src={project.media[currentMediaIndex].url}
+                  src={project.media![currentMediaIndex].url}
                   style={{
                     width: '100%',
                     height: '100%',
@@ -213,7 +213,7 @@ function ProjectCard({ project }: { project: Project }) {
               )}
 
               {/* Controles do carrossel */}
-              {project.media.length > 1 && (
+              {project.media!.length > 1 && (
                 <>
                   <button
                     onClick={(e) => {
@@ -284,7 +284,7 @@ function ProjectCard({ project }: { project: Project }) {
                     display: 'flex',
                     gap: spacing.xs
                   }}>
-                    {project.media.map((_, idx) => (
+                    {project.media!.map((_, idx) => (
                       <div
                         key={idx}
                         style={{
