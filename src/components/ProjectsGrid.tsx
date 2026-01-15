@@ -5,7 +5,6 @@ import { projects, Project, categoryColors } from '@/types/projects';
 import Link from 'next/link';
 import { spacing, colors, typography, borderRadius, container, shadows } from '@/design-system';
 
-// Função helper para ícones dos projetos
 function getProjectIcon(projectId: string): string {
   const icons: { [key: string]: string } = {
     'vr-experience': '🔍',
@@ -33,6 +32,32 @@ function ProjectCard({ project }: { project: Project }) {
     }
   };
 
+  // Detectar tipo de dispositivo baseado nas tags e projeto
+  const getCarouselDimensions = () => {
+    const tags = project.tags.map(t => t.toLowerCase());
+    const projectId = project.id.toLowerCase();
+    
+    // tvOS - proporção 16:9 landscape (reduzido)
+    if (tags.includes('tvos') || projectId.includes('cultural-storm')) {
+      return { width: '400px', height: '225px' }; // 16:9
+    }
+    
+    // iPad - proporção iPad 3:4 (ajustado)
+    if (tags.includes('ipad') || projectId.includes('through-the-flames')) {
+      return { width: '280px', height: '373px' }; // iPad 3:4
+    }
+    
+    // Jogos landscape (reduzido)
+    if (projectId.includes('quem-matou-meus-cachos')) {
+      return { width: '400px', height: '225px' }; // 16:9 landscape
+    }
+    
+    // iPhone (padrão) - proporção 9:19.5
+    return { width: '240px', height: '480px' };
+  };
+
+  const carouselDimensions = getCarouselDimensions();
+
   return (
     <Link href={`/projetos/${project.id}`} style={{ textDecoration: 'none' }}>
       <div className="glass-card project-card" style={{
@@ -55,8 +80,7 @@ function ProjectCard({ project }: { project: Project }) {
         e.currentTarget.style.boxShadow = 'none';
       }}>
         
-        {/* COLUNA ESQUERDA: ÍCONE */}
-        <div style={{
+        <div className="project-icon" style={{
           minWidth: '120px',
           width: '120px',
           height: '120px',
@@ -74,9 +98,7 @@ function ProjectCard({ project }: { project: Project }) {
           {!project.image && getProjectIcon(project.id)}
         </div>
 
-        {/* COLUNA CENTRAL: CONTEÚDO */}
         <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: spacing.sm, minWidth: 0 }}>
-          {/* TÍTULO E CATEGORIA */}
           <div>
             <h3 style={{ 
               fontSize: typography.fontSize.xl, 
@@ -87,8 +109,8 @@ function ProjectCard({ project }: { project: Project }) {
             className="project-title">
               {project.title}
             </h3>
-            <div style={{ display: 'flex', alignItems: 'center', gap: spacing.sm }}>
-              <span style={{
+            <div style={{ display: 'flex', alignItems: 'center', gap: spacing.sm, flexWrap: 'wrap' }}>
+              <span className="project-category" style={{
                 display: 'inline-block',
                 fontSize: typography.fontSize.xs,
                 borderRadius: borderRadius.full,
@@ -123,9 +145,8 @@ function ProjectCard({ project }: { project: Project }) {
             {project.description}
           </p>
 
-          {/* HIGHLIGHTS */}
           {project.highlights && project.highlights.length > 0 && (
-            <div style={{ 
+            <div className="project-highlights" style={{ 
               display: 'flex', 
               flexDirection: 'column', 
               gap: spacing.xs,
@@ -163,31 +184,59 @@ function ProjectCard({ project }: { project: Project }) {
             ))}
           </div>
 
-          <span style={{ fontSize: typography.fontSize.xs, color: colors.neutral.text.tertiary }}>
-            📅 {project.year}
-          </span>
+          <div style={{ 
+            display: 'flex', 
+            justifyContent: 'space-between', 
+            alignItems: 'center',
+            marginTop: spacing.sm
+          }}>
+            <span style={{ fontSize: typography.fontSize.xs, color: colors.neutral.text.tertiary }}>
+              📅 {project.year}
+            </span>
+            
+            {!hasMedia && (
+              <div className="cta-button" style={{
+                padding: `${spacing.xs} ${spacing.md}`,
+                backgroundColor: colors.primary.yellow,
+                color: 'black',
+                borderRadius: borderRadius.full,
+                fontWeight: typography.fontWeight.bold,
+                fontSize: typography.fontSize.sm,
+                boxShadow: shadows.sm,
+                display: 'flex',
+                alignItems: 'center',
+                gap: spacing.xs,
+                transition: 'transform 0.2s',
+                textDecoration: 'none'
+              }}>
+                Ver projeto
+                <svg style={{ width: '16px', height: '16px' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </div>
+            )}
+          </div>
         </div>
 
         {/* COLUNA DIREITA: CARROSSEL + BOTÃO */}
         {hasMedia && (
-          <div style={{
+          <div className="project-media-column" style={{
             display: 'flex',
             flexDirection: 'column',
             gap: spacing.md,
             alignItems: 'center'
           }}>
-            {/* CARROSSEL - Proporção de tela iPhone */}
-            <div style={{
-              width: '240px',
-              minWidth: '240px',
-              height: '480px',
+            {/* CARROSSEL - Proporção dinâmica baseada no dispositivo */}
+            <div className="media-carousel" style={{
+              width: carouselDimensions.width,
+              minWidth: carouselDimensions.width,
+              height: carouselDimensions.height,
               borderRadius: borderRadius.lg,
               overflow: 'hidden',
               position: 'relative',
-              background: colors.neutral.surface,
+              background: 'rgba(0, 0, 0, 0.3)',
               flexShrink: 0
-            }}
-            className="media-carousel">
+            }}>
               {project.media![currentMediaIndex].type === 'image' ? (
                 <img 
                   src={project.media![currentMediaIndex].url}
@@ -195,7 +244,7 @@ function ProjectCard({ project }: { project: Project }) {
                   style={{
                     width: '100%',
                     height: '100%',
-                    objectFit: 'cover'
+                    objectFit: 'contain'
                   }}
                 />
               ) : (
@@ -204,7 +253,7 @@ function ProjectCard({ project }: { project: Project }) {
                   style={{
                     width: '100%',
                     height: '100%',
-                    objectFit: 'cover'
+                    objectFit: 'contain'
                   }}
                   muted
                   loop
@@ -235,7 +284,8 @@ function ProjectCard({ project }: { project: Project }) {
                       justifyContent: 'center',
                       cursor: 'pointer',
                       color: 'white',
-                      transition: 'background 0.2s'
+                      transition: 'background 0.2s',
+                      zIndex: 10
                     }}
                     onMouseOver={(e) => e.currentTarget.style.background = 'rgba(0, 0, 0, 0.8)'}
                     onMouseOut={(e) => e.currentTarget.style.background = 'rgba(0, 0, 0, 0.6)'}
@@ -265,7 +315,8 @@ function ProjectCard({ project }: { project: Project }) {
                       justifyContent: 'center',
                       cursor: 'pointer',
                       color: 'white',
-                      transition: 'background 0.2s'
+                      transition: 'background 0.2s',
+                      zIndex: 10
                     }}
                     onMouseOver={(e) => e.currentTarget.style.background = 'rgba(0, 0, 0, 0.8)'}
                     onMouseOut={(e) => e.currentTarget.style.background = 'rgba(0, 0, 0, 0.6)'}
@@ -282,7 +333,8 @@ function ProjectCard({ project }: { project: Project }) {
                     left: '50%',
                     transform: 'translateX(-50%)',
                     display: 'flex',
-                    gap: spacing.xs
+                    gap: spacing.xs,
+                    zIndex: 10
                   }}>
                     {project.media!.map((_, idx) => (
                       <div
@@ -324,15 +376,6 @@ function ProjectCard({ project }: { project: Project }) {
           </div>
         )}
       </div>
-
-      <style jsx>{`
-        .project-card:hover .project-title {
-          color: ${colors.primary.yellow};
-        }
-        .project-card:hover .cta-button {
-          transform: scale(1.05);
-        }
-      `}</style>
     </Link>
   );
 }
@@ -431,28 +474,6 @@ export default function ProjectsGrid() {
           </div>
         </div>
       </div>
-
-      <style jsx>{`
-        @media (max-width: 767px) {
-          .projects-title {
-            font-size: ${typography.fontSize['4xl']} !important;
-          }
-          .project-card {
-            flex-direction: column !important;
-            align-items: flex-start !important;
-          }
-          .media-carousel {
-            width: 100% !important;
-            min-width: 100% !important;
-            height: 400px !important;
-          }
-        }
-        @media (max-width: 480px) {
-          .projects-title {
-            font-size: ${typography.fontSize['3xl']} !important;
-          }
-        }
-      `}</style>
     </section>
   );
 }

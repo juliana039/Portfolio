@@ -74,10 +74,10 @@ Como é um jogo, errar não é problema - faz parte da experiência. Aqui, cada 
       'Foco em desenvolvimento de soft skills através do jogo'
     ],
     team: [
-      { name: 'Maria Tereza Perez', role: 'iOS Developer' },
-      { name: 'Juliana Magalhães', role: 'iOS Developer' },
-      { name: 'Kássia Siqueira', role: 'Designer' },
-      { name: 'Luana Gerber', role: 'iOS Developer' }
+      { name: 'Maria Tereza Perez', role: 'iOS Developer', photo: '/academy/maria.jpeg' },
+      { name: 'Juliana Magalhães', role: 'iOS Developer', photo: '/foto-juliana.jpeg' },
+      { name: 'Kássia Siqueira', role: 'Designer', photo: '/academy/kassia.jpeg' },
+      { name: 'Luana Gerber', role: 'iOS Developer', photo: '/academy/luana.jpg' }
     ],
     myContribution: [
       'Desenvolvimento front-end completo em SwiftUI',
@@ -99,7 +99,7 @@ Como é um jogo, errar não é problema - faz parte da experiência. Aqui, cada 
     category: 'Apple Developer Academy',
     tags: ['SwiftUI', 'Matemática', 'Educação STEAM', 'SBGames 2025'],
     published: true,
-    image: 'timeti/timeti.png',
+    image: '/timeti/timeti.png',
     year: '2024',
     appStoreLink: 'https://apps.apple.com/br/app/timeti/id6752839068',
     duration: '3 meses',
@@ -118,6 +118,14 @@ Desenvolvido inteiramente em SwiftUI, o Timeti oferece uma experiência fluida e
       'Integração Python-Swift via JSON',
       'Educação STEAM com cultura brasileira',
       'Projeto de TCC - Ciência da Computação UFAM'
+    ],
+    media: [
+      { type: 'image', url: '/timeti/timeti-tela-menu.PNG', caption: 'Menu principal' },
+      { type: 'image', url: '/timeti/timeti-tela-tutorial.PNG', caption: 'Tutorial do jogo' },
+      { type: 'image', url: '/timeti/timeti-tela-cartas-viradas-baixo.PNG', caption: 'Cartas viradas' },
+      { type: 'image', url: '/timeti/timeti-tela-cartas-viradas-cima.PNG', caption: 'Gameplay' },
+      { type: 'image', url: '/timeti/timeti-tela-curiosidades.jpeg', caption: 'Curiosidades matemáticas' },
+      { type: 'video', url: '/timeti/timeti-tela-video-completo.MP4', caption: 'Demonstração completa' }
     ]
   },
   {
@@ -127,7 +135,7 @@ Desenvolvido inteiramente em SwiftUI, o Timeti oferece uma experiência fluida e
     category: 'Apple Developer Academy',
     tags: ['Acessibilidade', 'VoiceOver', 'Push Notifications', 'SwiftUI'],
     published: true,
-    image: 'carebeep/carebeep.png',
+    image: '/carebeep/carebeep.png',
     year: '2024',
     appStoreLink: 'https://apps.apple.com/br/app/carebeep/id6737746972',
     duration: '2 meses',
@@ -148,16 +156,22 @@ CareBeep é mais do que um app - é uma ferramenta que promove independência, r
       'Internacionalização (PT/EN)'
     ],
     team: [
-      { name: 'Maria Tereza Perez', role: 'iOS Developer' },
-      { name: 'Juliana Magalhães', role: 'iOS Developer' },
-      { name: 'Letícia Lima', role: 'Designer' },
-      { name: 'Luana Gerber', role: 'iOS Developer' }
+      { name: 'Maria Tereza Perez', role: 'iOS Developer', photo: '/academy/maria.jpeg' },
+      { name: 'Juliana Magalhães', role: 'iOS Developer', photo: '/foto-juliana.jpeg' },
+      { name: 'Letícia Lima', role: 'Designer', photo: '/academy/leticia.jpeg' },
+      { name: 'Luana Gerber', role: 'iOS Developer', photo: '/academy/luana.jpg' }
     ],
     myContribution: [
       'Desenvolvimento front-end completo',
       'Implementação total de acessibilidade (VoiceOver)',
       'Sistema de notificações push',
       'Internacionalização do app'
+    ],
+    media: [
+      { type: 'image', url: '/carebeep/carebeep_screenshot_1.png', caption: 'Tela inicial' },
+      { type: 'image', url: '/carebeep/carebeep_screenshot_2.png', caption: 'Seleção de pictogramas' },
+      { type: 'image', url: '/carebeep/carebeep_screenshot_3.png', caption: 'Interface do cuidador' },
+      { type: 'image', url: '/carebeep/carebeep_screenshot_4.png', caption: 'Notificações' }
     ]
   },
   {
@@ -167,7 +181,7 @@ CareBeep é mais do que um app - é uma ferramenta que promove independência, r
     category: 'Apple Developer Academy',
     tags: ['watchOS', 'CloudKit', 'MVVM', 'Watch Connectivity'],
     published: true,
-    image: 'beezzy/beezzy.png',
+    image: '/beezzy/beezzy.png',
     year: '2025',
     appStoreLink: 'https://apps.apple.com/br/app/beezzy/id6746419810',
     duration: '2 meses',
@@ -188,19 +202,25 @@ Beezzy é mais que um app, é um lugar para respirar. É para você que ama, cui
       'Interface otimizada para watchOS'
     ],
     team: [
-      { name: 'Eduardo Camara', role: 'iOS Developer' },
-      { name: 'Juliana Magalhães', role: 'iOS Developer' },
-      { name: 'Letícia Lima', role: 'Designer' },
-      { name: 'Taynara Santos', role: 'Designer' },
-      { name: 'Sérgio César', role: 'iOS Developer' },
-      { name: 'Jaide Zardin', role: 'iOS Developer' },
-      { name: 'Amanda Rabelo', role: 'iOS Developer' }
+      { name: 'Eduardo Camara', role: 'iOS Developer', photo: '/academy/eduardo.jpeg' },
+      { name: 'Juliana Magalhães', role: 'iOS Developer', photo: '/foto-juliana.jpeg' },
+      { name: 'Letícia Lima', role: 'Designer', photo: '/academy/leticia.jpeg' },
+      { name: 'Taynara Santos', role: 'Designer', photo: '/academy/taynara.jpeg' },
+      { name: 'Sérgio César', role: 'iOS Developer', photo: '/academy/sergio.jpeg' },
+      { name: 'Jaide Zardin', role: 'iOS Developer', photo: '/academy/jaide.jpeg' },
+      { name: 'Amanda Rabelo', role: 'iOS Developer', photo: '/academy/amanda.jpeg' }
     ],
     myContribution: [
       'Implementação da arquitetura MVVM',
       'Sincronização com CloudKit',
       'Watch Connectivity entre iPhone e Apple Watch',
       'Interface e lógica do app watchOS'
+    ],
+    media: [
+      { type: 'image', url: '/beezzy/Frame 432-1.jpg', caption: 'Interface iPhone - Lista de tarefas' },
+      { type: 'image', url: '/beezzy/Frame 432-2.jpg', caption: 'Interface iPhone - Adicionar tarefa' },
+      { type: 'image', url: '/beezzy/Frame 432.jpg', caption: 'Interface iPhone - Rede de apoio' },
+      { type: 'image', url: '/beezzy/Group 429.jpg', caption: 'Interface Apple Watch' }
     ]
   },
     {
@@ -232,10 +252,10 @@ Como funciona: reúna amigos estudantes de intercâmbio em frente à Apple TV, s
       'Ferramenta para minimizar choque cultural'
     ],
     team: [
-      { name: 'Eduardo Camara', role: 'Developer' },
-      { name: 'Juliana Magalhães', role: 'Developer' },
-      { name: 'Letícia Lima', role: 'Designer' },
-      { name: 'Luana Gerber', role: 'Developer' }
+      { name: 'Eduardo Camara', role: 'Developer', photo: '/academy/eduardo.jpeg' },
+      { name: 'Juliana Magalhães', role: 'Developer', photo: '/foto-juliana.jpeg' },
+      { name: 'Letícia Lima', role: 'Designer', photo: '/academy/leticia.jpeg' },
+      { name: 'Luana Gerber', role: 'Developer', photo: '/academy/luana.jpg' }
     ],
     myContribution: [
       'Desenvolvimento da interface para tvOS',
@@ -276,9 +296,6 @@ O projeto demonstra o potencial da Realidade Aumentada na educação e preserva�
       'Animações e comportamentos imersivos',
       'Interface adaptativa para AR',
       'Sistema de scanner com revelação de informações'
-    ],
-    media: [
-      { type: 'video', url: '/projects/vr/demo.mp4', caption: 'Demonstração completa da experiência AR' }
     ]
   },
   {
@@ -363,9 +380,9 @@ highlights: [
     ],
     
     team: [
-      { name: 'Isadora Bastos', role: 'Developer' },
-      { name: 'Amanda Rabelo', role: 'Developer' },
-      { name: 'Juliana Magalhães', role: 'Developer' },
+      { name: 'Isadora Bastos', role: 'Developer', photo: '/academy/isa.jpeg' },
+      { name: 'Amanda Rabelo', role: 'Developer', photo: '/academy/amanda.jpeg' },
+      { name: 'Juliana Magalhães', role: 'Developer', photo: '/foto-juliana.jpeg' },
       { name: 'Ana Beatriz Seixas', role: 'Designer' }
     ]
   },
@@ -375,7 +392,7 @@ highlights: [
     description: 'Jogo endless runner sobre o desmatamento da Amazônia',
     category: 'Apple Developer Academy',
     tags: ['SpriteKit', 'SwiftUI', 'Game Design', 'iPad'],
-    image: 'through-the-flames/through-the-flames-icon.png',
+    image: '/through-the-flames/through-the-flames-icon.png',
     published: false,
     year: '2025',
     duration: '3 semanas',
@@ -395,6 +412,15 @@ A narrativa emocional da onça procurando seu filhote cria conexão empática co
       'Engine de física e animações com SpriteKit',
       'Interfaces em SwiftUI otimizadas para iPad',
       '4 etapas progressivas representando degradação ambiental'
+    ],
+    media: [
+      { type: 'image', url: '/through-the-flames/through-the-flames-menu.png', caption: 'Menu principal' },
+      { type: 'image', url: '/through-the-flames/through-the-flames-pre-nivel.png', caption: 'Introdução do nível' },
+      { type: 'image', url: '/through-the-flames/through-the-flames-nivel-1.png', caption: 'Nível 1 - Floresta intacta' },
+      { type: 'image', url: '/through-the-flames/through-the-flames-nivel-2.png', caption: 'Nível 2 - Início do desmatamento' },
+      { type: 'image', url: '/through-the-flames/through-the-flames-nivel-3.png', caption: 'Nível 3 - Floresta queimada' },
+      { type: 'image', url: '/through-the-flames/through-the-flames-nivel-4.png', caption: 'Nível 4 - Devastação completa' },
+      { type: 'image', url: '/through-the-flames/through-the-flames-final.png', caption: 'Tela final' }
     ]
   },
   {

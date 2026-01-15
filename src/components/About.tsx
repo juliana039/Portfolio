@@ -121,34 +121,44 @@ export default function About() {
             </div>
 
             {/* Descrição */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: spacing.md }}>
-              <p style={{ 
-                fontSize: typography.fontSize.lg, 
-                color: colors.neutral.text.secondary, 
-                lineHeight: typography.lineHeight.relaxed 
-              }}>
-                Desenvolvedora iOS com <strong style={{ color: colors.neutral.text.primary }}>experiência no ciclo de desenvolvimento</strong>, 
-                combinando qualidade técnica com foco em UX/UI e acessibilidade.
-              </p>
-              
-              <p style={{ 
-                fontSize: typography.fontSize.lg, 
-                color: colors.neutral.text.secondary, 
-                lineHeight: typography.lineHeight.relaxed 
-              }}>
-                Formada em <strong style={{ color: colors.neutral.text.primary }}>Ciência da Computação pela UFAM</strong> e alumni da 
-                Apple Developer Academy, onde desenvolvi apps iOS publicados na App Store.
-              </p>
-              
-              <p style={{ 
-                fontSize: typography.fontSize.lg, 
-                color: colors.neutral.text.secondary, 
-                lineHeight: typography.lineHeight.relaxed 
-              }}>
-                Gosto de criar experiências que <strong style={{ color: colors.primary.yellow }}>fazem diferença</strong>, 
-                com atenção aos detalhes e sempre pensando no usuário final.
-              </p>
-            </div>
+<div style={{ display: 'flex', flexDirection: 'column', gap: spacing.md }}>
+  <p
+    style={{
+      fontSize: typography.fontSize.lg,
+      color: colors.neutral.text.secondary,
+      lineHeight: typography.lineHeight.relaxed,
+    }}
+  >
+    Desenvolvedora de <strong style={{ color: colors.neutral.text.primary }}>software com foco em iOS</strong>, 
+    com experiência ao longo de todo o <strong style={{ color: colors.neutral.text.primary }}>ciclo de desenvolvimento</strong>, 
+    combinando qualidade técnica com atenção à UX/UI e acessibilidade.
+  </p>
+
+  <p
+    style={{
+      fontSize: typography.fontSize.lg,
+      color: colors.neutral.text.secondary,
+      lineHeight: typography.lineHeight.relaxed,
+    }}
+  >
+    Formada em <strong style={{ color: colors.neutral.text.primary }}>Ciência da Computação pela UFAM</strong> e alumni da 
+    <strong style={{ color: colors.neutral.text.primary }}> Apple Developer Academy</strong>, 
+    onde desenvolvi aplicativos iOS publicados na App Store.
+  </p>
+
+  <p
+    style={{
+      fontSize: typography.fontSize.lg,
+      color: colors.neutral.text.secondary,
+      lineHeight: typography.lineHeight.relaxed,
+    }}
+  >
+    Atuo com <strong style={{ color: colors.neutral.text.primary }}>Swift, C#, Java e Python</strong>, 
+    com perfil versátil e interesse contínuo em aprendizado e no desenvolvimento de soluções que 
+    <strong style={{ color: colors.primary.yellow }}> geram impacto real</strong> para o usuário final.
+  </p>
+</div>
+
 
             {/* Highlights */}
             <div style={{ 

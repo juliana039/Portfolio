@@ -19,13 +19,27 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
   }
 
   return (
-    <main className="project-page" style={{ minHeight: '100vh' }}>
+    <main className="project-page" style={{ minHeight: '100vh', position: 'relative' }}>
+      {/* Background gradient effect */}
+      <div style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        right: 0,
+        height: '600px',
+        background: `radial-gradient(ellipse at top, ${colors.primary.blue}15, transparent 50%)`,
+        pointerEvents: 'none',
+        zIndex: 0
+      }} />
+
       {/* Hero */}
       <section style={{ 
         paddingTop: '120px',
         paddingBottom: spacing['2xl'],
         paddingLeft: container.padding.mobile,
-        paddingRight: container.padding.mobile
+        paddingRight: container.padding.mobile,
+        position: 'relative',
+        zIndex: 1
       }}>
         <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
           {/* Back Button */}
@@ -37,7 +51,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
               gap: spacing.xs,
               color: colors.neutral.text.tertiary,
               marginBottom: spacing.xl,
-              transition: 'color 0.3s',
+              transition: 'all 0.3s',
               fontSize: typography.fontSize.base,
               textDecoration: 'none'
             }}
@@ -52,15 +66,16 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
           {/* Title & Category */}
           <div style={{ marginBottom: spacing.xl }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: spacing.md, marginBottom: spacing.lg }}>
-              {/* Ícone do App */}
+              {/* Ícone do App com glow effect */}
               {project.image && (
                 <div style={{
                   width: '80px',
                   height: '80px',
                   borderRadius: borderRadius.xl,
                   background: `url(${project.image}) center/cover`,
-                  boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3)',
-                  flexShrink: 0
+                  boxShadow: `0 10px 40px ${colors.primary.blue}40, 0 0 60px ${colors.primary.purple}20`,
+                  flexShrink: 0,
+                  border: `1px solid ${colors.primary.blue}30`
                 }} />
               )}
               
@@ -68,7 +83,11 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
                 fontSize: typography.fontSize['5xl'],
                 fontWeight: typography.fontWeight.bold,
                 lineHeight: 1.1,
-                margin: 0
+                margin: 0,
+                background: `linear-gradient(135deg, ${colors.primary.yellow}, ${colors.primary.blue})`,
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text'
               }}
               className="project-title"
               >
@@ -89,7 +108,8 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
                   fontSize: typography.fontSize.sm,
                   padding: `${spacing.xs} ${spacing.md}`,
                   borderRadius: borderRadius.full,
-                  fontWeight: typography.fontWeight.semibold
+                  fontWeight: typography.fontWeight.semibold,
+                  boxShadow: `0 4px 20px ${colors.primary.blue}40`
                 }}
               >
                 {project.category}
@@ -101,7 +121,9 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
                   fontSize: typography.fontSize.sm,
                   color: colors.primary.yellow,
                   fontWeight: typography.fontWeight.semibold,
-                  borderRadius: borderRadius.md
+                  borderRadius: borderRadius.md,
+                  border: `1px solid ${colors.primary.yellow}40`,
+                  boxShadow: `0 0 20px ${colors.primary.yellow}20`
                 }}>
                   📱 App Store
                 </span>
@@ -147,7 +169,8 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
                   display: 'inline-flex',
                   alignItems: 'center',
                   gap: spacing.sm,
-                  textDecoration: 'none'
+                  textDecoration: 'none',
+                  boxShadow: `0 4px 30px ${colors.primary.yellow}40`
                 }}
               >
                 <svg style={{ width: '20px', height: '20px' }} fill="currentColor" viewBox="0 0 24 24">
@@ -171,7 +194,8 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
                   borderRadius: borderRadius.full,
                   fontWeight: typography.fontWeight.semibold,
                   textDecoration: 'none',
-                  transition: 'transform 0.3s'
+                  transition: 'all 0.3s',
+                  border: `1px solid ${colors.primary.blue}30`
                 }}
               >
                 <svg style={{ width: '20px', height: '20px' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -189,25 +213,33 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
         <section style={{ 
           padding: `${spacing['2xl']} ${container.padding.mobile}`,
           background: 'rgba(26, 26, 26, 0.3)',
-          borderTop: `1px solid ${colors.neutral.border}`
+          borderTop: `1px solid ${colors.neutral.border}`,
+          position: 'relative',
+          zIndex: 1
         }}>
           <div style={{ maxWidth: '800px', margin: '0 auto' }}>
             <h2 style={{ 
               fontSize: typography.fontSize['3xl'],
               fontWeight: typography.fontWeight.bold,
               marginBottom: spacing.xl,
-              color: colors.neutral.text.primary
+              background: `linear-gradient(135deg, ${colors.primary.purple}, ${colors.primary.blue})`,
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text'
             }}>
               Sobre o Projeto
             </h2>
-            <div style={{ 
-              fontSize: typography.fontSize.base,
-              color: colors.neutral.text.secondary,
-              lineHeight: 1.8,
-              whiteSpace: 'pre-line'
-            }}>
-              {project.fullDescription}
-            </div>
+            {project.fullDescription.split('\n\n').map((paragraph, index) => (
+              <p key={index} style={{ 
+                fontSize: typography.fontSize.base,
+                color: colors.neutral.text.secondary,
+                lineHeight: 1.8,
+                marginBottom: spacing.lg,
+                textAlign: 'justify'
+              }}>
+                {paragraph}
+              </p>
+            ))}
           </div>
         </section>
       )}
@@ -216,7 +248,9 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
       {project.media && project.media.length > 0 && (
         <section style={{ 
           padding: `${spacing['2xl']} ${container.padding.mobile}`,
-          background: 'rgba(26, 26, 26, 0.3)'
+          background: 'rgba(26, 26, 26, 0.3)',
+          position: 'relative',
+          zIndex: 1
         }}>
           <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
             <MediaCarousel media={project.media} />
@@ -224,75 +258,30 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
         </section>
       )}
 
-      {/* Logo Placeholder (se não tiver mídia) */}
-      {(!project.media || project.media.length === 0) && (
+      {/* Team */}
+      {project.team && project.team.length > 0 && (
         <section style={{ 
           padding: `${spacing['2xl']} ${container.padding.mobile}`,
-          background: 'rgba(26, 26, 26, 0.3)'
-        }}>
-          <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-            <div 
-              className="glass-card"
-              style={{
-                aspectRatio: '16/9',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                borderRadius: borderRadius.xl,
-                overflow: 'hidden',
-                background: project.image 
-                  ? `url(${project.image}) center/cover` 
-                  : `linear-gradient(135deg, ${colors.primary.blue}15, ${colors.primary.purple}15)`
-              }}
-            >
-              {!project.image && (
-                <div style={{ textAlign: 'center' }}>
-                  <div style={{
-                    width: '120px',
-                    height: '120px',
-                    margin: '0 auto',
-                    borderRadius: borderRadius.xl,
-                    background: `linear-gradient(135deg, ${colors.primary.blue}, ${colors.primary.purple})`,
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    fontSize: '60px',
-                    marginBottom: spacing.md,
-                    boxShadow: '0 20px 40px rgba(60, 68, 255, 0.4)'
-                  }}>
-                    📱
-                  </div>
-                  <p style={{ 
-                    color: colors.neutral.text.tertiary,
-                    fontSize: typography.fontSize.base
-                  }}>
-                    Logo/Imagem em breve
-                  </p>
-                </div>
-              )}
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* Team Section */}
-      {project.team && project.team.length > 0 && project.id !== 'devtitans' && (
-        <section style={{ 
-          padding: `${spacing['2xl']} ${container.padding.mobile}`,
-          borderTop: `1px solid ${colors.neutral.border}`
+          position: 'relative',
+          zIndex: 1
         }}>
           <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
             <h2 style={{ 
               fontSize: typography.fontSize['3xl'],
               fontWeight: typography.fontWeight.bold,
               marginBottom: spacing.xl,
+              background: `linear-gradient(135deg, ${colors.primary.yellow}, ${colors.primary.purple})`,
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
               textAlign: 'center'
             }}>
               Equipe
             </h2>
             <div style={{ 
-              display: 'grid', 
-              gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))',
+              display: 'flex',
+              flexWrap: 'wrap',
+              justifyContent: 'center',
               gap: spacing.lg
             }}>
               {project.team.map((member, index) => (
@@ -310,8 +299,11 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
                     alignItems: 'center',
                     justifyContent: 'center',
                     fontSize: '32px',
-                    boxShadow: '0 10px 20px rgba(0, 0, 0, 0.2)'
-                  }}>
+                    boxShadow: `0 10px 30px ${colors.primary.blue}40`,
+                    border: `2px solid ${colors.primary.blue}40`,
+                    transition: 'all 0.3s'
+                  }}
+                  className="team-member-photo">
                     {!member.photo && '👤'}
                   </div>
                   <p style={{
@@ -341,13 +333,19 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
       {project.myContribution && project.myContribution.length > 0 && (
         <section style={{ 
           padding: `${spacing['2xl']} ${container.padding.mobile}`,
-          background: 'rgba(26, 26, 26, 0.3)'
+          background: 'rgba(26, 26, 26, 0.3)',
+          position: 'relative',
+          zIndex: 1
         }}>
           <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
             <h2 style={{ 
               fontSize: typography.fontSize['3xl'],
               fontWeight: typography.fontWeight.bold,
-              marginBottom: spacing.lg
+              marginBottom: spacing.lg,
+              background: `linear-gradient(135deg, ${colors.primary.yellow}, ${colors.primary.teal})`,
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text'
             }}>
               Minha Contribuição
             </h2>
@@ -369,7 +367,8 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
                     color: colors.primary.yellow,
                     fontSize: typography.fontSize.xl,
                     marginTop: '2px',
-                    flexShrink: 0
+                    flexShrink: 0,
+                    textShadow: `0 0 10px ${colors.primary.yellow}60`
                   }}>
                     ✓
                   </span>
@@ -389,7 +388,9 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
 
       {/* Details */}
       <section style={{ 
-        padding: `${spacing['4xl']} ${container.padding.mobile}` 
+        padding: `${spacing['4xl']} ${container.padding.mobile}`,
+        position: 'relative',
+        zIndex: 1
       }}>
         <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
           <div style={{ 
@@ -402,7 +403,11 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
               <h2 style={{ 
                 fontSize: typography.fontSize['3xl'],
                 fontWeight: typography.fontWeight.bold,
-                marginBottom: spacing.lg
+                marginBottom: spacing.lg,
+                background: `linear-gradient(135deg, ${colors.primary.blue}, ${colors.primary.purple})`,
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text'
               }}>
                 Tecnologias
               </h2>
@@ -420,7 +425,9 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
                       fontSize: typography.fontSize.sm,
                       fontWeight: typography.fontWeight.medium,
                       cursor: 'default',
-                      borderRadius: borderRadius.md
+                      borderRadius: borderRadius.md,
+                      border: `1px solid ${colors.primary.blue}20`,
+                      transition: 'all 0.3s'
                     }}
                   >
                     {tag}
@@ -435,7 +442,11 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
                 <h2 style={{ 
                   fontSize: typography.fontSize['3xl'],
                   fontWeight: typography.fontWeight.bold,
-                  marginBottom: spacing.lg
+                  marginBottom: spacing.lg,
+                  background: `linear-gradient(135deg, ${colors.primary.purple}, ${colors.primary.yellow})`,
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text'
                 }}>
                   Destaques
                 </h2>
@@ -457,7 +468,8 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
                         color: colors.primary.blue,
                         fontSize: typography.fontSize.xl,
                         marginTop: '2px',
-                        flexShrink: 0
+                        flexShrink: 0,
+                        textShadow: `0 0 10px ${colors.primary.blue}60`
                       }}>
                         ✓
                       </span>
@@ -480,7 +492,9 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
       {/* Navigation */}
       <section style={{ 
         padding: `${spacing['2xl']} ${container.padding.mobile}`,
-        borderTop: `1px solid ${colors.neutral.border}`
+        borderTop: `1px solid ${colors.neutral.border}`,
+        position: 'relative',
+        zIndex: 1
       }}>
         <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
           <div className="project-nav" style={{ 
@@ -497,7 +511,9 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
                 borderRadius: borderRadius.full,
                 fontWeight: typography.fontWeight.semibold,
                 textDecoration: 'none',
-                fontSize: typography.fontSize.base
+                fontSize: typography.fontSize.base,
+                border: `1px solid ${colors.primary.blue}30`,
+                transition: 'all 0.3s'
               }}
             >
               ← Todos os projetos
@@ -505,13 +521,16 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
             <Link 
               href="/#contato"
               className="btn-primary"
-              style={{ textDecoration: 'none' }}
+              style={{ 
+                textDecoration: 'none'
+              }}
             >
               Entre em contato
             </Link>
           </div>
         </div>
       </section>
+
     </main>
   );
 }

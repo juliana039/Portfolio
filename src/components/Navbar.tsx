@@ -122,7 +122,7 @@ export default function Navbar() {
             onMouseOver={(e) => (e.currentTarget.style.backgroundColor = colors.primary.yellow)}
             onMouseOut={(e) => (e.currentTarget.style.backgroundColor = colors.neutral.text.primary)}
           >
-            Contact Me
+            Contate-me
           </a>
         </div>
 

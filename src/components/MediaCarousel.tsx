@@ -1,15 +1,19 @@
 'use client';
 
 import { useState } from 'react';
-import { spacing, colors, typography, borderRadius } from '@/design-system';
+import { spacing, colors, borderRadius } from '@/design-system';
 
-interface MediaItem {
+interface Media {
   type: 'image' | 'video';
   url: string;
   caption?: string;
 }
 
-export function MediaCarousel({ media }: { media: MediaItem[] }) {
+interface MediaCarouselProps {
+  media: Media[];
+}
+
+export function MediaCarousel({ media }: MediaCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const goToPrevious = () => {
@@ -20,69 +24,28 @@ export function MediaCarousel({ media }: { media: MediaItem[] }) {
     setCurrentIndex((prev) => (prev === media.length - 1 ? 0 : prev + 1));
   };
 
-  if (!media || media.length === 0) return null;
-
   const currentMedia = media[currentIndex];
 
   return (
-    <div style={{ position: 'relative', width: '100%' }}>
-      {/* Mídia */}
+    <div style={{ width: '100%', position: 'relative' }}>
+      {/* Container principal */}
       <div 
         className="media-carousel-container"
         style={{
+          position: 'relative',
+          width: '100%',
           minHeight: '400px',
           maxHeight: '600px',
-          borderRadius: borderRadius.xl,
-          overflow: 'hidden',
-          background: 'linear-gradient(135deg, rgba(60, 68, 255, 0.05), rgba(147, 51, 234, 0.05))',
-          position: 'relative',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          padding: spacing.lg
+          background: 'rgba(0, 0, 0, 0.2)',
+          borderRadius: borderRadius.xl,
+          overflow: 'hidden'
         }}
       >
-        {currentMedia.type === 'image' ? (
-          <img
-            src={currentMedia.url}
-            alt={currentMedia.caption || ''}
-            style={{
-              maxWidth: '100%',
-              maxHeight: '550px',
-              width: 'auto',
-              height: 'auto',
-              objectFit: 'contain',
-              borderRadius: borderRadius.md
-            }}
-          />
-        ) : (
-          <video
-            src={currentMedia.url}
-            controls
-            style={{
-              width: '100%',
-              height: '100%'
-            }}
-          />
-        )}
-      </div>
-
-      {/* Caption */}
-      {currentMedia.caption && (
-        <p style={{
-          textAlign: 'center',
-          marginTop: spacing.sm,
-          color: colors.neutral.text.tertiary,
-          fontSize: typography.fontSize.sm
-        }}>
-          {currentMedia.caption}
-        </p>
-      )}
-
-      {/* Navegação */}
-      {media.length > 1 && (
-        <>
-          {/* Botão Anterior */}
+        {/* Botão anterior */}
+        {media.length > 1 && (
           <button
             onClick={goToPrevious}
             style={{
@@ -90,27 +53,59 @@ export function MediaCarousel({ media }: { media: MediaItem[] }) {
               left: spacing.md,
               top: '50%',
               transform: 'translateY(-50%)',
-              background: 'rgba(0, 0, 0, 0.7)',
-              border: 'none',
-              borderRadius: borderRadius.full,
               width: '48px',
               height: '48px',
+              borderRadius: borderRadius.full,
+              background: 'rgba(0, 0, 0, 0.6)',
+              backdropFilter: 'blur(10px)',
+              border: `1px solid ${colors.neutral.border}`,
+              color: colors.neutral.text.primary,
               cursor: 'pointer',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              transition: 'background 0.3s'
+              zIndex: 10,
+              transition: 'all 0.3s'
             }}
-            onMouseOver={(e) => e.currentTarget.style.background = 'rgba(0, 0, 0, 0.9)'}
-            onMouseOut={(e) => e.currentTarget.style.background = 'rgba(0, 0, 0, 0.7)'}
-            aria-label="Anterior"
+            className="carousel-button"
           >
-            <svg width="24" height="24" fill="none" stroke="white" viewBox="0 0 24 24">
+            <svg style={{ width: '24px', height: '24px' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
           </button>
+        )}
 
-          {/* Botão Próximo */}
+        {/* Conteúdo */}
+        {currentMedia.type === 'image' ? (
+          <img
+            src={currentMedia.url}
+            alt={currentMedia.caption || 'Screenshot do projeto'}
+            style={{
+              maxWidth: '100%',
+              maxHeight: '600px',
+              height: 'auto',
+              objectFit: 'contain',
+              display: 'block'
+            }}
+          />
+        ) : (
+          <video
+            src={currentMedia.url}
+            controls
+            style={{
+              maxWidth: '100%',
+              maxHeight: '500px',
+              height: 'auto',
+              width: 'auto',
+              objectFit: 'contain',
+              display: 'block',
+              borderRadius: borderRadius.md
+            }}
+          />
+        )}
+
+        {/* Botão próximo */}
+        {media.length > 1 && (
           <button
             onClick={goToNext}
             style={{
@@ -118,54 +113,67 @@ export function MediaCarousel({ media }: { media: MediaItem[] }) {
               right: spacing.md,
               top: '50%',
               transform: 'translateY(-50%)',
-              background: 'rgba(0, 0, 0, 0.7)',
-              border: 'none',
-              borderRadius: borderRadius.full,
               width: '48px',
               height: '48px',
+              borderRadius: borderRadius.full,
+              background: 'rgba(0, 0, 0, 0.6)',
+              backdropFilter: 'blur(10px)',
+              border: `1px solid ${colors.neutral.border}`,
+              color: colors.neutral.text.primary,
               cursor: 'pointer',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              transition: 'background 0.3s'
+              zIndex: 10,
+              transition: 'all 0.3s'
             }}
-            onMouseOver={(e) => e.currentTarget.style.background = 'rgba(0, 0, 0, 0.9)'}
-            onMouseOut={(e) => e.currentTarget.style.background = 'rgba(0, 0, 0, 0.7)'}
-            aria-label="Próximo"
+            className="carousel-button"
           >
-            <svg width="24" height="24" fill="none" stroke="white" viewBox="0 0 24 24">
+            <svg style={{ width: '24px', height: '24px' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
           </button>
+        )}
+      </div>
 
-          {/* Indicadores */}
-          <div style={{
-            position: 'absolute',
-            bottom: spacing.md,
-            left: '50%',
-            transform: 'translateX(-50%)',
-            display: 'flex',
-            gap: spacing.xs
-          }}>
-            {media.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setCurrentIndex(index)}
-                style={{
-                  width: index === currentIndex ? '32px' : '12px',
-                  height: '12px',
-                  borderRadius: borderRadius.full,
-                  background: index === currentIndex ? colors.primary.blue : 'rgba(255, 255, 255, 0.5)',
-                  border: 'none',
-                  cursor: 'pointer',
-                  transition: 'all 0.3s',
-                  padding: 0
-                }}
-                aria-label={`Ir para imagem ${index + 1}`}
-              />
-            ))}
-          </div>
-        </>
+      {/* Indicadores */}
+      {media.length > 1 && (
+        <div style={{
+          display: 'flex',
+          justifyContent: 'center',
+          gap: spacing.xs,
+          marginTop: spacing.lg
+        }}>
+          {media.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentIndex(index)}
+              style={{
+                width: '8px',
+                height: '8px',
+                borderRadius: borderRadius.full,
+                background: index === currentIndex ? colors.primary.blue : colors.neutral.border,
+                border: 'none',
+                cursor: 'pointer',
+                transition: 'all 0.3s',
+                padding: 0
+              }}
+              aria-label={`Ir para mídia ${index + 1}`}
+            />
+          ))}
+        </div>
+      )}
+
+      {/* Caption */}
+      {currentMedia.caption && (
+        <p style={{
+          textAlign: 'center',
+          marginTop: spacing.md,
+          color: colors.neutral.text.tertiary,
+          fontSize: '14px'
+        }}>
+          {currentMedia.caption}
+        </p>
       )}
     </div>
   );

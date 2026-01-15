@@ -39,14 +39,145 @@ body {
 .case-study-btn,
 .project-nav-btn,
 .nav-btn {
-  transition: transform 0.3s ease;
+  transition: all 0.3s ease;
 }
 
-.project-tag:hover,
+.project-tag:hover {
+  border-color: rgba(60, 68, 255, 0.6) !important;
+  box-shadow: 0 0 20px rgba(60, 68, 255, 0.3) !important;
+  transform: translateY(-2px);
+}
+
 .case-study-btn:hover,
 .project-nav-btn:hover,
 .nav-btn:hover {
   transform: scale(1.05);
+}
+
+.team-member-photo {
+  transition: all 0.3s ease;
+}
+
+.team-member-photo:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 20px 40px rgba(60, 68, 255, 0.4) !important;
+}
+
+.carousel-button {
+  transition: all 0.3s ease;
+}
+
+.carousel-button:hover {
+  background: rgba(0, 0, 0, 0.8) !important;
+  transform: translateY(-50%) scale(1.1) !important;
+}
+
+/* ========================================
+   PROJECTS GRID
+   ======================================== */
+
+.project-card:hover .project-title {
+  color: #FFC629;
+  transition: color 0.3s ease;
+}
+
+.project-card:hover .cta-button {
+  transform: scale(1.05);
+}
+
+/* Desktop (padrão) */
+@media (min-width: 1024px) {
+  .project-card {
+    flex-direction: row !important;
+  }
+  
+  .project-icon {
+    min-width: 120px !important;
+    width: 120px !important;
+    height: 120px !important;
+  }
+  
+  /* Dimensões do carrossel são controladas dinamicamente pelo JS */
+}
+
+/* Tablet */
+@media (max-width: 1023px) and (min-width: 768px) {
+  .project-card {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+  
+  .project-icon {
+    min-width: 100px !important;
+    width: 100px !important;
+    height: 100px !important;
+  }
+  
+  .project-media-column {
+    width: 100% !important;
+    align-items: center !important;
+  }
+  
+  /* Manter carrossel no tablet mas centralizado */
+  .media-carousel {
+    /* Dimensões serão controladas pelo JS baseado no tipo de projeto */
+  }
+  
+  .project-highlights {
+    display: flex !important;
+  }
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  .projects-title {
+    font-size: 2.5rem !important;
+  }
+  
+  .project-card {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    padding: 1rem !important;
+  }
+  
+  .project-icon {
+    min-width: 80px !important;
+    width: 80px !important;
+    height: 80px !important;
+    font-size: 40px !important;
+  }
+  
+  .project-category {
+    font-size: 0.7rem !important;
+  }
+  
+  .project-highlights {
+    display: none !important;
+  }
+  
+  /* ESCONDER CARROSSEL NO MOBILE */
+  .project-media-column {
+    display: none !important;
+  }
+  
+  .cta-button {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+}
+
+/* Mobile pequeno */
+@media (max-width: 480px) {
+  .projects-title {
+    font-size: 2rem !important;
+  }
+  
+  .project-icon {
+    min-width: 70px !important;
+    width: 70px !important;
+    height: 70px !important;
+    font-size: 32px !important;
+  }
 }
 
 /* ========================================
