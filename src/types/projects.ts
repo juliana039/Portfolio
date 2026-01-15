@@ -205,7 +205,7 @@ Beezzy é mais que um app, é um lugar para respirar. É para você que ama, cui
       { name: 'Eduardo Camara', role: 'iOS Developer', photo: '/academy/eduardo.jpeg' },
       { name: 'Juliana Magalhães', role: 'iOS Developer', photo: '/foto-juliana.jpeg' },
       { name: 'Letícia Lima', role: 'Designer', photo: '/academy/leticia.jpeg' },
-      { name: 'Taynara Santos', role: 'Designer', photo: '/academy/taynara.jpeg' },
+      { name: 'Taynara Santos', role: 'Designer', photo: '/academy/taynara.png' },
       { name: 'Sérgio César', role: 'iOS Developer', photo: '/academy/sergio.jpeg' },
       { name: 'Jaide Zardin', role: 'iOS Developer', photo: '/academy/jaide.jpeg' },
       { name: 'Amanda Rabelo', role: 'iOS Developer', photo: '/academy/amanda.jpeg' }
@@ -380,10 +380,10 @@ highlights: [
     ],
     
     team: [
-      { name: 'Isadora Bastos', role: 'Developer', photo: '/academy/isa.jpeg' },
+      { name: 'Isadora Bastos', role: 'Designer', photo: '/academy/isa.jpeg' },
       { name: 'Amanda Rabelo', role: 'Developer', photo: '/academy/amanda.jpeg' },
       { name: 'Juliana Magalhães', role: 'Developer', photo: '/foto-juliana.jpeg' },
-      { name: 'Ana Beatriz Seixas', role: 'Designer' }
+      { name: 'Ana Beatriz Seixas', role: 'Developer', photo: '/academy/beatriz.jpeg' }
     ]
   },
 {
