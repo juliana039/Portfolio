@@ -55,7 +55,7 @@ function FeaturedCard({ project }: { project: Project }) {
 
   return (
     <Link href={`/projetos/${project.id}`} style={{ textDecoration: 'none' }}>
-      <div className="glass-card" style={{
+      <div className="glass-card featured-card" style={{
         padding: spacing.xl,
         cursor: 'pointer',
         transition: 'all 0.3s',
@@ -65,7 +65,6 @@ function FeaturedCard({ project }: { project: Project }) {
         alignItems: 'flex-start',
         border: `1px solid ${colors.primary.yellow}20`
       }}
-      className="featured-card"
       onMouseOver={(e) => {
         e.currentTarget.style.transform = 'translateY(-4px)';
         e.currentTarget.style.boxShadow = `0 20px 40px -12px ${colors.primary.blue}40`;
