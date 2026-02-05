@@ -103,6 +103,21 @@ export default function Contact() {
               alignItems: 'center',
               gap: spacing.xs,
               padding: `${spacing.xs} ${spacing.md}`,
+              background: 'rgba(255, 240, 105, 0.15)',
+              border: `1px solid ${colors.primary.yellow}`,
+              borderRadius: borderRadius.full,
+              fontSize: typography.fontSize.sm,
+              fontWeight: typography.fontWeight.semibold,
+              color: colors.primary.yellow
+            }}>
+              <span>📍</span>
+              Manaus-AM
+            </div>
+            <div style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: spacing.xs,
+              padding: `${spacing.xs} ${spacing.md}`,
               background: 'rgba(60, 68, 255, 0.15)',
               border: `1px solid ${colors.primary.blue}`,
               borderRadius: borderRadius.full,

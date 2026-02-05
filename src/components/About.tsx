@@ -155,7 +155,7 @@ export default function About() {
   >
     Atuo com <strong style={{ color: colors.neutral.text.primary }}>Swift, C#, Java e Python</strong>, 
     com perfil versátil e interesse contínuo em aprendizado e no desenvolvimento de soluções que 
-    <strong style={{ color: colors.primary.yellow }}> geram impacto real</strong> para o usuário final.
+    <strong style={{ color: colors.neutral.text.primary }}>geram impacto real</strong> para o usuário final.
   </p>
 </div>
 

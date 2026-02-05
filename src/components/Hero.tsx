@@ -28,7 +28,6 @@ export default function Hero() {
       display: 'flex', 
       alignItems: 'center', 
       justifyContent: 'center', 
-      // padding: `${spacing['3xl']} ${container.padding.mobile} ${spacing['xl']}`,
       paddingTop: '20px',
     }}>
       <div style={{ 
@@ -159,7 +158,7 @@ export default function Hero() {
                   fontSize: typography.fontSize['3xl'], 
                   fontWeight: typography.fontWeight.bold, 
                   color: colors.primary.blue 
-                }}>8</div>
+                }}>11</div>
                 <div style={{ 
                   fontSize: typography.fontSize.sm, 
                   color: colors.neutral.text.tertiary 
@@ -222,7 +221,8 @@ export default function Hero() {
                 />
               </div>
               
-              {/* Badges flutuantes */}
+              {/* Badges flutuantes - REORGANIZADOS */}
+              {/* iOS Developer - topo direita */}
               <div style={{ 
                 position: 'absolute', 
                 top: spacing.xl, 
@@ -239,6 +239,8 @@ export default function Hero() {
               className="hero-badge">
                 iOS Developer
               </div>
+              
+              {/* SwiftUI - embaixo esquerda */}
               <div style={{ 
                 position: 'absolute', 
                 bottom: spacing.xl, 
@@ -254,6 +256,24 @@ export default function Hero() {
               }}
               className="hero-badge">
                 SwiftUI
+              </div>
+              
+              {/* Unity - embaixo direita (ao lado de SwiftUI, embaixo de iOS) - COR BRANCA */}
+              <div style={{ 
+                position: 'absolute', 
+                bottom: spacing.xl, 
+                right: `-${spacing.md}`, 
+                padding: `${spacing.xs} ${spacing.md}`, 
+                backgroundColor: 'white',
+                color: 'black', 
+                borderRadius: borderRadius.full, 
+                fontWeight: typography.fontWeight.bold, 
+                boxShadow: shadows.md,
+                fontSize: typography.fontSize.sm,
+                whiteSpace: 'nowrap'
+              }}
+              className="hero-badge">
+                Unity
               </div>
             </div>
           </div>

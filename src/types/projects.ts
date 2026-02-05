@@ -92,9 +92,9 @@ Como é um jogo, errar não é problema - faz parte da experiência. Aqui, cada 
       'Internacionalização do app'
     ],
     media: [
-      { type: 'image', url: '/story-stage/story-stage-1.jpeg', caption: 'Menu inicial' },
+      { type: 'image', url: '/story-stage/story-stage-1.jpeg', caption: 'Menu principal' },
       { type: 'image', url: '/story-stage/story-stage-2.png', caption: 'Interface do apresentador' },
-      { type: 'image', url: '/story-stage/story-stage-3.png', caption: 'Interface do apresentador com os emojis de apresentação' },
+      { type: 'image', url: '/story-stage/story-stage-3.png', caption: 'Interface do apresentador com os emojis da apresentação' },
       { type: 'image', url: '/story-stage/story-stage-4.png', caption: 'Tela de votação' }
     ]
   },

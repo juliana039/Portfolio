@@ -1,22 +1,30 @@
 'use client';
 
-import React from 'react';
-import { projects, Project, categoryColors } from '@/types/projects';
+import React, { useState } from 'react';
+import { projects, Project } from '@/types/projects';
 import Link from 'next/link';
-import { spacing, colors, typography, borderRadius, container, shadows } from '@/design-system';
+import { spacing, colors, typography, borderRadius, container } from '@/design-system';
 
 function getProjectIcon(projectId: string): string {
   const icons: { [key: string]: string } = {
-    'vr-experience': '🔍',
+    'vr-experience': '🥽',
     'devtitans': '💡',
-    'residencia-eldorado': '🎮',
-    'wwdc-2024': '🍎',
+    'residencia-de-jogos': '🎮',
+    'residencia-eldorado': '🎯',
+    'story-stage': '🎭',
+    'timeti': '🎴',
+    'through-the-flames': '🔥',
+    'quem-matou-meus-cachos': '💇‍♀️',
+    'carebeep': '💙',
+    'beezzy': '🐝',
+    'cultural-storm': '⚡',
     'default': '📱'
   };
   return icons[projectId] || icons['default'];
 }
 
-function ProjectCard({ project }: { project: Project }) {
+// Card FEATURED com carrossel
+function FeaturedCard({ project }: { project: Project }) {
   const [currentMediaIndex, setCurrentMediaIndex] = React.useState(0);
   const hasMedia = project.media && project.media.length > 0;
 
@@ -32,95 +40,73 @@ function ProjectCard({ project }: { project: Project }) {
     }
   };
 
-  // Detectar tipo de dispositivo baseado nas tags e projeto
   const getCarouselDimensions = () => {
     const tags = project.tags.map(t => t.toLowerCase());
     const projectId = project.id.toLowerCase();
     
-    // tvOS - proporção 16:9 landscape (reduzido)
-    if (tags.includes('tvos') || projectId.includes('cultural-storm')) {
-      return { width: '400px', height: '225px' }; // 16:9
-    }
+    if (tags.includes('tvos')) return { width: '320px', height: '180px' };
+    if (tags.includes('ipad')) return { width: '240px', height: '320px' };
+    if (projectId.includes('quem-matou-meus-cachos')) return { width: '320px', height: '180px' };
     
-    // iPad - proporção iPad 3:4 (ajustado)
-    if (tags.includes('ipad') || projectId.includes('through-the-flames')) {
-      return { width: '280px', height: '373px' }; // iPad 3:4
-    }
-    
-    // Jogos landscape (reduzido)
-    if (projectId.includes('quem-matou-meus-cachos')) {
-      return { width: '400px', height: '225px' }; // 16:9 landscape
-    }
-    
-    // iPhone (padrão) - proporção 9:19.5
-    return { width: '240px', height: '480px' };
+    return { width: '200px', height: '400px' };
   };
 
   const carouselDimensions = getCarouselDimensions();
 
   return (
     <Link href={`/projetos/${project.id}`} style={{ textDecoration: 'none' }}>
-      <div className="glass-card project-card" style={{
-        padding: spacing.lg,
+      <div className="glass-card" style={{
+        padding: spacing.xl,
         cursor: 'pointer',
-        transition: 'transform 0.3s, box-shadow 0.3s',
+        transition: 'all 0.3s',
         borderRadius: borderRadius.xl,
-        overflow: 'hidden',
         display: 'flex',
-        flexDirection: 'row',
-        gap: spacing.lg,
-        alignItems: 'center'
+        gap: spacing.xl,
+        alignItems: 'flex-start',
+        border: `1px solid ${colors.primary.yellow}20`
       }}
+      className="featured-card"
       onMouseOver={(e) => {
         e.currentTarget.style.transform = 'translateY(-4px)';
-        e.currentTarget.style.boxShadow = '0 20px 40px -15px rgba(0, 0, 0, 0.6)';
+        e.currentTarget.style.boxShadow = `0 20px 40px -12px ${colors.primary.blue}40`;
       }}
       onMouseOut={(e) => {
         e.currentTarget.style.transform = 'translateY(0)';
         e.currentTarget.style.boxShadow = 'none';
       }}>
         
-        <div className="project-icon" style={{
-          minWidth: '120px',
-          width: '120px',
-          height: '120px',
-          borderRadius: borderRadius.lg,
-          background: project.image 
-            ? `url(${project.image}) center/contain no-repeat, linear-gradient(135deg, ${colors.primary.blue}15, ${colors.primary.purple}15)` 
-            : `linear-gradient(135deg, ${colors.primary.blue}, ${colors.primary.purple})`,
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          fontSize: '56px',
-          boxShadow: '0 10px 30px rgba(60, 68, 255, 0.3)',
-          flexShrink: 0
-        }}>
-          {!project.image && getProjectIcon(project.id)}
-        </div>
+        {/* Coluna Esquerda - Conteúdo */}
+        <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: spacing.md }}>
+          <div style={{ display: 'flex', alignItems: 'flex-start', gap: spacing.md }}>
+            {/* Ícone */}
+            <div style={{
+              minWidth: '100px',
+              width: '100px',
+              height: '100px',
+              borderRadius: borderRadius.lg,
+              background: project.image 
+                ? `url(${project.image}) center/cover no-repeat` 
+                : `linear-gradient(135deg, ${colors.primary.yellow}, ${colors.primary.purple})`,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              fontSize: '48px',
+              flexShrink: 0
+            }}>
+              {!project.image && getProjectIcon(project.id)}
+            </div>
 
-        <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: spacing.sm, minWidth: 0 }}>
-          <div>
-            <h3 style={{ 
-              fontSize: typography.fontSize.xl, 
-              fontWeight: typography.fontWeight.bold, 
-              marginBottom: spacing.xs,
-              lineHeight: typography.lineHeight.tight
-            }}
-            className="project-title">
-              {project.title}
-            </h3>
-            <div style={{ display: 'flex', alignItems: 'center', gap: spacing.sm, flexWrap: 'wrap' }}>
-              <span className="project-category" style={{
-                display: 'inline-block',
-                fontSize: typography.fontSize.xs,
-                borderRadius: borderRadius.full,
-                padding: `4px ${spacing.sm}`,
-                background: `linear-gradient(135deg, ${colors.primary.blue}20, ${colors.primary.purple}20)`,
-                color: colors.neutral.text.secondary,
-                fontWeight: typography.fontWeight.medium
+            {/* Título e descrição */}
+            <div style={{ flex: 1 }}>
+              <h3 style={{ 
+                fontSize: typography.fontSize['2xl'], 
+                fontWeight: typography.fontWeight.bold,
+                marginBottom: spacing.xs,
+                color: colors.primary.yellow
               }}>
-                {project.category}
-              </span>
+                {project.title}
+              </h3>
+
               {project.published && (
                 <span style={{
                   fontSize: typography.fontSize.xs,
@@ -135,40 +121,48 @@ function ProjectCard({ project }: { project: Project }) {
 
           <p style={{ 
             color: colors.neutral.text.secondary, 
-            fontSize: typography.fontSize.sm,
-            lineHeight: typography.lineHeight.relaxed,
-            display: '-webkit-box',
-            WebkitLineClamp: 2,
-            WebkitBoxOrient: 'vertical',
-            overflow: 'hidden'
+            fontSize: typography.fontSize.base,
+            lineHeight: typography.lineHeight.relaxed
           }}>
             {project.description}
           </p>
 
-          {project.highlights && project.highlights.length > 0 && (
-            <div className="project-highlights" style={{ 
+          {/* Minha Contribuição */}
+          {project.myContribution && project.myContribution.length > 0 && (
+            <div style={{ 
               display: 'flex', 
               flexDirection: 'column', 
               gap: spacing.xs,
-              fontSize: typography.fontSize.xs,
-              color: colors.neutral.text.tertiary
+              padding: spacing.md,
+              background: 'rgba(255, 240, 105, 0.05)',
+              borderRadius: borderRadius.md,
+              border: `1px solid ${colors.primary.yellow}20`
             }}>
-              {project.highlights.slice(0, 2).map((highlight, idx) => (
-                <div key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: spacing.xs }}>
-                  <span style={{ color: colors.primary.blue, flexShrink: 0 }}>✓</span>
-                  <span>{highlight}</span>
+              <div style={{ 
+                fontSize: typography.fontSize.sm, 
+                fontWeight: typography.fontWeight.bold,
+                color: colors.primary.yellow
+              }}>
+                Minha Contribuição:
+              </div>
+              {project.myContribution.slice(0, 3).map((item, idx) => (
+                <div key={idx} style={{ 
+                  display: 'flex', 
+                  alignItems: 'flex-start', 
+                  gap: spacing.xs,
+                  fontSize: typography.fontSize.sm,
+                  color: colors.neutral.text.secondary
+                }}>
+                  <span style={{ color: colors.primary.yellow, flexShrink: 0 }}>•</span>
+                  <span>{item}</span>
                 </div>
               ))}
             </div>
           )}
 
-          <div style={{ 
-            display: 'flex', 
-            flexWrap: 'wrap', 
-            gap: spacing.xs,
-            marginTop: 'auto'
-          }}>
-            {project.tags.slice(0, 4).map((tag) => (
+          {/* Tags */}
+          <div style={{ display: 'flex', gap: spacing.xs, flexWrap: 'wrap' }}>
+            {project.tags.slice(0, 5).map((tag) => (
               <span
                 key={tag}
                 style={{
@@ -183,195 +177,152 @@ function ProjectCard({ project }: { project: Project }) {
               </span>
             ))}
           </div>
-
-          <div style={{ 
-            display: 'flex', 
-            justifyContent: 'space-between', 
-            alignItems: 'center',
-            marginTop: spacing.sm
-          }}>
-            <span style={{ fontSize: typography.fontSize.xs, color: colors.neutral.text.tertiary }}>
-              📅 {project.year}
-            </span>
-            
-            {!hasMedia && (
-              <div className="cta-button" style={{
-                padding: `${spacing.xs} ${spacing.md}`,
-                backgroundColor: colors.primary.yellow,
-                color: 'black',
-                borderRadius: borderRadius.full,
-                fontWeight: typography.fontWeight.bold,
-                fontSize: typography.fontSize.sm,
-                boxShadow: shadows.sm,
-                display: 'flex',
-                alignItems: 'center',
-                gap: spacing.xs,
-                transition: 'transform 0.2s',
-                textDecoration: 'none'
-              }}>
-                Ver projeto
-                <svg style={{ width: '16px', height: '16px' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </div>
-            )}
-          </div>
         </div>
 
-        {/* COLUNA DIREITA: CARROSSEL + BOTÃO */}
+        {/* Coluna Direita - Preview com Mock iPhone (PADDING REDUZIDO) */}
         {hasMedia && (
-          <div className="project-media-column" style={{
-            display: 'flex',
-            flexDirection: 'column',
-            gap: spacing.md,
-            alignItems: 'center'
-          }}>
-            {/* CARROSSEL - Proporção dinâmica baseada no dispositivo */}
-            <div className="media-carousel" style={{
-              width: carouselDimensions.width,
-              minWidth: carouselDimensions.width,
-              height: carouselDimensions.height,
-              borderRadius: borderRadius.lg,
-              overflow: 'hidden',
+          <div style={{ flexShrink: 0 }}>
+            <div style={{
               position: 'relative',
-              background: 'rgba(0, 0, 0, 0.3)',
-              flexShrink: 0
+              width: carouselDimensions.width,
+              padding: '6px', // REDUZIDO de 12px para 6px
+              background: 'linear-gradient(135deg, #1a1a1a, #2a2a2a)',
+              borderRadius: '36px',
+              boxShadow: '0 20px 60px rgba(0,0,0,0.4)'
             }}>
-              {project.media![currentMediaIndex].type === 'image' ? (
-                <img 
-                  src={project.media![currentMediaIndex].url}
-                  alt={project.media![currentMediaIndex].caption || ''}
-                  style={{
-                    width: '100%',
-                    height: '100%',
-                    objectFit: 'contain'
-                  }}
-                />
-              ) : (
-                <video
-                  src={project.media![currentMediaIndex].url}
-                  style={{
-                    width: '100%',
-                    height: '100%',
-                    objectFit: 'contain'
-                  }}
-                  muted
-                  loop
-                  autoPlay
-                />
+              {/* Notch */}
+              {carouselDimensions.height > 300 && (
+                <div style={{
+                  position: 'absolute',
+                  top: '6px', // ajustado
+                  left: '50%',
+                  transform: 'translateX(-50%)',
+                  width: '100px',
+                  height: '24px',
+                  background: '#000',
+                  borderRadius: '0 0 16px 16px',
+                  zIndex: 10
+                }} />
               )}
 
-              {/* Controles do carrossel */}
-              {project.media!.length > 1 && (
-                <>
-                  <button
-                    onClick={(e) => {
-                      e.preventDefault();
-                      prevMedia();
-                    }}
+              {/* Tela */}
+              <div style={{
+                position: 'relative',
+                width: '100%',
+                height: carouselDimensions.height,
+                borderRadius: '30px', // ajustado
+                overflow: 'hidden',
+                background: '#000'
+              }}>
+                {project.media![currentMediaIndex].type === 'image' ? (
+                  <img
+                    src={project.media![currentMediaIndex].url}
+                    alt={project.media![currentMediaIndex].caption || 'Screenshot'}
                     style={{
-                      position: 'absolute',
-                      left: spacing.xs,
-                      top: '50%',
-                      transform: 'translateY(-50%)',
-                      background: 'rgba(0, 0, 0, 0.6)',
-                      border: 'none',
-                      borderRadius: borderRadius.full,
-                      width: '32px',
-                      height: '32px',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      cursor: 'pointer',
-                      color: 'white',
-                      transition: 'background 0.2s',
-                      zIndex: 10
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'contain'
                     }}
-                    onMouseOver={(e) => e.currentTarget.style.background = 'rgba(0, 0, 0, 0.8)'}
-                    onMouseOut={(e) => e.currentTarget.style.background = 'rgba(0, 0, 0, 0.6)'}
-                  >
-                    <svg style={{ width: '16px', height: '16px' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                    </svg>
-                  </button>
-
-                  <button
-                    onClick={(e) => {
-                      e.preventDefault();
-                      nextMedia();
-                    }}
+                  />
+                ) : (
+                  <video
+                    src={project.media![currentMediaIndex].url}
+                    autoPlay // AUTOPLAY ADICIONADO
+                    loop
+                    muted
+                    playsInline
                     style={{
-                      position: 'absolute',
-                      right: spacing.xs,
-                      top: '50%',
-                      transform: 'translateY(-50%)',
-                      background: 'rgba(0, 0, 0, 0.6)',
-                      border: 'none',
-                      borderRadius: borderRadius.full,
-                      width: '32px',
-                      height: '32px',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      cursor: 'pointer',
-                      color: 'white',
-                      transition: 'background 0.2s',
-                      zIndex: 10
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'contain'
                     }}
-                    onMouseOver={(e) => e.currentTarget.style.background = 'rgba(0, 0, 0, 0.8)'}
-                    onMouseOut={(e) => e.currentTarget.style.background = 'rgba(0, 0, 0, 0.6)'}
-                  >
-                    <svg style={{ width: '16px', height: '16px' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </button>
+                  />
+                )}
 
-                  {/* Indicadores */}
-                  <div style={{
-                    position: 'absolute',
-                    bottom: spacing.xs,
-                    left: '50%',
-                    transform: 'translateX(-50%)',
-                    display: 'flex',
-                    gap: spacing.xs,
-                    zIndex: 10
-                  }}>
-                    {project.media!.map((_, idx) => (
-                      <div
-                        key={idx}
-                        style={{
-                          width: idx === currentMediaIndex ? '20px' : '8px',
-                          height: '8px',
-                          borderRadius: borderRadius.full,
-                          background: idx === currentMediaIndex ? colors.primary.blue : 'rgba(255, 255, 255, 0.5)',
-                          transition: 'all 0.3s'
-                        }}
-                      />
-                    ))}
-                  </div>
-                </>
-              )}
-            </div>
+                {project.media!.length > 1 && (
+                  <>
+                    <button
+                      onClick={(e) => {
+                        e.preventDefault();
+                        prevMedia();
+                      }}
+                      style={{
+                        position: 'absolute',
+                        left: spacing.xs,
+                        top: '50%',
+                        transform: 'translateY(-50%)',
+                        background: 'rgba(0, 0, 0, 0.6)',
+                        border: 'none',
+                        borderRadius: borderRadius.full,
+                        width: '28px',
+                        height: '28px',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        cursor: 'pointer',
+                        color: 'white',
+                        zIndex: 10
+                      }}
+                    >
+                      <svg style={{ width: '14px', height: '14px' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                      </svg>
+                    </button>
 
-            {/* BOTÃO EMBAIXO DO CARROSSEL */}
-            <div className="cta-button" style={{
-              padding: `${spacing.xs} ${spacing.md}`,
-              backgroundColor: colors.primary.yellow,
-              color: 'black',
-              borderRadius: borderRadius.full,
-              fontWeight: typography.fontWeight.bold,
-              fontSize: typography.fontSize.sm,
-              boxShadow: shadows.sm,
-              display: 'flex',
-              alignItems: 'center',
-              gap: spacing.xs,
-              transition: 'transform 0.2s',
-              textDecoration: 'none'
-            }}>
-              Ver projeto
-              <svg style={{ width: '16px', height: '16px' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
+                    <button
+                      onClick={(e) => {
+                        e.preventDefault();
+                        nextMedia();
+                      }}
+                      style={{
+                        position: 'absolute',
+                        right: spacing.xs,
+                        top: '50%',
+                        transform: 'translateY(-50%)',
+                        background: 'rgba(0, 0, 0, 0.6)',
+                        border: 'none',
+                        borderRadius: borderRadius.full,
+                        width: '28px',
+                        height: '28px',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        cursor: 'pointer',
+                        color: 'white',
+                        zIndex: 10
+                      }}
+                    >
+                      <svg style={{ width: '14px', height: '14px' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </button>
+
+                    {/* Indicadores */}
+                    <div style={{
+                      position: 'absolute',
+                      bottom: spacing.sm,
+                      left: '50%',
+                      transform: 'translateX(-50%)',
+                      display: 'flex',
+                      gap: spacing.xs,
+                      zIndex: 10
+                    }}>
+                      {project.media!.map((_, idx) => (
+                        <div
+                          key={idx}
+                          style={{
+                            width: idx === currentMediaIndex ? '16px' : '6px',
+                            height: '6px',
+                            borderRadius: borderRadius.full,
+                            background: idx === currentMediaIndex ? colors.primary.blue : 'rgba(255, 255, 255, 0.5)',
+                            transition: 'all 0.3s'
+                          }}
+                        />
+                      ))}
+                    </div>
+                  </>
+                )}
+              </div>
             </div>
           </div>
         )}
@@ -380,19 +331,166 @@ function ProjectCard({ project }: { project: Project }) {
   );
 }
 
+// Card NORMAL compacto
+function CompactCard({ project }: { project: Project }) {
+  const displayDescription = project.shortDescription || project.description;
+  
+  // DESTAQUE ESPECIAL PARA TIMETI - 3º lugar Best Paper
+  const isTimeti = project.id === 'timeti';
+  
+  return (
+    <Link href={`/projetos/${project.id}`} style={{ textDecoration: 'none' }}>
+      <div className="glass-card" style={{
+        padding: spacing.md,
+        cursor: 'pointer',
+        transition: 'all 0.3s',
+        borderRadius: borderRadius.lg,
+        display: 'flex',
+        gap: spacing.md,
+        position: 'relative',
+        border: isTimeti ? `2px solid ${colors.primary.yellow}40` : undefined
+      }}
+      onMouseOver={(e) => {
+        e.currentTarget.style.transform = 'translateY(-2px)';
+        e.currentTarget.style.boxShadow = `0 8px 16px -4px ${colors.primary.blue}30`;
+      }}
+      onMouseOut={(e) => {
+        e.currentTarget.style.transform = 'translateY(0)';
+        e.currentTarget.style.boxShadow = 'none';
+      }}>
+        
+        {/* Badge 3º lugar TIMETI */}
+        {isTimeti && (
+          <div style={{
+            position: 'absolute',
+            top: '-8px',
+            right: spacing.md,
+            padding: `4px ${spacing.sm}`,
+            background: `linear-gradient(135deg, ${colors.primary.yellow}, ${colors.primary.purple})`,
+            borderRadius: borderRadius.full,
+            fontSize: typography.fontSize.xs,
+            fontWeight: typography.fontWeight.bold,
+            color: '#000',
+            boxShadow: '0 4px 12px rgba(255, 240, 105, 0.4)'
+          }}>
+            🏆 3º Best Paper SBGames
+          </div>
+        )}
+        
+        {/* Ícone Quadrado */}
+        <div style={{
+          minWidth: '80px',
+          width: '80px',
+          height: '80px',
+          borderRadius: borderRadius.md,
+          background: project.image 
+            ? `url(${project.image}) center/cover no-repeat` 
+            : `linear-gradient(135deg, ${colors.primary.blue}, ${colors.primary.purple})`,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          fontSize: '36px',
+          flexShrink: 0
+        }}>
+          {!project.image && getProjectIcon(project.id)}
+        </div>
+
+        {/* Conteúdo ao lado */}
+        <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: spacing.xs, minWidth: 0 }}>
+          <h3 style={{ 
+            fontSize: typography.fontSize.base, 
+            fontWeight: typography.fontWeight.bold,
+            lineHeight: typography.lineHeight.tight,
+            display: '-webkit-box',
+            WebkitLineClamp: 2,
+            WebkitBoxOrient: 'vertical',
+            overflow: 'hidden'
+          }}>
+            {project.title}
+          </h3>
+
+          <p style={{ 
+            color: colors.neutral.text.secondary, 
+            fontSize: typography.fontSize.sm,
+            lineHeight: typography.lineHeight.relaxed,
+            display: '-webkit-box',
+            WebkitLineClamp: 2,
+            WebkitBoxOrient: 'vertical',
+            overflow: 'hidden'
+          }}>
+            {displayDescription}
+          </p>
+
+          {/* Tags embaixo */}
+          <div style={{ display: 'flex', gap: spacing.xs, flexWrap: 'wrap', marginTop: 'auto' }}>
+            {project.published && (
+              <span style={{
+                fontSize: typography.fontSize.xs,
+                padding: `2px ${spacing.xs}`,
+                borderRadius: borderRadius.full,
+                background: colors.primary.yellow,
+                color: '#000',
+                fontWeight: typography.fontWeight.bold
+              }}>
+                App Store
+              </span>
+            )}
+            {project.tags.slice(0, 3).map((tag) => (
+              <span
+                key={tag}
+                style={{
+                  fontSize: typography.fontSize.xs,
+                  padding: `2px ${spacing.xs}`,
+                  borderRadius: borderRadius.full,
+                  background: 'rgba(255, 255, 255, 0.05)',
+                  color: colors.neutral.text.tertiary
+                }}
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </Link>
+  );
+}
+
 export default function ProjectsGrid() {
-  const publishedProjects = projects.filter(p => p.published);
-  const otherProjects = projects.filter(p => !p.published);
+  const [activeTab, setActiveTab] = useState<'all' | 'games' | 'ios' | 'unity'>('all');
+
+  const featuredProjects = projects.filter(p => p.featured);
+  const gameProjects = projects.filter(p => p.isGame);
+  const iosProjects = projects.filter(p => p.published);
+  const unityProjects = projects.filter(p => 
+    p.tags.some(tag => tag.toLowerCase().includes('unity')) || 
+    p.id === 'residencia-eldorado' || 
+    p.id === 'vr-experience'
+  );
+  
+  const getFilteredProjects = () => {
+    switch(activeTab) {
+      case 'games': return gameProjects;
+      case 'ios': return iosProjects;
+      case 'unity': return unityProjects;
+      default: return projects;
+    }
+  };
+
+  const filteredProjects = getFilteredProjects();
 
   return (
     <section id="projetos" style={{ 
-      padding: `${spacing['4xl']} ${container.padding.mobile}` 
+      padding: `${spacing['4xl']} ${container.padding.mobile}`,
+      background: colors.neutral.bg
     }}>
       <div style={{ 
         width: '100%', 
         maxWidth: '1280px', 
         margin: '0 auto' 
       }}>
+        
+        {/* Header */}
         <div style={{ textAlign: 'center', marginBottom: spacing['3xl'] }}>
           <div style={{ 
             display: 'inline-block', 
@@ -419,61 +517,134 @@ export default function ProjectsGrid() {
             Projetos
           </h2>
           <p style={{ 
-            fontSize: typography.fontSize.xl, 
-            color: colors.neutral.text.tertiary, 
-            maxWidth: '700px', 
-            margin: '0 auto' 
+            fontSize: typography.fontSize.lg, 
+            color: colors.neutral.text.tertiary
           }}>
-            Aplicações publicadas, experiências acadêmicas e projetos em desenvolvimento
+            Apps publicados, jogos e experiências acadêmicas
           </p>
         </div>
 
-        <div style={{ marginBottom: spacing['3xl'] }}>
-          <h3 style={{ 
-            fontSize: typography.fontSize['3xl'], 
-            fontWeight: typography.fontWeight.bold, 
-            marginBottom: spacing.xl,
-            background: `linear-gradient(135deg, ${colors.primary.blue}, ${colors.primary.purple})`,
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            backgroundClip: 'text'
-          }}>
-            📱 Na App Store
-          </h3>
-          <div style={{ 
-            display: 'flex',
-            flexDirection: 'column',
-            gap: spacing.lg
-          }}>
-            {publishedProjects.map((project) => (
-              <ProjectCard key={project.id} project={project} />
-            ))}
+        {/* FEATURED */}
+        {featuredProjects.length > 0 && (
+          <div style={{ marginBottom: spacing['4xl'] }}>
+            <h3 style={{ 
+              fontSize: typography.fontSize['3xl'], 
+              fontWeight: typography.fontWeight.bold, 
+              marginBottom: spacing.xl,
+              background: `linear-gradient(135deg, ${colors.primary.yellow}, ${colors.primary.purple})`,
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text'
+            }}>
+              Projetos em Destaque
+            </h3>
+            <div style={{ 
+              display: 'flex',
+              flexDirection: 'column',
+              gap: spacing.xl
+            }}>
+              {featuredProjects.map((project) => (
+                <FeaturedCard key={project.id} project={project} />
+              ))}
+            </div>
           </div>
+        )}
+
+        {/* Tabs - ADICIONADA ABA UNITY */}
+        <div style={{ 
+          display: 'flex', 
+          gap: spacing.sm, 
+          marginBottom: spacing.xl,
+          justifyContent: 'center',
+          flexWrap: 'wrap'
+        }}>
+          {[
+            { id: 'all' as const, label: '📱 Todos', count: projects.length },
+            { id: 'ios' as const, label: '🍎 App Store', count: iosProjects.length },
+            { id: 'games' as const, label: '🎮 Jogos', count: gameProjects.length },
+            { id: 'unity' as const, label: '🎯 Unity', count: unityProjects.length }
+          ].map((tab) => (
+            <button
+              key={tab.id}
+              onClick={() => setActiveTab(tab.id)}
+              style={{
+                padding: `${spacing.sm} ${spacing.lg}`,
+                borderRadius: borderRadius.full,
+                border: activeTab === tab.id 
+                  ? `2px solid ${colors.primary.blue}` 
+                  : '2px solid rgba(255, 255, 255, 0.1)',
+                background: activeTab === tab.id 
+                  ? colors.primary.blue 
+                  : 'rgba(255, 255, 255, 0.05)',
+                color: colors.neutral.text.primary,
+                fontWeight: typography.fontWeight.semibold,
+                fontSize: typography.fontSize.sm,
+                cursor: 'pointer',
+                transition: 'all 0.3s',
+                backdropFilter: 'blur(10px)'
+              }}
+              onMouseOver={(e) => {
+                if (activeTab !== tab.id) {
+                  e.currentTarget.style.background = 'rgba(255, 255, 255, 0.1)';
+                }
+              }}
+              onMouseOut={(e) => {
+                if (activeTab !== tab.id) {
+                  e.currentTarget.style.background = 'rgba(255, 255, 255, 0.05)';
+                }
+              }}
+            >
+              {tab.label} ({tab.count})
+            </button>
+          ))}
         </div>
 
-        <div>
-          <h3 style={{ 
-            fontSize: typography.fontSize['3xl'], 
-            fontWeight: typography.fontWeight.bold, 
-            marginBottom: spacing.xl,
-            background: `linear-gradient(135deg, ${colors.primary.purple}, ${colors.primary.teal})`,
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            backgroundClip: 'text'
-          }}>
-            🛠️ Outros Projetos
-          </h3>
-          <div style={{ 
-            display: 'flex',
-            flexDirection: 'column',
-            gap: spacing.lg
-          }}>
-            {otherProjects.map((project) => (
-              <ProjectCard key={project.id} project={project} />
+        {/* Grid */}
+        <div style={{ 
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))',
+          gap: spacing.md
+        }}
+        className="projects-grid">
+          {filteredProjects
+            .filter(p => !p.featured || activeTab !== 'all')
+            .map((project) => (
+              <CompactCard key={project.id} project={project} />
             ))}
-          </div>
         </div>
+
+        {filteredProjects.length === 0 && (
+          <div style={{
+            textAlign: 'center',
+            padding: spacing['3xl'],
+            color: colors.neutral.text.tertiary
+          }}>
+            Nenhum projeto encontrado nesta categoria.
+          </div>
+        )}
       </div>
+
+      <style jsx>{`
+        @media (max-width: 768px) {
+          .projects-title {
+            font-size: ${typography.fontSize['4xl']} !important;
+          }
+
+          .featured-card {
+            flex-direction: column !important;
+          }
+
+          .featured-card > div:last-child {
+            width: 100% !important;
+            display: flex;
+            justify-content: center;
+          }
+
+          .projects-grid {
+            grid-template-columns: 1fr !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }
