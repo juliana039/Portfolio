@@ -54,7 +54,7 @@ export const projects: Project[] = [
     year: '2025',
     image: '/story-stage/story-stage.png',
     appStoreLink: 'https://apps.apple.com/br/app/story-stage/id6751246359',
-    duration: '3 meses',
+    duration: 'Julho a Outubro de 2025',
     fullDescription: `Story Stage é um jogo multiplayer para iPhone criado para ajudar pessoas a praticar suas habilidades de comunicação de forma leve e divertida. O projeto foi escolhido para representar a Apple Developer Academy Manaus na cerimônia de graduação 2025.
 
 Você já travou ao precisar falar em público? Ou saiu de uma reunião pensando "eu poderia ter me expressado melhor"? Você não está sozinho. Esse sentimento tem nome: glossofobia, o medo patológico de falar em público. Um estudo da UFMG revelou que quase 60% dos estudantes universitários entrevistados experimentam esse medo ao se comunicar.
@@ -138,7 +138,7 @@ Desenvolvido inteiramente em SwiftUI, o Timeti oferece uma experiência fluida e
     image: '/carebeep/carebeep.png',
     year: '2024',
     appStoreLink: 'https://apps.apple.com/br/app/carebeep/id6737746972',
-    duration: '2 meses',
+    duration: 'Outubro a Novembro de 2024',
     fullDescription: `CareBeep é uma solução de comunicação assistiva que ajuda pessoas de qualquer idade ou condição a viver com mais autonomia e segurança. Com uma interface simples e intuitiva, você pode solicitar ajuda a qualquer momento usando pictogramas, indicando onde você está e o que precisa - e seus cuidadores serão notificados imediatamente.
 
 O app foi desenvolvido pensando em pessoas com dificuldades de comunicação, idosos, pessoas com deficiência, ou qualquer pessoa que necessite de suporte em situações do dia a dia. Com apenas 3 toques na tela, é possível convocar ajuda de forma rápida e clara.
@@ -184,7 +184,7 @@ CareBeep é mais do que um app - é uma ferramenta que promove independência, r
     image: '/beezzy/beezzy.png',
     year: '2025',
     appStoreLink: 'https://apps.apple.com/br/app/beezzy/id6746419810',
-    duration: '2 meses',
+    duration: 'Março a Junho de 2025',
     fullDescription: `Ser mãe muda tudo, inclusive a forma como o tempo passa. Entre mamadas, fraldas e noites sem dormir, é fácil esquecer de si mesma. Beezzy está aqui para lembrar: você não precisa dar conta de tudo sozinha! Aqui, o cuidado é compartilhado.
 
 Com o Beezzy, você pode conectar-se com sua rede de apoio - aqueles que cuidam de você, também podem cuidar com você. O app permite criar tarefas específicas para que sua rede de apoio saiba exatamente do que você precisa, delegar responsabilidades de forma clara e fácil, e compartilhar o cuidado sem culpa.
@@ -205,7 +205,7 @@ Beezzy é mais que um app, é um lugar para respirar. É para você que ama, cui
       { name: 'Eduardo Camara', role: 'iOS Developer', photo: '/academy/eduardo.jpeg' },
       { name: 'Juliana Magalhães', role: 'iOS Developer', photo: '/foto-juliana.jpeg' },
       { name: 'Letícia Lima', role: 'Designer', photo: '/academy/leticia.jpeg' },
-      { name: 'Taynara Santos', role: 'Designer', photo: '/academy/taynara.png' },
+      { name: 'Taynara Santos', role: 'Designer', photo: '/academy/taynara.jpeg' },
       { name: 'Sérgio César', role: 'iOS Developer', photo: '/academy/sergio.jpeg' },
       { name: 'Jaide Zardin', role: 'iOS Developer', photo: '/academy/jaide.jpeg' },
       { name: 'Amanda Rabelo', role: 'iOS Developer', photo: '/academy/amanda.jpeg' }
@@ -233,7 +233,7 @@ Beezzy é mais que um app, é um lugar para respirar. É para você que ama, cui
     image: '/cultural-storm/cultural-storm_icon.png',
     year: '2024',
     appStoreLink: 'https://apps.apple.com/br/app/cultural-storm/id6743093618',
-    duration: '1 mês',
+    duration: 'Abril a Maio de 2024',
     fullDescription: `Ajude Travis a superar o choque cultural conectando-se com outros estudantes de intercâmbio nesta experiência divertida e envolvente criada especialmente para Apple TV. Cultural Storm foi desenvolvido para estudantes universitários em intercâmbio e entusiastas de cultura!
 
 Cultural Storm transforma o desafio da adaptação cultural em uma oportunidade de crescimento e amizade. Diferente de outros fóruns, vídeos e redes sociais, nosso app cria um espaço interativo onde estudantes de intercâmbio se encontram pessoalmente e constroem conexões genuínas enquanto exploram diferentes culturas de forma leve e divertida.
@@ -280,22 +280,27 @@ Como funciona: reúna amigos estudantes de intercâmbio em frente à Apple TV, s
     year: '2025',
     image: '/archeology-icon.svg',
     duration: '1 mês',
-    fullDescription: `ARcheology é uma experiência em Realidade Aumentada desenvolvida individualmente usando Unity 3D e C#, criada durante curso de especialização em Realidade Estendida (XR). O projeto permite que usuários escaneiem o ambiente ao redor e interajam com objetos arqueológicos virtuais em 3D.
-
-O desenvolvimento seguiu uma progressão estruturada através de 5 módulos: Visão Geral de Realidade Estendida (conceitos de AR, VR e XR), Montagem da Base Técnica (instalação e configuração da Unity), Interação e Manipulação de Objetos (escaneamento de ambiente, adição e interação com objetos 3D), Animações e Comportamentos (implementação de animações e comportamentos interativos), e UI e Contexto Imersivo (interfaces em AR e refinamento das interações).
-
-A aplicação utiliza ARKit para reconhecimento de superfícies e tracking de ambiente, permitindo que usuários "coloquem" artefatos arqueológicos virtuais em suas mesas ou chão. Os objetos podem ser segurados, rotacionados e examinados de perto, com um sistema de scanner que revela informações históricas sobre cada peça.
-
-Implementei animações para criar uma experiência mais imersiva, como um armário virtual que se abre revelando os artefatos, e um scanner com efeitos visuais que "detecta" objetos no ambiente. A interface foi projetada para ser intuitiva mesmo em AR, com elementos UI que se adaptam à orientação do dispositivo e à posição do usuário.
-
-O projeto demonstra o potencial da Realidade Aumentada na educação e preservação cultural, permitindo que pessoas explorem artefatos históricos de forma interativa sem precisar visitar museus físicos.`,
+    fullDescription: `ARcheology é um projeto de Realidade Aumentada desenvolvido como resultado do curso de Desenvolvimento para AR/VR do programa TIC em Trilhas, no qual foi proposto um projeto prático para aplicação progressiva dos conteúdos abordados ao longo da formação.
+O desenvolvimento do projeto acompanhou a estrutura do curso, distribuída em cinco módulos: Visão Geral de Realidade Estendida, com introdução aos conceitos de AR, VR e XR e apresentação do projeto prático; Montagem da Base Técnica, envolvendo instalação e configuração da Unity, criação do projeto e build para dispositivos móveis; Interação e Manipulação de Objetos, com escaneamento do ambiente, inserção, manipulação e customização de objetos 3D; Animações e Comportamentos, incluindo a implementação de animações e sistemas interativos como armários e scanners virtuais; e UI e Contexto Imersivo, focado no desenvolvimento de interfaces adaptadas ao contexto de AR, refinamento das interações e testes em dispositivo físico.
+A partir do Desafio de Aprendizagem proposto ao final do curso, o projeto foi expandido de forma autoral, com a criação de um puzzle interativo original, novas interfaces, mecânicas simples de jogo, condições de vitória e novos objetos e ambientes temáticos, com o objetivo de demonstrar de forma integrada os conhecimentos adquiridos ao longo da trilha formativa.`,
     highlights: [
       'Desenvolvimento individual em Unity 3D e C#',
       'Escaneamento de ambiente com ARKit',
-      'Interação natural com objetos 3D',
       'Animações e comportamentos imersivos',
       'Interface adaptativa para AR',
-      'Sistema de scanner com revelação de informações'
+      'Sistema de scanner com revelação de informações',
+      'Puzzle interativo do Império Chekenista'
+    ],
+    myContribution: [
+      'Criação de novas UIs simples para o puzzle',
+      'Implementação de mecânicas de vitória e saída do jogo',
+      'Adição de novos objetos 3D interativos',
+      'Inserção de modelos de cabinetes novos para o desafio',
+      'Criação do puzzle interativo do Império Chekenista',
+      'Evolução do projeto de demonstração para experiência gamificada'
+    ],
+    media: [
+      { type: 'video', url: '/ar-video.MP4', caption: 'Demonstração da experiência em Realidade Aumentada' }
     ]
   },
   {
@@ -356,7 +361,7 @@ O trabalho em equipe grande exigiu comunicação constante, revisão de código 
     tags: ['SpriteKit', 'Jogo Narrativo', 'Identidade', 'Autoestima'],
     published: false,
     year: '2024',
-    duration: '2 meses',
+    duration: 'Julho a Agosto de 2024',
     fullDescription: `"Quem Matou Meus Cachos?" é um jogo emocionante onde cada escolha importa! Siga a jornada de Dandara durante sua transição capilar enquanto ela enfrenta obstáculos desafiadores dentro de seu subconsciente procurando por suas memórias perdidas.
 
 Explore labirintos, colete memórias e desbloqueie habilidades essenciais para descobrir o mistério de quem matou seus cachos. Cada memória revela uma nova peça do quebra-cabeça e desperta reflexões profundas sobre identidade e autoaceitação. Você consegue ajudar a protagonista a recuperar seus cachos e sua confiança perdida?
@@ -380,10 +385,10 @@ highlights: [
     ],
     
     team: [
-      { name: 'Isadora Bastos', role: 'Designer', photo: '/academy/isa.jpeg' },
+      { name: 'Isadora Bastos', role: 'Developer', photo: '/academy/isa.jpeg' },
       { name: 'Amanda Rabelo', role: 'Developer', photo: '/academy/amanda.jpeg' },
       { name: 'Juliana Magalhães', role: 'Developer', photo: '/foto-juliana.jpeg' },
-      { name: 'Ana Beatriz Seixas', role: 'Developer', photo: '/academy/beatriz.jpeg' }
+      { name: 'Ana Beatriz Seixas', role: 'Designer' }
     ]
   },
 {
