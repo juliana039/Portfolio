@@ -314,8 +314,8 @@ A partir do Desafio de Aprendizagem proposto ao final do curso, o projeto foi ex
   },
   {
     id: 'residencia-eldorado',
-    title: 'Jogo 3D Educacional',
-    description: 'Desenvolvimento de jogo 3D educacional em Unity com equipe multidisciplinar',
+    title: 'Jogo 3D Educacional - Residência de Jogos Eldorado',
+    description: 'Desenvolvimento de jogo 3D em Unity durante residência no Instituto de Pesquisas Eldorado',
     category: 'Instituto de Pesquisas Eldorado',
     tags: ['Unity', 'C#', 'Game Development', '3D', 'NavMesh', 'ScriptableObjects'],
     published: false,
@@ -359,6 +359,11 @@ O trabalho em equipe grande exigiu comunicação constante, revisão de código 
       'Sistema de barra de vida 3D com world space tracking',
       'Interface de perfil e sistema de progressão de itens',
       'Colaboração em Scrum com equipe multidisciplinar de 20+ pessoas'
+    ],
+    media: [
+      { type: 'image', url: '/residencia-de-jogos/residencia0.jpeg', caption: 'Cerimônia de certificação da Residência de Jogos' },
+      { type: 'image', url: '/residencia-de-jogos/residencia1.jpg', caption: 'Recebendo certificado no evento de encerramento' },
+      { type: 'image', url: '/residencia-de-jogos/residencia2.jpeg', caption: 'Equipe de residentes e mentor dev' }
     ]
   },
   {
@@ -438,35 +443,6 @@ A narrativa emocional da onça procurando seu filhote cria conexão empática co
       { type: 'image', url: '/through-the-flames/through-the-flames-nivel-3.png', caption: 'Nível 3 - Floresta queimada' },
       { type: 'image', url: '/through-the-flames/through-the-flames-nivel-4.png', caption: 'Nível 4 - Devastação completa' },
       { type: 'image', url: '/through-the-flames/through-the-flames-final.png', caption: 'Tela final' }
-    ]
-  },
-  {
-    id: 'residencia-de-jogos',
-    title: 'Residência de Jogos',
-    description: 'Desenvolvimento de jogo 3D em Unity durante residência no Instituto de Pesquisas Eldorado',
-    shortDescription: 'Jogo 3D educacional desenvolvido em Unity',
-    category: 'Instituto de Pesquisas Eldorado',
-    tags: ['Unity', 'C#', 'Game 3D', 'Educacional'],
-    published: false,
-    isGame: true,
-    year: '2025',
-    duration: '6 meses',
-    fullDescription: `Participação na Residência de Jogos do Instituto de Pesquisas Eldorado, programa focado no desenvolvimento de jogos 3D educacionais utilizando Unity e C#.
-
-Durante a residência, trabalhei em equipe multidisciplinar com designers e modeladores 3D, aplicando metodologias ágeis e desenvolvendo um jogo educacional completo. O projeto envolveu implementação de mecânicas de gameplay, sistema de progressão, integração de assets 3D, e otimização de performance.
-
-A experiência proporcionou aprendizado prático em desenvolvimento de jogos comerciais, desde o conceito inicial até a implementação de features completas, trabalhando com pipeline de produção profissional e ferramentas da indústria de games.`,
-    highlights: [
-      'Desenvolvimento em Unity com C#',
-      'Trabalho em equipe multidisciplinar',
-      'Implementação de mecânicas de gameplay 3D',
-      'Otimização de performance',
-      'Metodologias ágeis de desenvolvimento'
-    ],
-    media: [
-      { type: 'image', url: '/residencia-de-jogos/residencia0.jpeg', caption: 'Cerimônia de certificação da Residência de Jogos' },
-      { type: 'image', url: '/residencia-de-jogos/residencia1.jpg', caption: 'Recebendo certificado no evento de encerramento' },
-      { type: 'image', url: '/residencia-de-jogos/residencia2.jpeg', caption: 'Equipe de residentes e mentor dev' }
     ]
   },
   {

@@ -64,7 +64,7 @@ export default function About() {
               margin: '0 auto'
             }}>
               <img 
-                src="/foto-juliana.jpeg" 
+                src="/foto-juliana-2.jpg" 
                 alt="Juliana Magalhães" 
                 style={{ width: '100%', height: '100%', objectFit: 'cover' }}
               />
@@ -154,8 +154,7 @@ export default function About() {
     }}
   >
     Atuo com <strong style={{ color: colors.neutral.text.primary }}>Swift, C#, Java e Python</strong>, 
-    com perfil versátil e interesse contínuo em aprendizado e no desenvolvimento de soluções que 
-    <strong style={{ color: colors.neutral.text.primary }}>geram impacto real</strong> para o usuário final.
+    com perfil versátil e interesse contínuo em aprendizado e no desenvolvimento de soluções que geram impacto real para o usuário final.
   </p>
 </div>
 

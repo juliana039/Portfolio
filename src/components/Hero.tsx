@@ -158,7 +158,7 @@ export default function Hero() {
                   fontSize: typography.fontSize['3xl'], 
                   fontWeight: typography.fontWeight.bold, 
                   color: colors.primary.blue 
-                }}>11</div>
+                }}>10</div>
                 <div style={{ 
                   fontSize: typography.fontSize.sm, 
                   color: colors.neutral.text.tertiary 
