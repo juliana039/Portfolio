@@ -190,7 +190,7 @@ function FeaturedCard({ project }: { project: Project }) {
               boxShadow: '0 20px 60px rgba(0,0,0,0.4)'
             }}>
               {/* Notch */}
-              {carouselDimensions.height > 300 && (
+              {parseInt(carouselDimensions.height) > 300 && (
                 <div style={{
                   position: 'absolute',
                   top: '6px', // ajustado
