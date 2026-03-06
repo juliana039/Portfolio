@@ -388,7 +388,8 @@ Através de uma narrativa envolvente, o jogo guia jogadoras por uma jornada de d
 
 O projeto foi desenvolvido com foco em representatividade e empoderamento, criando um espaço seguro onde meninas podem explorar questões de identidade, padrões de beleza e autoestima através do gameplay interativo.`,
 media: [
-      //{ type: 'image', url: '/quem-matou-meus-cachos/quem-matou-meus-cachos-video.mp4', caption: 'Vídeo do jogo' },
+      { type: 'image', url: '/quem-matou-meus-cachos/quem-matou-meus-cachos-video1.mp4', caption: 'Vídeo do jogo - parte 1' },
+      { type: 'image', url: '/quem-matou-meus-cachos/quem-matou-meus-cachos-video2.mp4', caption: 'Vídeo do jogo - parte 2' }
 
     ],   
 highlights: [
