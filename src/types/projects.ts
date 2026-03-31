@@ -76,7 +76,7 @@ Como é um jogo, errar não é problema - faz parte da experiência. Aqui, cada 
       'Escolhido para representar Academy Manaus na graduação 2025',
       'Sincronização multiplayer com Game Center para até 8 jogadores',
       'Sistema de comunicação em tempo real',
-      'Interface totalmente internacionalizada em 5 idiomas',
+      'Interface totalmente internacionalizada (PT/EN)',
       'Foco em desenvolvimento de soft skills através do jogo'
     ],
     team: [
@@ -86,16 +86,66 @@ Como é um jogo, errar não é problema - faz parte da experiência. Aqui, cada 
       { name: 'Luana Gerber', role: 'iOS Developer', photo: '/academy/luana.jpg' }
     ],
     myContribution: [
+      'Desenvolvimento front-end completo em SwiftUI',
       'Implementação do sistema multiplayer com Game Center',
-      'Sistema de tratamento de erros e desconexões em partidas multiplayer',
-      'Ajustes de responsividade para diferentes dispositivos Apple',
-      'Internacionalização do app'
+      'Design e implementação da experiência do usuário',
+      'Internacionalização completa do app em 5 idiomas'
     ],
     media: [
-      { type: 'image', url: '/story-stage/story-stage-1.jpeg', caption: 'Menu principal' },
-      { type: 'image', url: '/story-stage/story-stage-2.png', caption: 'Interface do apresentador' },
-      { type: 'image', url: '/story-stage/story-stage-3.png', caption: 'Interface do apresentador com os emojis da apresentação' },
-      { type: 'image', url: '/story-stage/story-stage-4.png', caption: 'Tela de votação' }
+      { type: 'image', url: '/story-stage/story-stage-1.jpeg', caption: 'Seleção de emojis' },
+      { type: 'image', url: '/story-stage/story-stage-2.png', caption: 'Tela de votação' },
+      { type: 'image', url: '/story-stage/story-stage-3.png', caption: 'Gameplay multiplayer' },
+      { type: 'image', url: '/story-stage/story-stage-4.png', caption: 'Interface do apresentador' }
+    ]
+  },
+  {
+    id: 'psstrack',
+    title: 'PssTrack',
+    description: 'App iOS para monitoramento de psoríase com registros visuais, questionários clínicos e análise de fatores desencadeantes',
+    shortDescription: 'Monitoramento de psoríase com fotos, questionários e relatórios médicos',
+    category: 'Apple Developer Academy',
+    tags: ['SwiftUI', 'MVVM', 'Core Data', 'Combine', 'PDFKit', 'Swift Charts', 'PhotoKit', 'VoiceOver'],
+    published: false,
+    image: '/psstrack/psstrack-icon.png',
+    year: '2025',
+    duration: '2 meses',
+    fullDescription: `A psoríase é uma condição autoimune crônica que afeta 2-3% da população global. O maior desafio no tratamento é que mudanças graduais na pele são quase impossíveis de notar no dia a dia, dificultando avaliar a eficácia de tratamentos ou identificar gatilhos.
+
+Durante pesquisas com pacientes, foi identificado que acompanhar múltiplas áreas afetadas, lembrar tratamentos passados e manter a consistência necessária são desafios recorrentes. Consultas médicas dependem da memória do paciente, que é pouco confiável para condições de progressão lenta.
+
+PssTrack é um app iOS focado em privacidade que capacita pessoas com psoríase a monitorar sua condição através de comparação visual, autoavaliação clínica e rastreamento de estilo de vida - tudo armazenado com segurança no dispositivo.
+
+Os usuários fotografam áreas de pele afetadas ao longo do tempo, criando uma linha do tempo visual que revela mudanças graduais. O app integra questionários clinicamente validados (PSI e PGA) para autoavaliação estruturada e permite registro diário de gatilhos potenciais: estresse, sono, atividade física e tabagismo.
+
+Quando chega o momento da consulta médica, PssTrack gera um relatório PDF completo com imagens comparativas, gráficos de progresso e métricas clínicas padronizadas - transformando conversas vagas em discussões baseadas em dados.
+
+O diferencial está na privacidade: todos os dados sensíveis de saúde permanecem no dispositivo. Zero sincronização na nuvem, zero serviços de terceiros. O app possui suporte completo ao VoiceOver, Dynamic Type, Dark Mode e controles nativos para garantir acessibilidade total.
+
+O nome "PssTrack" combina "psst" (chamando atenção) com "track" (monitorar) - quase ecoando "psoriasis". É um convite: Preste atenção. Monitore. Assuma o controle.`,
+    highlights: [
+      'Timeline visual com comparação temporal de fotos',
+      'Questionários clínicos validados (PSI e PGA)',
+      'Rastreamento de gatilhos: estresse, sono, exercício, tabagismo',
+      'Relatórios médicos em PDF com gráficos',
+      '100% privado - dados nunca saem do dispositivo',
+      'Acessibilidade completa com VoiceOver e Dynamic Type'
+    ],
+    myContribution: [
+      'Pesquisa de protocolos de tratamento e necessidades de pacientes',
+      'Design de wireframes e fluxos de usuário no Figma',
+      'Arquitetura MVVM completa com Core Data',
+      'Sistema de gerenciamento de imagens com PhotoKit',
+      'Geração de PDF customizado com PDFKit e Swift Charts',
+      'Gerenciamento reativo com Combine framework',
+      'Implementação completa de acessibilidade (VoiceOver, WCAG)'
+    ],
+    media: [
+      { type: 'image', url: '/psstrack/psstrack1.png', caption: 'Tela inicial' },
+      { type: 'image', url: '/psstrack/psstrack2.png', caption: 'Onboarding mostrando feature de comparação de imagens' },
+      { type: 'image', url: '/psstrack/psstrack3.png', caption: 'Dashboard do progresso para comparação de imagens no modo claro' },
+      { type: 'image', url: '/psstrack/psstrack4.png', caption: 'Dashboard com resumo de sintomas e métricas no modo escuro' },
+      { type: 'image', url: '/psstrack/psstrack5.png', caption: 'Comparação temporal lado a lado de fotos' },
+      { type: 'image', url: '/psstrack/psstrack6.png', caption: 'Relatório médico em PDF com gráficos e dados clínicos' }
     ]
   },
   {
@@ -221,7 +271,8 @@ Beezzy é mais que um app, é um lugar para respirar. É para você que ama, cui
       { name: 'Amanda Rabelo', role: 'iOS Developer', photo: '/academy/amanda.jpeg' }
     ],
     myContribution: [
-      'Colaboração na criação de protótipos de média fidelidade das interfaces',
+      'Implementação da arquitetura MVVM',
+      'Sincronização com CloudKit',
       'Watch Connectivity entre iPhone e Apple Watch',
       'Interface e lógica do app watchOS'
     ],
@@ -268,12 +319,15 @@ Como funciona: reúna amigos estudantes de intercâmbio em frente à Apple TV, s
     ],
     myContribution: [
       'Desenvolvimento da interface para tvOS',
+      'Implementação do sistema de navegação com controle remoto',
+      'Lógica de perguntas e progressão',
+      'Otimização para tela grande'
     ],
     media: [
-      { type: 'image', url: '/cultural-storm/cultural-storm_screenshot_1.png ', caption: 'Tela de onboarding apresentando o mascote Travis' },
-      { type: 'image', url: '/cultural-storm/cultural-storm_screenshot_2.png ', caption: 'Tela de onboarding explicando o jogo' },
-      { type: 'image', url: '/cultural-storm/cultural-storm_screenshot_3.png ', caption: 'Tela de configuração de participantes' },
-      { type: 'image', url: '/cultural-storm/cultural-storm_screenshot_4.png ', caption: 'Tela do jogo com um fato sobre o Brasil' }
+      { type: 'image', url: '/cultural-storm/cultural-storm_screenshot_1.png ', caption: 'Seleção de emojis' },
+      { type: 'image', url: '/cultural-storm/cultural-storm_screenshot_2.png ', caption: 'Tela de votação' },
+      { type: 'image', url: '/cultural-storm/cultural-storm_screenshot_3.png ', caption: 'Gameplay multiplayer' },
+      { type: 'image', url: '/cultural-storm/cultural-storm_screenshot_4.png ', caption: 'Interface do apresentador' }
     ]
   },
   {
@@ -295,9 +349,11 @@ Como funciona: reúna amigos estudantes de intercâmbio em frente à Apple TV, s
 A partir do Desafio de Aprendizagem proposto ao final do curso, o projeto foi expandido de forma autoral, com a criação de um puzzle interativo original, novas interfaces, mecânicas simples de jogo, condições de vitória e novos objetos e ambientes temáticos, com o objetivo de demonstrar de forma integrada os conhecimentos adquiridos ao longo da trilha formativa.`,
     highlights: [
       'Desenvolvimento individual em Unity 3D e C#',
+      'Escaneamento de ambiente com ARKit',
       'Animações e comportamentos imersivos',
+      'Interface adaptativa para AR',
       'Sistema de scanner com revelação de informações',
-      'Puzzle interativo do Império Chikenista'
+      'Puzzle interativo do Império Chekenista'
     ],
     myContribution: [
       'Desenvolvimento do projeto base como parte do curso de Realidade Aumentada do programa TIC em Trilhas',
@@ -305,17 +361,17 @@ A partir do Desafio de Aprendizagem proposto ao final do curso, o projeto foi ex
       'Implementação de mecânicas de vitória e saída do jogo',
       'Adição de novos objetos 3D interativos',
       'Inserção de modelos de cabinetes novos para o desafio',
-      'Criação do puzzle interativo do Império Chikenista',
+      'Criação do puzzle interativo do Império Chekenista',
       'Evolução do projeto de demonstração para experiência gamificada'
     ],
     media: [
-      { type: 'video', url: '/ar-vr/ar-demonstracao-video_comprimido.mp4', caption: 'Demonstração da experiência em Realidade Aumentada' }
+      { type: 'video', url: '/ar-video.MP4', caption: 'Demonstração da experiência em Realidade Aumentada' }
     ]
   },
   {
     id: 'residencia-eldorado',
-    title: 'Jogo 3D Educacional - Residência de Jogos Eldorado',
-    description: 'Desenvolvimento de jogo 3D em Unity durante residência no Instituto de Pesquisas Eldorado',
+    title: 'Jogo 3D Educacional',
+    description: 'Desenvolvimento de jogo 3D educacional em Unity com equipe multidisciplinar',
     category: 'Instituto de Pesquisas Eldorado',
     tags: ['Unity', 'C#', 'Game Development', '3D', 'NavMesh', 'ScriptableObjects'],
     published: false,
@@ -359,11 +415,6 @@ O trabalho em equipe grande exigiu comunicação constante, revisão de código 
       'Sistema de barra de vida 3D com world space tracking',
       'Interface de perfil e sistema de progressão de itens',
       'Colaboração em Scrum com equipe multidisciplinar de 20+ pessoas'
-    ],
-    media: [
-      { type: 'image', url: '/residencia-de-jogos/residencia0.jpeg', caption: 'Cerimônia de certificação da Residência de Jogos' },
-      { type: 'image', url: '/residencia-de-jogos/residencia1.jpg', caption: 'Recebendo certificado no evento de encerramento' },
-      { type: 'image', url: '/residencia-de-jogos/residencia2.jpeg', caption: 'Equipe de residentes e mentor dev' }
     ]
   },
   {
@@ -389,8 +440,8 @@ Através de uma narrativa envolvente, o jogo guia jogadoras por uma jornada de d
 O projeto foi desenvolvido com foco em representatividade e empoderamento, criando um espaço seguro onde meninas podem explorar questões de identidade, padrões de beleza e autoestima através do gameplay interativo.`,
 media: [
       { type: 'image', url: '/quem-matou-meus-cachos/quem-matou-meus-cachos-video1.mp4', caption: 'Vídeo do jogo - parte 1' },
-      { type: 'image', url: '/quem-matou-meus-cachos/quem-matou-meus-cachos-video2.mp4', caption: 'Vídeo do jogo - parte 2' }
-
+      { type: 'image', url: '/quem-matou-meus-cachos/quem-matou-meus-cachos-video2.mp4', caption: 'Vídeo do jogo - parte 2' },
+      { type: 'image', url: '/quem-matou-meus-cachos/quem-matou-meus-cachos-video3.mp4', caption: 'Vídeo do jogo - parte 3' }
     ],   
 highlights: [
       'Jogo narrativo sobre transição capilar',
@@ -447,10 +498,38 @@ A narrativa emocional da onça procurando seu filhote cria conexão empática co
     ]
   },
   {
+    id: 'residencia-de-jogos',
+    title: 'Residência de Jogos',
+    description: 'Desenvolvimento de jogo 3D em Unity durante residência no Instituto de Pesquisas Eldorado',
+    shortDescription: 'Jogo 3D educacional desenvolvido em Unity',
+    category: 'Instituto de Pesquisas Eldorado',
+    tags: ['Unity', 'C#', 'Game 3D', 'Educacional'],
+    published: false,
+    isGame: true,
+    year: '2025',
+    duration: '6 meses',
+    fullDescription: `Participação na Residência de Jogos do Instituto de Pesquisas Eldorado, programa focado no desenvolvimento de jogos 3D educacionais utilizando Unity e C#.
+
+Durante a residência, trabalhei em equipe multidisciplinar com designers e modeladores 3D, aplicando metodologias ágeis e desenvolvendo um jogo educacional completo. O projeto envolveu implementação de mecânicas de gameplay, sistema de progressão, integração de assets 3D, e otimização de performance.
+
+A experiência proporcionou aprendizado prático em desenvolvimento de jogos comerciais, desde o conceito inicial até a implementação de features completas, trabalhando com pipeline de produção profissional e ferramentas da indústria de games.`,
+    highlights: [
+      'Desenvolvimento em Unity com C#',
+      'Trabalho em equipe multidisciplinar',
+      'Implementação de mecânicas de gameplay 3D',
+      'Otimização de performance',
+      'Metodologias ágeis de desenvolvimento'
+    ],
+    media: [
+      { type: 'image', url: '/residencia-de-jogos/residencia0.jpeg', caption: 'Cerimônia de certificação da Residência de Jogos' },
+      { type: 'image', url: '/residencia-de-jogos/residencia1.jpg', caption: 'Recebendo certificado no evento de encerramento' },
+      { type: 'image', url: '/residencia-de-jogos/residencia2.jpeg', caption: 'Equipe de residentes e mentor dev' }
+    ]
+  },
+  {
     id: 'devtitans',
     title: 'Smartlamp Access Control',
     description: 'Implementação nativa de nova forma de desbloqueio por luminosidade no Android',
-    shortDescription: 'Desbloqueio de tela por sensor de luminosidade no Android',
     category: 'Devtitans',
     tags: ['Android', 'IoT', 'AOSP', 'C/C++', 'Java', 'Sistemas Embarcados'],
     published: false,
