@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { projects, Project } from '@/types/projects';
 import Link from 'next/link';
 import { spacing, colors, typography, borderRadius, container } from '@/design-system';
@@ -18,12 +18,110 @@ function getProjectIcon(projectId: string): string {
     'carebeep': '💙',
     'beezzy': '🐝',
     'cultural-storm': '⚡',
+    'psstrack': '📊',
     'default': '📱'
   };
   return icons[projectId] || icons['default'];
 }
 
-// Card FEATURED com carrossel
+// Card FEATURED COMPACTO (sem mockup)
+function FeaturedCardCompact({ project }: { project: Project }) {
+  return (
+    <Link href={`/projetos/${project.id}`} style={{ textDecoration: 'none', flex: 1 }}>
+      <div className="glass-card" style={{
+        padding: spacing.md,
+        cursor: 'pointer',
+        transition: 'all 0.3s',
+        borderRadius: borderRadius.xl,
+        display: 'flex',
+        flexDirection: 'column',
+        gap: spacing.xs,
+        border: `1px solid ${colors.primary.yellow}20`,
+        height: '220px' // Altura fixa compacta
+      }}
+      onMouseOver={(e) => {
+        e.currentTarget.style.transform = 'translateY(-4px)';
+        e.currentTarget.style.boxShadow = `0 20px 40px -12px ${colors.primary.blue}40`;
+      }}
+      onMouseOut={(e) => {
+        e.currentTarget.style.transform = 'translateY(0)';
+        e.currentTarget.style.boxShadow = 'none';
+      }}>
+        
+        {/* Ícone e Título */}
+        <div style={{ display: 'flex', alignItems: 'flex-start', gap: spacing.sm }}> {/* REDUZIDO gap de md para sm */}
+          <div style={{
+            minWidth: '64px', // REDUZIDO de 80px para 64px
+            width: '64px',
+            height: '64px',
+            borderRadius: borderRadius.lg,
+            background: project.image 
+              ? `url(${project.image}) center/cover no-repeat` 
+              : `linear-gradient(135deg, ${colors.primary.yellow}, ${colors.primary.purple})`,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            fontSize: '32px', // REDUZIDO de 40px para 32px
+            flexShrink: 0
+          }}>
+            {!project.image && getProjectIcon(project.id)}
+          </div>
+
+          <div style={{ flex: 1 }}>
+            <h3 style={{ 
+              fontSize: typography.fontSize.lg, // REDUZIDO de xl para lg
+              fontWeight: typography.fontWeight.bold,
+              marginBottom: spacing.xs,
+              color: colors.primary.yellow,
+              lineHeight: typography.lineHeight.tight
+            }}>
+              {project.title}
+            </h3>
+
+            {project.published && (
+              <span style={{
+                fontSize: typography.fontSize.xs,
+                color: colors.primary.yellow,
+                fontWeight: typography.fontWeight.bold
+              }}>
+                📱 App Store
+              </span>
+            )}
+          </div>
+        </div>
+
+        {/* Descrição */}
+        <p style={{ 
+          color: colors.neutral.text.secondary, 
+          fontSize: typography.fontSize.sm,
+          lineHeight: typography.lineHeight.relaxed
+        }}>
+          {project.shortDescription || project.description}
+        </p>
+
+        {/* Tags */}
+        <div style={{ display: 'flex', gap: spacing.xs, flexWrap: 'wrap' }}>
+          {project.tags.slice(0, 4).map((tag) => (
+            <span
+              key={tag}
+              style={{
+                fontSize: typography.fontSize.xs,
+                padding: `3px ${spacing.xs}`, // REDUZIDO padding vertical
+                borderRadius: borderRadius.full,
+                background: 'rgba(255, 255, 255, 0.05)',
+                color: colors.neutral.text.tertiary
+              }}
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+      </div>
+    </Link>
+  );
+}
+
+// Card FEATURED com carrossel (ANTIGO - não usado mais)
 function FeaturedCard({ project }: { project: Project }) {
   const [currentMediaIndex, setCurrentMediaIndex] = React.useState(0);
   const hasMedia = project.media && project.media.length > 0;
@@ -178,13 +276,13 @@ function FeaturedCard({ project }: { project: Project }) {
           </div>
         </div>
 
-        {/* Coluna Direita - Preview com Mock iPhone (PADDING REDUZIDO) */}
+        {/* Coluna Direita - Preview com Mock iPhone */}
         {hasMedia && (
           <div style={{ flexShrink: 0 }}>
             <div style={{
               position: 'relative',
               width: carouselDimensions.width,
-              padding: '6px', // REDUZIDO de 12px para 6px
+              padding: '6px',
               background: 'linear-gradient(135deg, #1a1a1a, #2a2a2a)',
               borderRadius: '36px',
               boxShadow: '0 20px 60px rgba(0,0,0,0.4)'
@@ -193,7 +291,7 @@ function FeaturedCard({ project }: { project: Project }) {
               {parseInt(carouselDimensions.height) > 300 && (
                 <div style={{
                   position: 'absolute',
-                  top: '6px', // ajustado
+                  top: '6px',
                   left: '50%',
                   transform: 'translateX(-50%)',
                   width: '100px',
@@ -209,7 +307,7 @@ function FeaturedCard({ project }: { project: Project }) {
                 position: 'relative',
                 width: '100%',
                 height: carouselDimensions.height,
-                borderRadius: '30px', // ajustado
+                borderRadius: '30px',
                 overflow: 'hidden',
                 background: '#000'
               }}>
@@ -226,7 +324,7 @@ function FeaturedCard({ project }: { project: Project }) {
                 ) : (
                   <video
                     src={project.media![currentMediaIndex].url}
-                    autoPlay // AUTOPLAY ADICIONADO
+                    autoPlay
                     loop
                     muted
                     playsInline
@@ -333,8 +431,6 @@ function FeaturedCard({ project }: { project: Project }) {
 // Card NORMAL compacto
 function CompactCard({ project }: { project: Project }) {
   const displayDescription = project.shortDescription || project.description;
-  
-  // DESTAQUE ESPECIAL PARA TIMETI - 3º lugar Best Paper
   const isTimeti = project.id === 'timeti';
   
   return (
@@ -358,7 +454,6 @@ function CompactCard({ project }: { project: Project }) {
         e.currentTarget.style.boxShadow = 'none';
       }}>
         
-        {/* Badge 3º lugar TIMETI */}
         {isTimeti && (
           <div style={{
             position: 'absolute',
@@ -376,7 +471,6 @@ function CompactCard({ project }: { project: Project }) {
           </div>
         )}
         
-        {/* Ícone Quadrado */}
         <div style={{
           minWidth: '80px',
           width: '80px',
@@ -394,7 +488,6 @@ function CompactCard({ project }: { project: Project }) {
           {!project.image && getProjectIcon(project.id)}
         </div>
 
-        {/* Conteúdo ao lado */}
         <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: spacing.xs, minWidth: 0 }}>
           <h3 style={{ 
             fontSize: typography.fontSize.base, 
@@ -420,7 +513,6 @@ function CompactCard({ project }: { project: Project }) {
             {displayDescription}
           </p>
 
-          {/* Tags embaixo */}
           <div style={{ display: 'flex', gap: spacing.xs, flexWrap: 'wrap', marginTop: 'auto' }}>
             {project.published && (
               <span style={{
@@ -452,6 +544,283 @@ function CompactCard({ project }: { project: Project }) {
         </div>
       </div>
     </Link>
+  );
+}
+
+// CARROSSEL AUTOMÁTICO - POR PROJETO (todas as telas lado a lado)
+function AutoScreenshotCarousel() {
+  const [currentProjectIndex, setCurrentProjectIndex] = useState(0);
+  const [direction, setDirection] = useState<'left' | 'right'>('right');
+  
+  // IDs de projetos que são apps mobile (precisam mockup iPhone)
+  const mobileAppIds = ['carebeep', 'story-stage', 'psstrack', 'beezzy', 'timeti', 'devtitans'];
+  
+  // Pegar projetos que têm screenshots
+  const projectsWithScreenshots = projects
+    .filter(p => p.media && p.media.length > 0)
+    .map(p => ({
+      id: p.id,
+      title: p.title,
+      screenshots: p.media!.filter(m => m.type === 'image'),
+      isMobileApp: mobileAppIds.includes(p.id)
+    }))
+    .filter(p => p.screenshots.length > 0);
+
+  // Auto-advance a cada 5 segundos (aumentado de 3s)
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setDirection('right');
+      setCurrentProjectIndex((prev) => (prev + 1) % projectsWithScreenshots.length);
+    }, 5000); // 5 segundos
+
+    return () => clearInterval(interval);
+  }, [projectsWithScreenshots.length]);
+
+  if (projectsWithScreenshots.length === 0) return null;
+
+  const currentProject = projectsWithScreenshots[currentProjectIndex];
+  
+  // Limitar a no máximo 4 screenshots
+  const displayScreenshots = currentProject.screenshots.slice(0, 4);
+
+  // Componente de Screenshot (com ou sem mockup)
+  const ScreenshotItem = ({ screenshot, index }: { screenshot: any; index: number }) => {
+    if (currentProject.isMobileApp) {
+      // Com mockup iPhone
+      return (
+        <div
+          key={index}
+          style={{
+            position: 'relative',
+            flexShrink: 0,
+            width: '220px',
+            padding: '6px',
+            background: 'linear-gradient(135deg, #1a1a1a, #2a2a2a)',
+            borderRadius: '36px',
+            boxShadow: `0 20px 40px ${colors.primary.blue}20`,
+            transition: 'transform 0.3s'
+          }}
+          className="screenshot-mockup"
+        >
+          {/* Notch */}
+          <div style={{
+            position: 'absolute',
+            top: '6px',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            width: '90px',
+            height: '22px',
+            background: '#000',
+            borderRadius: '0 0 16px 16px',
+            zIndex: 10
+          }} />
+
+          {/* Tela */}
+          <div style={{
+            position: 'relative',
+            width: '100%',
+            height: '440px',
+            borderRadius: '30px',
+            overflow: 'hidden',
+            background: '#000'
+          }}>
+            <img
+              src={screenshot.url}
+              alt={screenshot.caption || 'Screenshot'}
+              style={{
+                width: '100%',
+                height: '100%',
+                objectFit: 'contain'
+              }}
+            />
+
+            {/* Caption Overlay */}
+            {screenshot.caption && (
+              <div style={{
+                position: 'absolute',
+                bottom: 0,
+                left: 0,
+                right: 0,
+                padding: spacing.sm,
+                background: 'linear-gradient(to top, rgba(0,0,0,0.9), transparent)',
+                color: colors.neutral.text.primary,
+                fontSize: typography.fontSize.xs,
+                textAlign: 'center'
+              }}>
+                {screenshot.caption}
+              </div>
+            )}
+          </div>
+        </div>
+      );
+    } else {
+      // Sem mockup - imagem simples com border
+      return (
+        <div
+          key={index}
+          style={{
+            position: 'relative',
+            flexShrink: 0,
+            width: '320px',
+            borderRadius: borderRadius.lg,
+            overflow: 'hidden',
+            border: `2px solid ${colors.neutral.border}`,
+            boxShadow: `0 20px 40px ${colors.primary.blue}20`,
+            transition: 'transform 0.3s',
+            background: 'rgba(0, 0, 0, 0.5)'
+          }}
+          className="screenshot-simple"
+        >
+          <img
+            src={screenshot.url}
+            alt={screenshot.caption || 'Screenshot'}
+            style={{
+              width: '100%',
+              height: 'auto',
+              maxHeight: '400px',
+              objectFit: 'contain',
+              display: 'block'
+            }}
+          />
+
+          {/* Caption */}
+          {screenshot.caption && (
+            <div style={{
+              padding: spacing.sm,
+              background: 'rgba(0, 0, 0, 0.8)',
+              color: colors.neutral.text.primary,
+              fontSize: typography.fontSize.xs,
+              textAlign: 'center'
+            }}>
+              {screenshot.caption}
+            </div>
+          )}
+        </div>
+      );
+    }
+  };
+
+  return (
+    <div style={{
+      marginTop: spacing['4xl'],
+      padding: spacing.md, // REDUZIDO de xl para md
+      background: 'rgba(26, 26, 26, 0.4)',
+      borderRadius: borderRadius.xl,
+      border: `1px solid ${colors.neutral.border}`,
+      overflow: 'hidden'
+    }}>
+      <h3 style={{
+        fontSize: typography.fontSize['2xl'],
+        fontWeight: typography.fontWeight.bold,
+        marginBottom: spacing.sm,
+        textAlign: 'center',
+        background: `linear-gradient(135deg, ${colors.primary.blue}, ${colors.primary.purple})`,
+        WebkitBackgroundClip: 'text',
+        WebkitTextFillColor: 'transparent',
+        backgroundClip: 'text'
+      }}>
+        📱 Galeria de Screenshots
+      </h3>
+
+      {/* Nome do Projeto Atual - Clicável */}
+      <Link 
+        href={`/projetos/${currentProject.id}`}
+        style={{ 
+          textDecoration: 'none',
+          display: 'block',
+          textAlign: 'center',
+          marginBottom: spacing.lg
+        }}
+      >
+        <div style={{
+          fontSize: typography.fontSize.lg,
+          fontWeight: typography.fontWeight.bold,
+          color: colors.primary.yellow,
+          transition: 'all 0.3s',
+          cursor: 'pointer',
+          display: 'inline-flex',
+          alignItems: 'center',
+          gap: spacing.xs
+        }}
+        className="project-link"
+        onMouseOver={(e) => {
+          e.currentTarget.style.color = colors.primary.blue;
+          e.currentTarget.style.transform = 'scale(1.05)';
+        }}
+        onMouseOut={(e) => {
+          e.currentTarget.style.color = colors.primary.yellow;
+          e.currentTarget.style.transform = 'scale(1)';
+        }}>
+          {currentProject.title}
+          <svg style={{ width: '20px', height: '20px' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+          </svg>
+        </div>
+      </Link>
+
+      {/* Container com overflow para animação de slide */}
+      <div style={{
+        position: 'relative',
+        width: '100%',
+        overflow: 'hidden'
+      }}>
+        {/* Container Principal - Uma linha com no máximo 4 imagens */}
+        <div 
+          key={currentProjectIndex}
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            gap: spacing.md,
+            padding: spacing.md,
+            animation: direction === 'right' ? 'slideInFromRight 0.6s ease-out' : 'slideInFromLeft 0.6s ease-out'
+          }}
+          className="carousel-content"
+        >
+          {displayScreenshots.map((screenshot, idx) => (
+            <ScreenshotItem key={idx} screenshot={screenshot} index={idx} />
+          ))}
+        </div>
+      </div>
+
+      {/* Indicadores de Progresso - Por Projeto */}
+      <div style={{
+        display: 'flex',
+        justifyContent: 'center',
+        gap: spacing.xs,
+        marginTop: spacing.lg,
+        flexWrap: 'wrap'
+      }}>
+        {projectsWithScreenshots.map((_, idx) => (
+          <button
+            key={idx}
+            onClick={() => {
+              setDirection(idx > currentProjectIndex ? 'right' : 'left');
+              setCurrentProjectIndex(idx);
+            }}
+            style={{
+              width: idx === currentProjectIndex ? '32px' : '8px',
+              height: '8px',
+              borderRadius: borderRadius.full,
+              background: idx === currentProjectIndex ? colors.primary.blue : colors.neutral.border,
+              border: 'none',
+              cursor: 'pointer',
+              transition: 'all 0.3s'
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Contador */}
+      <div style={{
+        textAlign: 'center',
+        marginTop: spacing.sm,
+        fontSize: typography.fontSize.sm,
+        color: colors.neutral.text.tertiary
+      }}>
+        Projeto {currentProjectIndex + 1} de {projectsWithScreenshots.length} • {currentProject.screenshots.length} {currentProject.screenshots.length === 1 ? 'tela' : 'telas'}
+      </div>
+    </div>
   );
 }
 
@@ -523,7 +892,7 @@ export default function ProjectsGrid() {
           </p>
         </div>
 
-        {/* FEATURED */}
+        {/* FEATURED - 3 CARDS LADO A LADO */}
         {featuredProjects.length > 0 && (
           <div style={{ marginBottom: spacing['4xl'] }}>
             <h3 style={{ 
@@ -538,18 +907,24 @@ export default function ProjectsGrid() {
               Projetos em Destaque
             </h3>
             <div style={{ 
-              display: 'flex',
-              flexDirection: 'column',
-              gap: spacing.xl
-            }}>
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+              gap: spacing.lg
+            }}
+            className="featured-grid">
               {featuredProjects.map((project) => (
-                <FeaturedCard key={project.id} project={project} />
+                <FeaturedCardCompact key={project.id} project={project} />
               ))}
             </div>
           </div>
         )}
 
-        {/* Tabs - ADICIONADA ABA UNITY */}
+        {/* CARROSSEL AUTOMÁTICO DE SCREENSHOTS - MOVIDO PARA CIMA */}
+        <div style={{ marginBottom: spacing['4xl'] }}>
+          <AutoScreenshotCarousel />
+        </div>
+
+        {/* Tabs */}
         <div style={{ 
           display: 'flex', 
           gap: spacing.sm, 
@@ -624,9 +999,62 @@ export default function ProjectsGrid() {
       </div>
 
       <style jsx>{`
+        @keyframes slideInFromRight {
+          from {
+            opacity: 0;
+            transform: translateX(100px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+
+        @keyframes slideInFromLeft {
+          from {
+            opacity: 0;
+            transform: translateX(-100px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+
+        .carousel-content {
+          animation-fill-mode: both;
+        }
+
+        .screenshots-row {
+          scrollbar-width: thin;
+        }
+
+        .screenshots-row::-webkit-scrollbar {
+          height: 8px;
+        }
+
+        .screenshots-row::-webkit-scrollbar-track {
+          background: transparent;
+        }
+
+        .screenshots-row::-webkit-scrollbar-thumb {
+          background: ${colors.primary.blue};
+          border-radius: ${borderRadius.full};
+        }
+
+        .screenshot-mockup:hover,
+        .screenshot-simple:hover {
+          transform: scale(1.05);
+          cursor: pointer;
+        }
+
         @media (max-width: 768px) {
           .projects-title {
             font-size: ${typography.fontSize['4xl']} !important;
+          }
+
+          .featured-grid {
+            grid-template-columns: 1fr !important;
           }
 
           .featured-card {
@@ -641,6 +1069,12 @@ export default function ProjectsGrid() {
 
           .projects-grid {
             grid-template-columns: 1fr !important;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .projects-title {
+            font-size: ${typography.fontSize['3xl']} !important;
           }
         }
       `}</style>

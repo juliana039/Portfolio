@@ -106,6 +106,7 @@ Como é um jogo, errar não é problema - faz parte da experiência. Aqui, cada 
     category: 'Apple Developer Academy',
     tags: ['SwiftUI', 'MVVM', 'Core Data', 'Combine', 'PDFKit', 'Swift Charts', 'PhotoKit', 'VoiceOver'],
     published: false,
+    featured: true,
     image: '/psstrack/psstrack-icon.png',
     year: '2025',
     duration: '2 meses',
@@ -141,11 +142,9 @@ O nome "PssTrack" combina "psst" (chamando atenção) com "track" (monitorar) - 
     ],
     media: [
       { type: 'image', url: '/psstrack/psstrack1.png', caption: 'Tela inicial' },
-      { type: 'image', url: '/psstrack/psstrack2.png', caption: 'Onboarding mostrando feature de comparação de imagens' },
-      { type: 'image', url: '/psstrack/psstrack3.png', caption: 'Dashboard do progresso para comparação de imagens no modo claro' },
-      { type: 'image', url: '/psstrack/psstrack4.png', caption: 'Dashboard com resumo de sintomas e métricas no modo escuro' },
-      { type: 'image', url: '/psstrack/psstrack5.png', caption: 'Comparação temporal lado a lado de fotos' },
-      { type: 'image', url: '/psstrack/psstrack6.png', caption: 'Relatório médico em PDF com gráficos e dados clínicos' }
+      { type: 'image', url: '/psstrack/psstrack3.png', caption: 'Dashboard do progresso' },
+      { type: 'image', url: '/psstrack/psstrack5.png', caption: 'Comparação temporal de fotos' },
+      { type: 'image', url: '/psstrack/psstrack6.png', caption: 'Relatório médico em PDF' }
     ]
   },
   {
@@ -179,10 +178,8 @@ Desenvolvido inteiramente em SwiftUI, o Timeti oferece uma experiência fluida e
     media: [
       { type: 'image', url: '/timeti/timeti-tela-menu.PNG', caption: 'Menu principal' },
       { type: 'image', url: '/timeti/timeti-tela-tutorial.PNG', caption: 'Tutorial do jogo' },
-      { type: 'image', url: '/timeti/timeti-tela-cartas-viradas-baixo.PNG', caption: 'Cartas viradas' },
       { type: 'image', url: '/timeti/timeti-tela-cartas-viradas-cima.PNG', caption: 'Gameplay' },
-      { type: 'image', url: '/timeti/timeti-tela-curiosidades.jpeg', caption: 'Curiosidades matemáticas' },
-      { type: 'video', url: '/timeti/timeti-tela-video-completo.MP4', caption: 'Demonstração completa' }
+      { type: 'image', url: '/timeti/timeti-tela-curiosidades.jpeg', caption: 'Curiosidades matemáticas' }
     ]
   },
   {
@@ -338,7 +335,7 @@ Como funciona: reúna amigos estudantes de intercâmbio em frente à Apple TV, s
     category: 'Apple Developer Academy',
     tags: ['ARKit', 'Unity', 'C#', '3D', 'Realidade Aumentada'],
     published: false,
-    featured: true,
+    featured: false,
     year: '2025',
     image: '/archeology-icon.svg',
     duration: '1 mês',
@@ -440,8 +437,7 @@ Através de uma narrativa envolvente, o jogo guia jogadoras por uma jornada de d
 O projeto foi desenvolvido com foco em representatividade e empoderamento, criando um espaço seguro onde meninas podem explorar questões de identidade, padrões de beleza e autoestima através do gameplay interativo.`,
 media: [
       { type: 'image', url: '/quem-matou-meus-cachos/quem-matou-meus-cachos-video1.mp4', caption: 'Vídeo do jogo - parte 1' },
-      { type: 'image', url: '/quem-matou-meus-cachos/quem-matou-meus-cachos-video2.mp4', caption: 'Vídeo do jogo - parte 2' },
-      { type: 'image', url: '/quem-matou-meus-cachos/quem-matou-meus-cachos-video3.mp4', caption: 'Vídeo do jogo - parte 3' }
+      { type: 'image', url: '/quem-matou-meus-cachos/quem-matou-meus-cachos-video2.mp4', caption: 'Vídeo do jogo - parte 2' }
     ],   
 highlights: [
       'Jogo narrativo sobre transição capilar',
@@ -489,12 +485,9 @@ A narrativa emocional da onça procurando seu filhote cria conexão empática co
     ],
     media: [
       { type: 'image', url: '/through-the-flames/through-the-flames-menu.png', caption: 'Menu principal' },
-      { type: 'image', url: '/through-the-flames/through-the-flames-pre-nivel.png', caption: 'Introdução do nível' },
       { type: 'image', url: '/through-the-flames/through-the-flames-nivel-1.png', caption: 'Nível 1 - Floresta intacta' },
-      { type: 'image', url: '/through-the-flames/through-the-flames-nivel-2.png', caption: 'Nível 2 - Início do desmatamento' },
       { type: 'image', url: '/through-the-flames/through-the-flames-nivel-3.png', caption: 'Nível 3 - Floresta queimada' },
-      { type: 'image', url: '/through-the-flames/through-the-flames-nivel-4.png', caption: 'Nível 4 - Devastação completa' },
-      { type: 'image', url: '/through-the-flames/through-the-flames-final.png', caption: 'Tela final' }
+      { type: 'image', url: '/through-the-flames/through-the-flames-nivel-4.png', caption: 'Nível 4 - Devastação completa' }
     ]
   },
   {
