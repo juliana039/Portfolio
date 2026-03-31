@@ -365,7 +365,7 @@ A partir do Desafio de Aprendizagem proposto ao final do curso, o projeto foi ex
       'Evolução do projeto de demonstração para experiência gamificada'
     ],
     media: [
-      { type: 'video', url: '/ar-video.MP4', caption: 'Demonstração da experiência em Realidade Aumentada' }
+      { type: 'video', url: '/ar-vr/ar-demonstracao-video_comprimido.mp4', caption: 'Demonstração da experiência em Realidade Aumentada' }
     ]
   },
   {
