@@ -82,8 +82,8 @@ export default function Hero() {
               maxWidth: '500px', 
               paddingTop: spacing.sm 
             }}>
-              5 apps publicados na App Store, incluindo projetos que representaram a 
-              Apple Developer Academy e artigo premiado no SBGames 2025.
+              Desenvolvo soluções para web, mobile, inteligência artificial e jogos, usando
+              tecnologias como React, Next.js, Python, Swift e Unity.
             </p>
 
             {/* Botões */}
@@ -158,7 +158,7 @@ export default function Hero() {
                   fontSize: typography.fontSize['3xl'], 
                   fontWeight: typography.fontWeight.bold, 
                   color: colors.primary.blue 
-                }}>10</div>
+                }}>13</div>
                 <div style={{ 
                   fontSize: typography.fontSize.sm, 
                   color: colors.neutral.text.tertiary 
@@ -222,7 +222,7 @@ export default function Hero() {
               </div>
               
               {/* Badges flutuantes - REORGANIZADOS */}
-              {/* iOS Developer - topo direita */}
+              {/* Web - topo direita */}
               <div style={{ 
                 position: 'absolute', 
                 top: spacing.xl, 
@@ -237,10 +237,10 @@ export default function Hero() {
                 whiteSpace: 'nowrap'
               }}
               className="hero-badge">
-                iOS Developer
+                Web & Mobile
               </div>
               
-              {/* SwiftUI - embaixo esquerda */}
+              {/* Python - embaixo esquerda */}
               <div style={{ 
                 position: 'absolute', 
                 bottom: spacing.xl, 
@@ -255,7 +255,7 @@ export default function Hero() {
                 whiteSpace: 'nowrap'
               }}
               className="hero-badge">
-                SwiftUI
+                Python
               </div>
               
               {/* Unity - embaixo direita (ao lado de SwiftUI, embaixo de iOS) - COR BRANCA */}

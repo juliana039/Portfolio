@@ -3,7 +3,7 @@ export interface Project {
   title: string;
   description: string;
   shortDescription?: string; // Descrição curta para grid
-  category: 'Apple Developer Academy' | 'Devtitans' | 'Instituto de Pesquisas Eldorado';
+  category: 'Apple Developer Academy' | 'Devtitans' | 'Instituto de Pesquisas Eldorado' | 'Estudos Independentes';
   tags: string[];
   published: boolean;
   featured?: boolean;
@@ -35,6 +35,11 @@ export interface Project {
   
   // Arquivo de case (PDF, apresentação, etc)
   caseStudy?: string;
+
+  // Link externo do projeto publicado
+  projectLink?: string;
+  projectLinkLabel?: string;
+  repositoryLink?: string;
   
   // Contribuição pessoal (para projetos em equipe)
   myContribution?: string[];
@@ -43,17 +48,140 @@ export interface Project {
 export const categoryColors = {
   'Apple Developer Academy': 'from-primary-blue to-primary-purple',
   'Devtitans': 'from-primary-teal to-primary-blue',
-  'Instituto de Pesquisas Eldorado': 'from-primary-purple to-primary-darkPurple'
+  'Instituto de Pesquisas Eldorado': 'from-primary-purple to-primary-darkPurple',
+  'Estudos Independentes': 'from-primary-teal to-primary-purple'
 };
 
 export const projects: Project[] = [
+  {
+    id: 'site-formatura-nat',
+    title: 'Save the Date da Formatura',
+    description: 'Save the date interativo desenvolvido sob demanda para uma cliente freelance, do briefing à publicação em menos de um dia',
+    shortDescription: 'Convite interativo em Next.js, CSS e Formspree entregue para uma cliente freelance em menos de um dia',
+    category: 'Estudos Independentes',
+    tags: ['Web', 'Freelancer', 'Next.js', 'TypeScript', 'Formspree', 'GitHub Pages'],
+    published: false,
+    featured: false,
+    image: '/Formatura-foto.png',
+    year: '2026',
+    duration: 'Menos de um dia',
+    projectLink: 'https://juliana039.github.io/save-the-date/',
+    projectLinkLabel: 'Acessar site',
+    repositoryLink: 'https://github.com/juliana039/save-the-date',
+    fullDescription: `O desafio: uma amiga me procurou em cima da hora para criar um site de save the date para sua formatura. O prazo era curto e a expectativa era entregar algo bonito, moderno e funcional, capaz de reunir as informações do evento e receber confirmações de presença.
+
+A abordagem: optei por um fluxo de vibe coding. Em vez de escrever cada linha manualmente, conduzi o desenvolvimento em conversa com uma IA, descrevendo o layout, o tom dos textos, a paleta de cores e o comportamento das animações. Refinei os resultados em tempo real no navegador, tomando as decisões de produto e ajustando composição, posicionamento e identidade visual.
+
+O escopo: desenvolvi a interface responsiva em Next.js e CSS, com animações de elementos em queda, ticker e contagem regressiva. Implementei um formulário RSVP com as opções "vou", "talvez" e "não vou", além de campo para acompanhantes. A integração com o Formspree permitiu receber as respostas sem criar backend ou banco de dados.
+
+O resultado: o convite saiu do briefing para uma versão publicada e funcional em menos de um dia. O site foi exportado estaticamente e publicado gratuitamente por meio do GitHub Pages e GitHub Actions, demonstrando como um fluxo de vibe coding pode apoiar prototipação e entrega rápida em projetos freelance de escopo enxuto.`,
+    highlights: [
+      'Do briefing à publicação em menos de um dia',
+      'Interface responsiva desenvolvida em Next.js',
+      'Animações em CSS, ticker e contagem regressiva',
+      'RSVP integrado ao Formspree, sem backend ou banco de dados',
+      'Deploy automatizado com GitHub Pages e GitHub Actions'
+    ],
+    myContribution: [
+      'Condução do projeto freelance desde o briefing até a entrega',
+      'Direção visual, escrita dos textos e refinamento da experiência',
+      'Desenvolvimento responsivo com apoio de vibe coding e IA',
+      'Integração do RSVP via Formspree',
+      'Configuração do build estático e publicação automatizada'
+    ],
+    media: [
+      {
+        type: 'image',
+        url: '/Formatura-foto.png',
+        caption: 'Tela inicial do save the date da formatura'
+      },
+      {
+        type: 'video',
+        url: '/site-formatura-nat.mp4',
+        caption: 'Navegação pela landing page da formatura'
+      }
+    ]
+  },
+  {
+    id: 'classificador-de-gatos',
+    title: 'Classificador de Gatos com CLIP',
+    description: 'Aplicação web que analisa uma imagem, verifica se há um gato e identifica seu padrão de aparência com inteligência artificial',
+    shortDescription: 'Demo de classificação de gatos integrada a um backend com API em Python',
+    category: 'Estudos Independentes',
+    tags: ['Web', 'Python', 'CLIP', 'PyTorch', 'Visão Computacional', 'TypeScript'],
+    published: false,
+    featured: true,
+    image: '/classificadorgatos.png',
+    year: '2026',
+    duration: 'Projeto de estudos',
+    fullDescription: `Este projeto nasceu dos meus estudos de visão computacional e desenvolvimento web. A proposta foi transformar um experimento em notebook em uma experiência completa: a pessoa envia uma foto pelo navegador, o backend processa a imagem e o modelo CLIP compara seu conteúdo com descrições em linguagem natural.
+
+O classificador usa o modelo pré-treinado CLIP ViT-B/32 em uma abordagem zero-shot. Isso significa que o projeto não treina um modelo próprio: ele aproveita o conhecimento do CLIP para comparar a imagem com diferentes prompts. Primeiro, a aplicação verifica se a imagem realmente representa um gato. Depois, classifica características visuais como gato laranja, preto, branco, cinza, siamês, frajola, malhado ou tricolor.
+
+No front-end, trabalhei com upload de arquivos, preview da imagem, estados de carregamento e apresentação do resultado. A imagem é enviada como multipart/form-data para uma API em Python, que faz a leitura com Pillow, o pré-processamento e a inferência com PyTorch.
+
+Além da inteligência artificial, o projeto foi uma oportunidade de aprofundar estudos sobre integração entre front-end e back-end, APIs HTTP, tratamento de erros e organização de uma aplicação web.`,
+    highlights: [
+      'Classificação zero-shot com CLIP ViT-B/32',
+      'Validação da imagem antes da classificação visual',
+      'Integração entre front-end TypeScript e API Python',
+      'Upload de imagens com multipart/form-data',
+      'Pré-processamento com Pillow e inferência com PyTorch'
+    ],
+    myContribution: [
+      'Desenvolvimento do fluxo completo, do upload ao resultado',
+      'Implementação da API de classificação em Python',
+      'Criação da interface web e dos estados de feedback',
+      'Estudo e documentação do pipeline de visão computacional'
+    ],
+    media: [
+      {
+        type: 'image',
+        url: '/classificadorgatos.png',
+        caption: 'Interface do classificador com imagem de entrada e resultado da análise'
+      }
+    ]
+  },
+  {
+    id: 'wtf-vr',
+    title: 'WTF-VR',
+    description: 'Jogo de ação em realidade virtual para Meta Quest, desenvolvido em Unity durante a Residência em Jogos',
+    shortDescription: 'Combate imersivo em VR com armas, inimigos e progressão de gameplay',
+    category: 'Instituto de Pesquisas Eldorado',
+    tags: ['Jogos', 'Unity', 'C#', 'Meta Quest', 'OpenXR', 'VR'],
+    published: false,
+    featured: false,
+    isGame: true,
+    year: '2025',
+    duration: 'Residência em Jogos',
+    fullDescription: `WTF-VR é um jogo de ação em realidade virtual desenvolvido para Meta Quest durante a Residência em Jogos do Instituto de Pesquisas Eldorado. O projeto explora combate imersivo, interação com armas e desafios em um ambiente 3D criado em Unity.
+
+Atuei na implementação e evolução de sistemas de gameplay em C#, incluindo comportamento de armas, recarga, dano em inimigos, diferenciação de acertos no corpo e na cabeça e feedback de fim de jogo. Também trabalhei na integração desses sistemas com prefabs, cenas e interfaces próprias para realidade virtual.
+
+O desenvolvimento exigiu atenção especial à experiência no headset. Além da implementação no editor, o fluxo incluiu testes automatizados, geração de builds Android, instalação e validação diretamente em dispositivos Meta Quest.
+
+Por ser um projeto em equipe e com evolução contínua, também participei da integração de diferentes frentes de desenvolvimento, resolução de conflitos e preservação de alterações em scripts e assets serializados do Unity.`,
+    highlights: [
+      'Gameplay e interação imersiva para Meta Quest',
+      'Sistemas de armas, recarga e dano em C#',
+      'Detecção diferenciada de headshots e body shots',
+      'Interface de game over adaptada para VR',
+      'Build, instalação e testes em headset Meta Quest'
+    ],
+    myContribution: [
+      'Implementação e manutenção de sistemas de gameplay',
+      'Evolução das mecânicas de armas e combate',
+      'Desenvolvimento de feedback e interface de game over em VR',
+      'Validação com testes e builds executados no Meta Quest'
+    ]
+  },
   {
     id: 'story-stage',
     title: 'Story Stage',
     description: 'Jogo multiplayer de improvisação para desenvolver habilidades de comunicação',
     shortDescription: 'Jogo multiplayer para praticar comunicação através de improvisação',
     category: 'Apple Developer Academy',
-    tags: ['Game Center', 'Multiplayer', 'SwiftUI', 'Internacionalização'],
+    tags: ['Jogos', 'Mobile', 'Game Center', 'Multiplayer', 'SwiftUI', 'Internacionalização'],
     published: true,
     featured: true,
     isGame: true,
@@ -104,7 +232,7 @@ Como é um jogo, errar não é problema - faz parte da experiência. Aqui, cada 
     description: 'App iOS para monitoramento de psoríase com registros visuais, questionários clínicos e análise de fatores desencadeantes',
     shortDescription: 'Monitoramento de psoríase com fotos, questionários e relatórios médicos',
     category: 'Apple Developer Academy',
-    tags: ['SwiftUI', 'MVVM', 'Core Data', 'Combine', 'PDFKit', 'Swift Charts', 'PhotoKit', 'VoiceOver'],
+    tags: ['Mobile', 'SwiftUI', 'MVVM', 'Core Data', 'Combine', 'PDFKit', 'Swift Charts', 'PhotoKit', 'VoiceOver'],
     published: false,
     featured: true,
     image: '/psstrack/psstrack-icon.png',
@@ -152,7 +280,7 @@ O nome "PssTrack" combina "psst" (chamando atenção) com "track" (monitorar) - 
     title: 'Timeti',
     description: 'Jogo de cartas educacional baseado em planos projetivos finitos',
     category: 'Apple Developer Academy',
-    tags: ['SwiftUI', 'Matemática', 'Educação STEAM', 'SBGames 2025'],
+    tags: ['Jogos', 'Mobile', 'SwiftUI', 'Matemática', 'Educação STEAM', 'SBGames 2025'],
     published: true,
     isGame: true,
     image: '/timeti/timeti.png',
@@ -188,7 +316,7 @@ Desenvolvido inteiramente em SwiftUI, o Timeti oferece uma experiência fluida e
     description: 'Solução de comunicação assistiva para autonomia e segurança',
     shortDescription: 'App de comunicação assistiva com pictogramas e acessibilidade',
     category: 'Apple Developer Academy',
-    tags: ['Acessibilidade', 'VoiceOver', 'Push Notifications', 'SwiftUI'],
+    tags: ['Mobile', 'Acessibilidade', 'VoiceOver', 'Push Notifications', 'SwiftUI'],
     published: true,
     featured: true,
     image: '/carebeep/carebeep.png',
@@ -236,7 +364,7 @@ CareBeep é mais do que um app - é uma ferramenta que promove independência, r
     description: 'App multiplataforma para mães compartilharem cuidados com sua rede de apoio',
     shortDescription: 'App para mães delegarem tarefas à sua rede de apoio',
     category: 'Apple Developer Academy',
-    tags: ['watchOS', 'CloudKit', 'MVVM', 'Watch Connectivity'],
+    tags: ['Mobile', 'watchOS', 'CloudKit', 'MVVM', 'Watch Connectivity'],
     published: true,
     image: '/beezzy/beezzy.png',
     year: '2025',
@@ -285,7 +413,7 @@ Beezzy é mais que um app, é um lugar para respirar. É para você que ama, cui
     title: 'Cultural Storm',
     description: 'Experiência interativa para estudantes de intercâmbio na Apple TV',
     category: 'Apple Developer Academy',
-    tags: ['tvOS', 'SwiftUI', 'Educação', 'Cultura', 'Internacionalização'],
+    tags: ['Jogos', 'tvOS', 'SwiftUI', 'Educação', 'Cultura', 'Internacionalização'],
     published: true,
     image: '/cultural-storm/cultural-storm_icon.png',
     year: '2024',
@@ -333,7 +461,7 @@ Como funciona: reúna amigos estudantes de intercâmbio em frente à Apple TV, s
     description: 'Aplicação imersiva em AR para exploração de artefatos arqueológicos',
     shortDescription: 'Experiência em AR com puzzle interativo sobre arqueologia',
     category: 'Apple Developer Academy',
-    tags: ['ARKit', 'Unity', 'C#', '3D', 'Realidade Aumentada'],
+    tags: ['Mobile', 'ARKit', 'Unity', 'C#', '3D', 'Realidade Aumentada'],
     published: false,
     featured: false,
     year: '2025',
@@ -370,7 +498,7 @@ A partir do Desafio de Aprendizagem proposto ao final do curso, o projeto foi ex
     title: 'Jogo 3D Educacional',
     description: 'Desenvolvimento de jogo 3D educacional em Unity com equipe multidisciplinar',
     category: 'Instituto de Pesquisas Eldorado',
-    tags: ['Unity', 'C#', 'Game Development', '3D', 'NavMesh', 'ScriptableObjects'],
+    tags: ['Jogos', 'Unity', 'C#', 'Game Development', '3D', 'NavMesh', 'ScriptableObjects'],
     published: false,
     year: '2025',
     image: '/game3d-icon.svg',
@@ -421,7 +549,7 @@ O trabalho em equipe grande exigiu comunicação constante, revisão de código 
     shortDescription: 'Jogo narrativo sobre transição capilar e autoaceitação',
     category: 'Apple Developer Academy',
     image: '/quem-matou-meus-cachos/quem-matou-meus-cachos.jpeg',
-    tags: ['SpriteKit', 'Jogo Narrativo', 'Identidade', 'Autoestima'],
+    tags: ['Jogos', 'Mobile', 'SpriteKit', 'Jogo Narrativo', 'Identidade', 'Autoestima'],
     published: false,
     isGame: true,
     year: '2024',
@@ -460,7 +588,7 @@ highlights: [
     title: 'Through the Flames',
     description: 'Jogo endless runner sobre o desmatamento da Amazônia',
     category: 'Apple Developer Academy',
-    tags: ['SpriteKit', 'SwiftUI', 'Game Design', 'iPad'],
+    tags: ['Jogos', 'Mobile', 'SpriteKit', 'SwiftUI', 'Game Design', 'iPad'],
     image: '/through-the-flames/through-the-flames-icon.png',
     published: false,
     isGame: true,
@@ -496,7 +624,7 @@ A narrativa emocional da onça procurando seu filhote cria conexão empática co
     description: 'Desenvolvimento de jogo 3D em Unity durante residência no Instituto de Pesquisas Eldorado',
     shortDescription: 'Jogo 3D educacional desenvolvido em Unity',
     category: 'Instituto de Pesquisas Eldorado',
-    tags: ['Unity', 'C#', 'Game 3D', 'Educacional'],
+    tags: ['Jogos', 'Unity', 'C#', 'Game 3D', 'Educacional'],
     published: false,
     isGame: true,
     year: '2025',
@@ -524,7 +652,7 @@ A experiência proporcionou aprendizado prático em desenvolvimento de jogos com
     title: 'Smartlamp Access Control',
     description: 'Implementação nativa de nova forma de desbloqueio por luminosidade no Android',
     category: 'Devtitans',
-    tags: ['Android', 'IoT', 'AOSP', 'C/C++', 'Java', 'Sistemas Embarcados'],
+    tags: ['Mobile', 'Android', 'IoT', 'AOSP', 'C/C++', 'Java', 'Sistemas Embarcados'],
     published: false,
     year: '2023',
     image: '/devtitans/devtitans.png ',

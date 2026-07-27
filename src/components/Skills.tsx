@@ -27,6 +27,11 @@ const skills = [
     category: 'Outras Tecnologias',
     items: ['Python', 'C/C++', 'Unity', 'C#'],
     color: colors.primary.purple
+  },
+  {
+    category: 'Desenvolvimento Web',
+    items: ['HTML', 'CSS', 'JavaScript', 'TypeScript', 'React', 'Next.js', 'APIs HTTP'],
+    color: colors.primary.blue
   }
 ];
 
@@ -69,7 +74,7 @@ export default function Skills() {
               color: colors.primary.blue, 
               fontWeight: typography.fontWeight.semibold 
             }}>
-              🚀 Minhas Habilidades
+              Minhas Habilidades
             </span>
           </div>
           <h2 style={{ 
@@ -87,7 +92,7 @@ export default function Skills() {
             maxWidth: '600px', 
             margin: '0 auto' 
           }}>
-            Ferramentas e frameworks que domino
+            Tecnologias que utilizo e áreas que sigo aprofundando
           </p>
         </div>
 
@@ -163,7 +168,7 @@ export default function Skills() {
                 color: colors.primary.yellow, 
                 fontWeight: typography.fontWeight.semibold 
               }}>
-                🏆 Conquistas
+                Conquistas
               </span>
             </div>
             <h3 style={{ 
@@ -235,7 +240,7 @@ export default function Skills() {
                       fontWeight: typography.fontWeight.bold,
                       boxShadow: shadows.glow(colors.primary.yellow)
                     }}>
-                      ⭐ Destaque
+                      Destaque
                     </div>
 
                     <div style={{ marginBottom: spacing.sm }}>
@@ -287,7 +292,6 @@ export default function Skills() {
                       fontWeight: typography.fontWeight.semibold,
                       marginBottom: spacing.sm
                     }}>
-                      <span>🎓</span>
                       {cert.org}
                     </div>
 

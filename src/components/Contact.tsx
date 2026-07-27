@@ -95,7 +95,6 @@ export default function Contact() {
               fontWeight: typography.fontWeight.semibold,
               color: colors.primary.yellow
             }}>
-              <span>🌍</span>
               Trabalho Remoto
             </div>
             <div style={{
@@ -110,7 +109,6 @@ export default function Contact() {
               fontWeight: typography.fontWeight.semibold,
               color: colors.primary.yellow
             }}>
-              <span>📍</span>
               Manaus-AM
             </div>
             <div style={{
@@ -125,7 +123,6 @@ export default function Contact() {
               fontWeight: typography.fontWeight.semibold,
               color: colors.primary.blue
             }}>
-              <span>✈️</span>
               Disponível para Mudança
             </div>
           </div>
@@ -451,7 +448,7 @@ export default function Contact() {
                   fontSize: typography.fontSize.sm,
                   textAlign: 'center'
                 }}>
-                  ✅ Mensagem enviada com sucesso! Respondo em breve.
+                  Mensagem enviada com sucesso! Respondo em breve.
                 </div>
               )}
               
@@ -466,7 +463,7 @@ export default function Contact() {
                   fontSize: typography.fontSize.sm,
                   textAlign: 'center'
                 }}>
-                  ❌ Erro ao enviar. Tente novamente ou entre em contato por email.
+                  Erro ao enviar. Tente novamente ou entre em contato por email.
                 </div>
               )}
               

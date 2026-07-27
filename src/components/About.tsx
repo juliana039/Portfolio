@@ -86,7 +86,7 @@ export default function About() {
               whiteSpace: 'nowrap'
             }}
             className="about-badge">
-              🚀 5 Apps na App Store
+              5 Apps na App Store
             </div>
           </div>
 
@@ -106,7 +106,7 @@ export default function About() {
                   color: colors.primary.yellow, 
                   fontWeight: typography.fontWeight.semibold 
                 }}>
-                  👋 Quem sou eu
+                  Quem sou eu
                 </span>
               </div>
               <h2 style={{ 
@@ -129,9 +129,9 @@ export default function About() {
       lineHeight: typography.lineHeight.relaxed,
     }}
   >
-    Desenvolvedora de <strong style={{ color: colors.neutral.text.primary }}>software com foco em iOS</strong>, 
-    com experiência ao longo de todo o <strong style={{ color: colors.neutral.text.primary }}>ciclo de desenvolvimento</strong>, 
-    combinando qualidade técnica com atenção à UX/UI e acessibilidade.
+    Desenvolvedora de <strong style={{ color: colors.neutral.text.primary }}>software com atuação em web, mobile e jogos</strong>,
+    com experiência ao longo de todo o <strong style={{ color: colors.neutral.text.primary }}>ciclo de desenvolvimento</strong>,
+    da ideia e prototipação à implementação, testes e entrega.
   </p>
 
   <p
@@ -143,7 +143,8 @@ export default function About() {
   >
     Formada em <strong style={{ color: colors.neutral.text.primary }}>Ciência da Computação pela UFAM</strong> e alumni da 
     <strong style={{ color: colors.neutral.text.primary }}> Apple Developer Academy</strong>, 
-    onde desenvolvi aplicativos iOS publicados na App Store.
+    onde desenvolvi aplicativos iOS publicados na App Store. Na <strong style={{ color: colors.neutral.text.primary }}>Web Academy da UFAM</strong>,
+    participo de uma capacitação de 348 horas em desenvolvimento web, abrangendo front-end, back-end, APIs, banco de dados, testes e deploy.
   </p>
 
   <p
@@ -153,8 +154,8 @@ export default function About() {
       lineHeight: typography.lineHeight.relaxed,
     }}
   >
-    Atuo com <strong style={{ color: colors.neutral.text.primary }}>Swift, C#, Java e Python</strong>, 
-    com perfil versátil e interesse contínuo em aprendizado e no desenvolvimento de soluções que geram impacto real para o usuário final.
+    Trabalho com <strong style={{ color: colors.neutral.text.primary }}>JavaScript, TypeScript, React, Next.js, Python, Swift e C#</strong>,
+    conectando diferentes tecnologias para criar produtos acessíveis e soluções que geram impacto real para o usuário final.
   </p>
 </div>
 
@@ -181,7 +182,7 @@ export default function About() {
                   fontSize: typography.fontSize.lg, 
                   fontWeight: typography.fontWeight.bold, 
                   color: colors.primary.blue 
-                }}>SwiftUI & UIKit</div>
+                }}>Web & Mobile</div>
               </div>
               
               <div style={{ 
@@ -199,7 +200,7 @@ export default function About() {
                   fontSize: typography.fontSize.lg, 
                   fontWeight: typography.fontWeight.bold, 
                   color: colors.primary.purple 
-                }}>Acessibilidade</div>
+                }}>UX & Acessibilidade</div>
               </div>
               
               <div style={{ 
@@ -235,7 +236,7 @@ export default function About() {
                   fontSize: typography.fontSize.lg, 
                   fontWeight: typography.fontWeight.bold, 
                   color: colors.primary.teal 
-                }}>MVVM</div>
+                }}>APIs & MVVM</div>
               </div>
             </div>
 

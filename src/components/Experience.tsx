@@ -4,6 +4,15 @@ import { spacing, colors, typography, borderRadius, container } from '@/design-s
 
 const experiences = [
   {
+    title: 'Desenvolvedora de Jogos',
+    company: 'Instituto de Pesquisas Eldorado',
+    period: '2025',
+    location: 'Residência',
+    description: 'Experiência profissional mais recente, com desenvolvimento de jogos 3D e VR em Unity, trabalhando em equipe multidisciplinar com designers e modeladores 3D.',
+    technologies: ['C#', 'Unity', 'Meta Quest', 'VR'],
+    color: 'from-primary-purple to-primary-teal'
+  },
+  {
     title: 'Desenvolvedora iOS',
     company: 'Apple Developer Academy',
     period: 'Fev 2024 - Dez 2025',
@@ -11,15 +20,6 @@ const experiences = [
     description: 'Desenvolvimento de projetos utilizando tecnologias Apple, aplicando metodologias ágeis e desenvolvendo produtos completos para o mercado.',
     technologies: ['iOS', 'SwiftUI', 'UIKit', 'CoreML', 'CloudKit', 'Game Center'],
     color: 'from-primary-blue to-primary-purple'
-  },
-  {
-    title: 'Desenvolvedora de Jogos',
-    company: 'Instituto de Pesquisas Eldorado',
-    period: '2025',
-    location: 'Residência',
-    description: 'Desenvolvimento de jogo 3D educacional em Unity, trabalhando em equipe multidisciplinar com designers e modeladores 3D.',
-    technologies: ['C#', 'Unity'],
-    color: 'from-primary-purple to-primary-teal'
   },
   {
     title: 'Desenvolvedora QA',
@@ -184,6 +184,27 @@ export default function Experience() {
               fontSize: typography.fontSize.sm, 
               fontWeight: typography.fontWeight.semibold, 
               marginBottom: spacing.sm 
+            }}>Capacitação de 348 horas</div>
+            <h3 style={{
+              fontSize: typography.fontSize.xl,
+              fontWeight: typography.fontWeight.bold,
+              marginBottom: spacing.xs
+            }}>Desenvolvimento Web — Web Academy UFAM</h3>
+            <div style={{
+              color: colors.neutral.text.tertiary,
+              fontSize: typography.fontSize.base,
+              lineHeight: typography.lineHeight.relaxed
+            }}>Formação em HTML, CSS, JavaScript, DOM, Bootstrap, Node.js, TypeScript, Express, banco de dados, autenticação, contêineres, APIs REST e React. A grade também inclui testes de software, integração contínua e deploy, cibersegurança, ciência de dados, aprendizado de máquina, desenvolvimento ágil e projeto prático guiado.</div>
+          </div>
+          <div className="glass-card" style={{
+            padding: spacing.md,
+            borderRadius: borderRadius.lg
+          }}>
+            <div style={{
+              color: colors.primary.yellow,
+              fontSize: typography.fontSize.sm,
+              fontWeight: typography.fontWeight.semibold,
+              marginBottom: spacing.sm
             }}>Fev 2020 - Fev 2025</div>
             <h3 style={{ 
               fontSize: typography.fontSize.xl, 

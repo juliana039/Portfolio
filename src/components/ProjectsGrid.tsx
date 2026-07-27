@@ -7,21 +7,66 @@ import { spacing, colors, typography, borderRadius, container } from '@/design-s
 
 function getProjectIcon(projectId: string): string {
   const icons: { [key: string]: string } = {
-    'vr-experience': '🥽',
-    'devtitans': '💡',
-    'residencia-de-jogos': '🎮',
-    'residencia-eldorado': '🎯',
-    'story-stage': '🎭',
-    'timeti': '🎴',
-    'through-the-flames': '🔥',
-    'quem-matou-meus-cachos': '💇‍♀️',
-    'carebeep': '💙',
-    'beezzy': '🐝',
-    'cultural-storm': '⚡',
-    'psstrack': '📊',
-    'default': '📱'
+    'vr-experience': 'AR',
+    'devtitans': 'IoT',
+    'residencia-de-jogos': '3D',
+    'residencia-eldorado': '3D',
+    'story-stage': 'SS',
+    'timeti': 'TI',
+    'through-the-flames': 'TF',
+    'quem-matou-meus-cachos': 'QC',
+    'carebeep': 'CB',
+    'beezzy': 'BZ',
+    'cultural-storm': 'CS',
+    'psstrack': 'PS',
+    'classificador-de-gatos': 'IA',
+    'wtf-vr': 'VR',
+    'site-formatura-nat': 'SF',
+    'default': 'APP'
   };
   return icons[projectId] || icons['default'];
+}
+
+const areaTagStyles = {
+  Web: {
+    border: `1px solid ${colors.primary.teal}`,
+    color: colors.primary.teal
+  },
+  Mobile: {
+    border: `1px solid ${colors.primary.blue}`,
+    color: colors.primary.blue
+  },
+  Jogos: {
+    border: `1px solid ${colors.primary.yellow}`,
+    color: colors.primary.yellow
+  }
+} as const;
+
+const areaTags = ['Web', 'Mobile', 'Jogos'] as const;
+
+function ProjectAreaBadges({ project }: { project: Project }) {
+  const projectAreaTags = areaTags.filter((tag) => project.tags.includes(tag));
+
+  return (
+    <div style={{ display: 'flex', gap: spacing.xs, flexWrap: 'wrap', justifyContent: 'flex-end' }}>
+      {projectAreaTags.map((tag) => (
+        <span
+          key={tag}
+          style={{
+            padding: `5px ${spacing.sm}`,
+            borderRadius: borderRadius.full,
+            fontSize: typography.fontSize.xs,
+            fontWeight: typography.fontWeight.bold,
+            letterSpacing: '0.04em',
+            background: 'rgba(10, 10, 10, 0.35)',
+            ...areaTagStyles[tag]
+          }}
+        >
+          {tag}
+        </span>
+      ))}
+    </div>
+  );
 }
 
 // Card FEATURED COMPACTO (sem mockup)
@@ -47,7 +92,8 @@ function FeaturedCardCompact({ project }: { project: Project }) {
         e.currentTarget.style.transform = 'translateY(0)';
         e.currentTarget.style.boxShadow = 'none';
       }}>
-        
+        <ProjectAreaBadges project={project} />
+
         {/* Ícone e Título */}
         <div style={{ display: 'flex', alignItems: 'flex-start', gap: spacing.sm }}> {/* REDUZIDO gap de md para sm */}
           <div style={{
@@ -84,7 +130,7 @@ function FeaturedCardCompact({ project }: { project: Project }) {
                 color: colors.primary.yellow,
                 fontWeight: typography.fontWeight.bold
               }}>
-                📱 App Store
+                App Store
               </span>
             )}
           </div>
@@ -101,7 +147,7 @@ function FeaturedCardCompact({ project }: { project: Project }) {
 
         {/* Tags */}
         <div style={{ display: 'flex', gap: spacing.xs, flexWrap: 'wrap' }}>
-          {project.tags.slice(0, 4).map((tag) => (
+          {project.tags.filter((tag) => !areaTags.includes(tag as typeof areaTags[number])).slice(0, 4).map((tag) => (
             <span
               key={tag}
               style={{
@@ -210,7 +256,7 @@ function FeaturedCard({ project }: { project: Project }) {
                   color: colors.primary.yellow,
                   fontWeight: typography.fontWeight.bold
                 }}>
-                  📱 App Store
+                  App Store
                 </span>
               )}
             </div>
@@ -443,6 +489,7 @@ function CompactCard({ project }: { project: Project }) {
         display: 'flex',
         gap: spacing.md,
         position: 'relative',
+        paddingTop: '60px',
         border: isTimeti ? `2px solid ${colors.primary.yellow}40` : undefined
       }}
       onMouseOver={(e) => {
@@ -453,6 +500,9 @@ function CompactCard({ project }: { project: Project }) {
         e.currentTarget.style.transform = 'translateY(0)';
         e.currentTarget.style.boxShadow = 'none';
       }}>
+        <div style={{ position: 'absolute', top: spacing.sm, right: spacing.md }}>
+          <ProjectAreaBadges project={project} />
+        </div>
         
         {isTimeti && (
           <div style={{
@@ -467,7 +517,7 @@ function CompactCard({ project }: { project: Project }) {
             color: '#000',
             boxShadow: '0 4px 12px rgba(255, 240, 105, 0.4)'
           }}>
-            🏆 3º Best Paper SBGames
+            3º Best Paper SBGames
           </div>
         )}
         
@@ -526,7 +576,7 @@ function CompactCard({ project }: { project: Project }) {
                 App Store
               </span>
             )}
-            {project.tags.slice(0, 3).map((tag) => (
+            {project.tags.filter((tag) => !areaTags.includes(tag as typeof areaTags[number])).slice(0, 3).map((tag) => (
               <span
                 key={tag}
                 style={{
@@ -555,9 +605,16 @@ function AutoScreenshotCarousel() {
   // IDs de projetos que são apps mobile (precisam mockup iPhone)
   const mobileAppIds = ['carebeep', 'story-stage', 'psstrack', 'beezzy', 'timeti', 'devtitans'];
   
-  // Pegar projetos que têm screenshots
-  const projectsWithScreenshots = projects
-    .filter(p => p.media && p.media.length > 0)
+  // Pegar projetos que têm screenshots e manter a formatura na segunda posição
+  const projectsWithMedia = projects.filter(p => p.media && p.media.length > 0);
+  const formaturaIndex = projectsWithMedia.findIndex(p => p.id === 'site-formatura-nat');
+
+  if (formaturaIndex >= 0) {
+    const [formaturaProject] = projectsWithMedia.splice(formaturaIndex, 1);
+    projectsWithMedia.splice(1, 0, formaturaProject);
+  }
+
+  const projectsWithScreenshots = projectsWithMedia
     .map(p => ({
       id: p.id,
       title: p.title,
@@ -584,7 +641,13 @@ function AutoScreenshotCarousel() {
   const displayScreenshots = currentProject.screenshots.slice(0, 4);
 
   // Componente de Screenshot (com ou sem mockup)
-  const ScreenshotItem = ({ screenshot, index }: { screenshot: any; index: number }) => {
+  const ScreenshotItem = ({
+    screenshot,
+    index
+  }: {
+    screenshot: NonNullable<Project['media']>[number];
+    index: number;
+  }) => {
     if (currentProject.isMobileApp) {
       // Com mockup iPhone
       return (
@@ -719,7 +782,7 @@ function AutoScreenshotCarousel() {
         WebkitTextFillColor: 'transparent',
         backgroundClip: 'text'
       }}>
-        📱 Galeria de Screenshots
+        Galeria de Screenshots
       </h3>
 
       {/* Nome do Projeto Atual - Clicável */}
@@ -825,22 +888,26 @@ function AutoScreenshotCarousel() {
 }
 
 export default function ProjectsGrid() {
-  const [activeTab, setActiveTab] = useState<'all' | 'games' | 'ios' | 'unity'>('all');
+  const [activeTab, setActiveTab] = useState<'all' | 'games' | 'mobile' | 'unity' | 'web'>('web');
 
   const featuredProjects = projects.filter(p => p.featured);
   const gameProjects = projects.filter(p => p.isGame);
-  const iosProjects = projects.filter(p => p.published);
+  const mobileProjects = projects.filter(p => p.tags.includes('Mobile'));
   const unityProjects = projects.filter(p => 
     p.tags.some(tag => tag.toLowerCase().includes('unity')) || 
     p.id === 'residencia-eldorado' || 
     p.id === 'vr-experience'
   );
+  const webProjects = projects.filter(p =>
+    p.tags.some(tag => ['web', 'typescript', 'next.js', 'react'].includes(tag.toLowerCase()))
+  );
   
   const getFilteredProjects = () => {
     switch(activeTab) {
       case 'games': return gameProjects;
-      case 'ios': return iosProjects;
+      case 'mobile': return mobileProjects;
       case 'unity': return unityProjects;
+      case 'web': return webProjects;
       default: return projects;
     }
   };
@@ -873,7 +940,7 @@ export default function ProjectsGrid() {
               fontWeight: typography.fontWeight.semibold, 
               color: colors.primary.blue 
             }}>
-              🚀 Portfólio
+              Portfólio
             </span>
           </div>
           <h2 style={{ 
@@ -888,7 +955,7 @@ export default function ProjectsGrid() {
             fontSize: typography.fontSize.lg, 
             color: colors.neutral.text.tertiary
           }}>
-            Apps publicados, jogos e experiências acadêmicas
+            Apps publicados, jogos, inteligência artificial e experiências acadêmicas
           </p>
         </div>
 
@@ -933,10 +1000,11 @@ export default function ProjectsGrid() {
           flexWrap: 'wrap'
         }}>
           {[
-            { id: 'all' as const, label: '📱 Todos', count: projects.length },
-            { id: 'ios' as const, label: '🍎 App Store', count: iosProjects.length },
-            { id: 'games' as const, label: '🎮 Jogos', count: gameProjects.length },
-            { id: 'unity' as const, label: '🎯 Unity', count: unityProjects.length }
+            { id: 'web' as const, label: 'Web', count: webProjects.length },
+            { id: 'mobile' as const, label: 'Mobile', count: mobileProjects.length },
+            { id: 'games' as const, label: 'Jogos', count: gameProjects.length },
+            { id: 'unity' as const, label: 'Unity', count: unityProjects.length },
+            { id: 'all' as const, label: 'Todos', count: projects.length }
           ].map((tab) => (
             <button
               key={tab.id}

@@ -23,6 +23,7 @@
 # misc
 .DS_Store
 *.pem
+/public/formatura.mov
 
 # debug
 npm-debug.log*
