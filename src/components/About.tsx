@@ -243,7 +243,7 @@ export default function About() {
             {/* CTA */}
             <div style={{ marginTop: spacing.sm }}>
               <a 
-                href="/juliana_magalhaes_devIOS.pdf" 
+                href="/dev_soft_cv_juliana_magalhaes.pdf" 
                 download
                 style={{
                   display: 'inline-flex',
